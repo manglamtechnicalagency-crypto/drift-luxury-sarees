@@ -1,0 +1,1053 @@
+{
+  "bucket": "drift-media-assets",
+  "syncedAt": "2026-11-15T12:14:55.094Z",
+  "totalFiles": 209,
+  "totalBytes": 56224775,
+  "files": [
+    {
+      "key": "collections/banarasi/editorial_banner.jpg",
+      "sizeBytes": 325787,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/hero.jpg",
+      "sizeBytes": 146277,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_01_detail.jpg",
+      "sizeBytes": 168460,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_01_editorial.jpg",
+      "sizeBytes": 529998,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_01_pallu.jpg",
+      "sizeBytes": 48998,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_01_primary.jpg",
+      "sizeBytes": 251814,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_02_detail.jpg",
+      "sizeBytes": 385867,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_02_editorial.jpg",
+      "sizeBytes": 70321,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_02_pallu.jpg",
+      "sizeBytes": 78462,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_02_primary.jpg",
+      "sizeBytes": 348890,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_03_detail.jpg",
+      "sizeBytes": 338201,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_03_editorial.jpg",
+      "sizeBytes": 775751,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_03_pallu.jpg",
+      "sizeBytes": 26557,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_03_primary.jpg",
+      "sizeBytes": 444926,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_04_detail.jpg",
+      "sizeBytes": 121626,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_04_editorial.jpg",
+      "sizeBytes": 215607,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_04_pallu.jpg",
+      "sizeBytes": 167547,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_04_primary.jpg",
+      "sizeBytes": 287141,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_05_detail.jpg",
+      "sizeBytes": 329716,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_05_editorial.jpg",
+      "sizeBytes": 247748,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_05_pallu.jpg",
+      "sizeBytes": 212222,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_05_primary.jpg",
+      "sizeBytes": 387852,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_06_detail.jpg",
+      "sizeBytes": 104479,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_06_editorial.jpg",
+      "sizeBytes": 138133,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_06_pallu.jpg",
+      "sizeBytes": 477113,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_06_primary.jpg",
+      "sizeBytes": 429112,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_07_detail.jpg",
+      "sizeBytes": 190655,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_07_editorial.jpg",
+      "sizeBytes": 160167,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_07_pallu.jpg",
+      "sizeBytes": 212027,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_07_primary.jpg",
+      "sizeBytes": 367457,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_08_detail.jpg",
+      "sizeBytes": 157944,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_08_editorial.jpg",
+      "sizeBytes": 274544,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_08_pallu.jpg",
+      "sizeBytes": 266233,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/banarasi/saree_08_primary.jpg",
+      "sizeBytes": 147032,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/editorial_banner.jpg",
+      "sizeBytes": 281635,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/hero.jpg",
+      "sizeBytes": 241529,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_01_detail.jpg",
+      "sizeBytes": 138180,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_01_editorial.jpg",
+      "sizeBytes": 850025,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_01_pallu.jpg",
+      "sizeBytes": 499307,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_01_primary.jpg",
+      "sizeBytes": 106119,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_02_detail.jpg",
+      "sizeBytes": 189405,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_02_editorial.jpg",
+      "sizeBytes": 343189,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_02_pallu.jpg",
+      "sizeBytes": 146148,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_02_primary.jpg",
+      "sizeBytes": 290372,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_03_detail.jpg",
+      "sizeBytes": 212747,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_03_editorial.jpg",
+      "sizeBytes": 330265,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_03_pallu.jpg",
+      "sizeBytes": 150788,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_03_primary.jpg",
+      "sizeBytes": 242123,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_04_detail.jpg",
+      "sizeBytes": 187433,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_04_editorial.jpg",
+      "sizeBytes": 358180,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_04_pallu.jpg",
+      "sizeBytes": 133126,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_04_primary.jpg",
+      "sizeBytes": 222965,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_05_detail.jpg",
+      "sizeBytes": 218276,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_05_editorial.jpg",
+      "sizeBytes": 366965,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_05_pallu.jpg",
+      "sizeBytes": 128566,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_05_primary.jpg",
+      "sizeBytes": 213329,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_06_detail.jpg",
+      "sizeBytes": 208979,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_06_editorial.jpg",
+      "sizeBytes": 308301,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_06_pallu.jpg",
+      "sizeBytes": 138839,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_06_primary.jpg",
+      "sizeBytes": 209436,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_07_detail.jpg",
+      "sizeBytes": 758030,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_07_editorial.jpg",
+      "sizeBytes": 302789,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_07_pallu.jpg",
+      "sizeBytes": 115465,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_07_primary.jpg",
+      "sizeBytes": 267125,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_08_detail.jpg",
+      "sizeBytes": 28428,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_08_editorial.jpg",
+      "sizeBytes": 451192,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_08_pallu.jpg",
+      "sizeBytes": 123307,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/gujarati/saree_08_primary.jpg",
+      "sizeBytes": 239318,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/editorial_banner.jpg",
+      "sizeBytes": 271829,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/hero.jpg",
+      "sizeBytes": 30223,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_01_detail.jpg",
+      "sizeBytes": 52397,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_01_editorial.jpg",
+      "sizeBytes": 301071,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_01_pallu.jpg",
+      "sizeBytes": 299905,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_01_primary.jpg",
+      "sizeBytes": 270438,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_02_detail.jpg",
+      "sizeBytes": 94655,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_02_editorial.jpg",
+      "sizeBytes": 450144,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_02_pallu.jpg",
+      "sizeBytes": 44040,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_02_primary.jpg",
+      "sizeBytes": 128052,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_03_detail.jpg",
+      "sizeBytes": 338994,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_03_editorial.jpg",
+      "sizeBytes": 296609,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_03_pallu.jpg",
+      "sizeBytes": 89647,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_03_primary.jpg",
+      "sizeBytes": 354675,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_04_detail.jpg",
+      "sizeBytes": 78478,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_04_editorial.jpg",
+      "sizeBytes": 372513,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_04_pallu.jpg",
+      "sizeBytes": 166537,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_04_primary.jpg",
+      "sizeBytes": 268180,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_05_detail.jpg",
+      "sizeBytes": 233653,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_05_editorial.jpg",
+      "sizeBytes": 200201,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_05_pallu.jpg",
+      "sizeBytes": 126764,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_05_primary.jpg",
+      "sizeBytes": 376658,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_06_detail.jpg",
+      "sizeBytes": 331211,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_06_editorial.jpg",
+      "sizeBytes": 384040,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_06_pallu.jpg",
+      "sizeBytes": 105060,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_06_primary.jpg",
+      "sizeBytes": 195024,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_07_detail.jpg",
+      "sizeBytes": 136363,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_07_editorial.jpg",
+      "sizeBytes": 548637,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_07_pallu.jpg",
+      "sizeBytes": 191673,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_07_primary.jpg",
+      "sizeBytes": 183044,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_08_detail.jpg",
+      "sizeBytes": 227703,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_08_editorial.jpg",
+      "sizeBytes": 110107,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_08_pallu.jpg",
+      "sizeBytes": 162964,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/heritage-states/saree_08_primary.jpg",
+      "sizeBytes": 233992,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/editorial_banner.jpg",
+      "sizeBytes": 517976,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/hero.jpg",
+      "sizeBytes": 128130,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_01_detail.jpg",
+      "sizeBytes": 49176,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_01_editorial.jpg",
+      "sizeBytes": 434957,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_01_pallu.jpg",
+      "sizeBytes": 377839,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_01_primary.jpg",
+      "sizeBytes": 290948,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_02_detail.jpg",
+      "sizeBytes": 36083,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_02_editorial.jpg",
+      "sizeBytes": 240554,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_02_pallu.jpg",
+      "sizeBytes": 116595,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_02_primary.jpg",
+      "sizeBytes": 540706,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_03_detail.jpg",
+      "sizeBytes": 11400,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_03_editorial.jpg",
+      "sizeBytes": 400538,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_03_pallu.jpg",
+      "sizeBytes": 87268,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_03_primary.jpg",
+      "sizeBytes": 119304,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_04_detail.jpg",
+      "sizeBytes": 341804,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_04_editorial.jpg",
+      "sizeBytes": 442481,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_04_pallu.jpg",
+      "sizeBytes": 284507,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_04_primary.jpg",
+      "sizeBytes": 232626,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_05_detail.jpg",
+      "sizeBytes": 204880,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_05_editorial.jpg",
+      "sizeBytes": 494573,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_05_pallu.jpg",
+      "sizeBytes": 250152,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_05_primary.jpg",
+      "sizeBytes": 223583,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_06_detail.jpg",
+      "sizeBytes": 172142,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_06_editorial.jpg",
+      "sizeBytes": 509422,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_06_pallu.jpg",
+      "sizeBytes": 244943,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_06_primary.jpg",
+      "sizeBytes": 425864,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_07_detail.jpg",
+      "sizeBytes": 233195,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_07_editorial.jpg",
+      "sizeBytes": 314920,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_07_pallu.jpg",
+      "sizeBytes": 612213,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_07_primary.jpg",
+      "sizeBytes": 460120,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_08_detail.jpg",
+      "sizeBytes": 206806,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_08_editorial.jpg",
+      "sizeBytes": 290769,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_08_pallu.jpg",
+      "sizeBytes": 98763,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/jodhpuri/saree_08_primary.jpg",
+      "sizeBytes": 215237,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/editorial_banner.jpg",
+      "sizeBytes": 340063,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/hero.jpg",
+      "sizeBytes": 173478,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_01_detail.jpg",
+      "sizeBytes": 237659,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_01_editorial.jpg",
+      "sizeBytes": 774627,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_01_pallu.jpg",
+      "sizeBytes": 196240,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_01_primary.jpg",
+      "sizeBytes": 135672,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_02_detail.jpg",
+      "sizeBytes": 39529,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_02_editorial.jpg",
+      "sizeBytes": 75057,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_02_pallu.jpg",
+      "sizeBytes": 155147,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_02_primary.jpg",
+      "sizeBytes": 127226,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_03_detail.jpg",
+      "sizeBytes": 412473,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_03_editorial.jpg",
+      "sizeBytes": 471348,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_03_pallu.jpg",
+      "sizeBytes": 224151,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_03_primary.jpg",
+      "sizeBytes": 299849,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_04_detail.jpg",
+      "sizeBytes": 337405,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_04_editorial.jpg",
+      "sizeBytes": 242437,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_04_pallu.jpg",
+      "sizeBytes": 91197,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_04_primary.jpg",
+      "sizeBytes": 388673,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_05_detail.jpg",
+      "sizeBytes": 368281,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_05_editorial.jpg",
+      "sizeBytes": 788437,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_05_pallu.jpg",
+      "sizeBytes": 210688,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_05_primary.jpg",
+      "sizeBytes": 153478,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_06_detail.jpg",
+      "sizeBytes": 365640,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_06_editorial.jpg",
+      "sizeBytes": 656907,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_06_pallu.jpg",
+      "sizeBytes": 221312,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_06_primary.jpg",
+      "sizeBytes": 295714,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_07_detail.jpg",
+      "sizeBytes": 328155,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_07_editorial.jpg",
+      "sizeBytes": 601645,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_07_pallu.jpg",
+      "sizeBytes": 181083,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_07_primary.jpg",
+      "sizeBytes": 320887,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_08_detail.jpg",
+      "sizeBytes": 260006,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_08_editorial.jpg",
+      "sizeBytes": 707358,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_08_pallu.jpg",
+      "sizeBytes": 399655,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/kanchipuram/saree_08_primary.jpg",
+      "sizeBytes": 297245,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/model_bengali_bridal.jpg",
+      "sizeBytes": 309587,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/model_burgundy_zardozi.jpg",
+      "sizeBytes": 251325,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/model_nath_paithani.jpg",
+      "sizeBytes": 361168,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/model_royal_chandan.jpg",
+      "sizeBytes": 381593,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/model_saffron_yellow.jpg",
+      "sizeBytes": 321425,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/editorial_banner.jpg",
+      "sizeBytes": 308687,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/hero.jpg",
+      "sizeBytes": 99746,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_01_detail.jpg",
+      "sizeBytes": 89256,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_01_editorial.jpg",
+      "sizeBytes": 73559,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_01_pallu.jpg",
+      "sizeBytes": 45280,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_01_primary.jpg",
+      "sizeBytes": 419239,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_02_detail.jpg",
+      "sizeBytes": 438907,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_02_editorial.jpg",
+      "sizeBytes": 561143,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_02_pallu.jpg",
+      "sizeBytes": 268804,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_02_primary.jpg",
+      "sizeBytes": 95072,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_03_detail.jpg",
+      "sizeBytes": 232572,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_03_editorial.jpg",
+      "sizeBytes": 512154,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_03_pallu.jpg",
+      "sizeBytes": 192407,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_03_primary.jpg",
+      "sizeBytes": 201139,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_04_detail.jpg",
+      "sizeBytes": 406681,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_04_editorial.jpg",
+      "sizeBytes": 491820,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_04_pallu.jpg",
+      "sizeBytes": 198758,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_04_primary.jpg",
+      "sizeBytes": 170697,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_05_detail.jpg",
+      "sizeBytes": 28369,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_05_editorial.jpg",
+      "sizeBytes": 210559,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_05_pallu.jpg",
+      "sizeBytes": 83193,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_05_primary.jpg",
+      "sizeBytes": 562992,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_06_detail.jpg",
+      "sizeBytes": 494660,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_06_editorial.jpg",
+      "sizeBytes": 275284,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_06_pallu.jpg",
+      "sizeBytes": 136286,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_06_primary.jpg",
+      "sizeBytes": 429411,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_07_detail.jpg",
+      "sizeBytes": 12844,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_07_editorial.jpg",
+      "sizeBytes": 358067,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_07_pallu.jpg",
+      "sizeBytes": 138256,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_07_primary.jpg",
+      "sizeBytes": 402776,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_08_detail.jpg",
+      "sizeBytes": 58899,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_08_editorial.jpg",
+      "sizeBytes": 230072,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_08_pallu.jpg",
+      "sizeBytes": 150770,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/rajasthani/saree_08_primary.jpg",
+      "sizeBytes": 240096,
+      "contentType": "image/jpeg"
+    }
+  ]
+}

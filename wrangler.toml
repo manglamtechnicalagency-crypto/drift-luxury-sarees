@@ -1,0 +1,25 @@
+name = "drift-luxury-sarees"
+main = ".open-next/worker.js"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "drift-commerce-db"
+database_id = "1a3ca3d6-47f5-4da4-a049-b6306af7f878"
+
+[[r2_buckets]]
+binding = "MEDIA_BUCKET"
+bucket_name = "drift-media-assets"
+
+[[kv_namespaces]]
+binding = "EDGE_CACHE"
+id = "31dae1ce64ba4db5b4098890f9c6e37d"
+
+[vars]
+NEXT_PUBLIC_R2_PUBLIC_URL = ""
+NEXT_PUBLIC_API_BASE_URL = ""
