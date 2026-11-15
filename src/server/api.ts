@@ -339,13 +339,13 @@ const OrderSchema = z.object({
       id: z.string(),
       sku: z.string().optional(),
       title: z.string(),
-      price: z.number().positive(),
+      price: z.number().nonnegative(),
       quantity: z.number().int().positive(),
       selectedBlouseSize: z.string().default('Unstitched'),
       selectedColor: z.string().optional(),
     })
   ).min(1, 'Cart cannot be empty'),
-  subtotal: z.number().positive(),
+  subtotal: z.number().nonnegative(),
   website_url: z.string().max(0, 'Spam rejected').optional().or(z.literal('')),
 });
 
@@ -362,6 +362,10 @@ api.post('/orders', async (c) => {
 
   if (!parseResult.success) {
     return c.json({ error: 'Invalid order payload', details: parseResult.error.format() }, 400);
+  }
+
+  if (!env.DB) {
+    return c.json({ error: 'Order requests are temporarily unavailable. Please contact the studio.' }, 503);
   }
 
   const ip =
@@ -387,42 +391,32 @@ api.post('/orders', async (c) => {
   const orderId = `order_${crypto.randomUUID().slice(0, 12)}`;
   const orderNumber = `DRIFT-2026-${Math.floor(1000 + Math.random() * 9000)}`;
 
-  if (env.DB) {
+  try {
+    await env.DB.prepare(
+      `INSERT INTO orders (id, order_number, customer_name, customer_email, customer_phone, shipping_address_json, items_json, subtotal_inr, status)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+    ).bind(
+      orderId,
+      orderNumber,
+      data.customerName,
+      data.customerEmail,
+      data.customerPhone || null,
+      JSON.stringify(data.shippingAddress),
+      JSON.stringify(data.items),
+      data.subtotal,
+      'REQUEST_RECEIVED'
+    ).run();
+  } catch (err) {
+    console.error('[EDGE ORDER ERROR]', err);
+    return c.json({ error: 'We could not save your request. Please try again or contact the studio.' }, 503);
+  }
+
+  // Invalidate KV collections cache only after the request is persisted.
+  if (env.EDGE_CACHE) {
     try {
-      const statements: D1PreparedStatement[] = [
-        env.DB.prepare(
-          `INSERT INTO orders (id, order_number, customer_name, customer_email, customer_phone, shipping_address_json, items_json, subtotal_inr, status)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
-        ).bind(
-          orderId,
-          orderNumber,
-          data.customerName,
-          data.customerEmail,
-          data.customerPhone || null,
-          JSON.stringify(data.shippingAddress),
-          JSON.stringify(data.items),
-          data.subtotal,
-          'CONFIRMED'
-        ),
-      ];
-
-      // Decrement stock atomically
-      for (const item of data.items) {
-        statements.push(
-          env.DB.prepare(
-            `UPDATE sarees SET stock_count = MAX(0, stock_count - ?) WHERE id = ? OR sku = ?`
-          ).bind(item.quantity, item.id, item.sku || item.id)
-        );
-      }
-
-      await env.DB.batch(statements);
-
-      // Invalidate KV collections cache
-      if (env.EDGE_CACHE) {
-        await env.EDGE_CACHE.delete('drift:collections:v2');
-      }
-    } catch (err) {
-      console.error('[EDGE ORDER ERROR]', err);
+      await env.EDGE_CACHE.delete('drift:collections:v2');
+    } catch {
+      // Cache invalidation is best-effort; the request is already stored.
     }
   }
 
@@ -434,7 +428,7 @@ api.post('/orders', async (c) => {
     customerEmail: data.customerEmail,
     subtotal: data.subtotal,
     itemsCount: data.items.length,
-    status: 'CONFIRMED',
+    status: 'REQUEST_RECEIVED',
     createdAt: new Date().toISOString(),
   });
 });
@@ -460,6 +454,10 @@ api.post('/newsletter', async (c) => {
     return c.json({ error: 'Please enter a valid email address' }, 400);
   }
 
+  if (!env.DB) {
+    return c.json({ error: 'Newsletter sign-up is temporarily unavailable. Please try again later.' }, 503);
+  }
+
   const { email } = parseResult.data;
   const ip =
     c.req.header('cf-connecting-ip') ||
@@ -481,14 +479,13 @@ api.post('/newsletter', async (c) => {
   }
 
   // Insert into D1
-  if (env.DB) {
-    try {
-      await env.DB.prepare(
-        'INSERT OR IGNORE INTO newsletter_subscribers (id, email) VALUES (?, ?)'
-      ).bind(`sub_${crypto.randomUUID().slice(0, 10)}`, email).run();
-    } catch (err) {
-      console.warn('[NEWSLETTER D1 INSERT NOTICE]', err);
-    }
+  try {
+    await env.DB.prepare(
+      'INSERT OR IGNORE INTO newsletter_subscribers (id, email) VALUES (?, ?)'
+    ).bind(`sub_${crypto.randomUUID().slice(0, 10)}`, email).run();
+  } catch (err) {
+    console.warn('[NEWSLETTER D1 INSERT NOTICE]', err);
+    return c.json({ error: 'Newsletter sign-up could not be saved. Please try again later.' }, 503);
   }
 
   return c.json({

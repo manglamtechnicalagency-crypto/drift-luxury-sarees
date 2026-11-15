@@ -1,11 +1,11 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import { ArrowUpRight, ChevronLeft, ChevronRight, Sparkles, Layers, Sliders, Palette } from 'lucide-react';
+import { ArrowUpRight, ChevronLeft, ChevronRight, Sparkles, Sliders, Palette } from 'lucide-react';
 import { TREND_EDIT, TrendConcept } from '@/data/collections/trendEdit';
 import { StateSlug } from '@/data/collections/types';
 import { ALL_STATE_METAS, ALL_SAREES } from '@/data/collections/registry';
-import { SareeColorway, TextileMotif, PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
+import { SareeColorway, TextileMotif, getSareeModelImage, PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
 import { useStore } from '@/store/useStore';
 
 const MOTIF_OPTIONS: { id: TextileMotif; label: string }[] = [
@@ -17,205 +17,30 @@ const MOTIF_OPTIONS: { id: TextileMotif; label: string }[] = [
   { id: 'chevron', label: 'Vanki Chevron' },
 ];
 
-const TREND_LOOK_MODELS: Record<string, { model: string; detail: string; primary: string }> = {
-  // Banarasi
-  'ban-tissue-jamun': {
-    model: '/collections/banarasi/saree_03_editorial.jpg',
-    detail: '/collections/banarasi/saree_03_detail.jpg',
-    primary: '/collections/banarasi/saree_03_primary.jpg',
-  },
-  'ban-ivory-champagne-jaal': {
-    model: '/collections/banarasi/saree_04_editorial.jpg',
-    detail: '/collections/banarasi/saree_04_detail.jpg',
-    primary: '/collections/banarasi/saree_04_primary.jpg',
-  },
-  'ban-vermilion-shikargah': {
-    model: '/collections/models/priya_banarasi_red.jpg',
-    detail: '/collections/banarasi/saree_01_detail.jpg',
-    primary: '/collections/banarasi/saree_01_primary.jpg',
-  },
-
-  // Gujarati
-  'guj-navratna-malachite': {
-    model: '/collections/models/priya_gujarati_patola.jpg',
-    detail: '/collections/gujarati/saree_01_detail.jpg',
-    primary: '/collections/gujarati/saree_01_primary.jpg',
-  },
-  'guj-ashavali-rosegold': {
-    model: '/collections/gujarati/saree_05_editorial.jpg',
-    detail: '/collections/gujarati/saree_05_detail.jpg',
-    primary: '/collections/gujarati/saree_05_primary.jpg',
-  },
-  'guj-sindoori-bandhej': {
-    model: '/collections/gujarati/saree_02_editorial.jpg',
-    detail: '/collections/gujarati/saree_02_detail.jpg',
-    primary: '/collections/gujarati/saree_02_primary.jpg',
-  },
-  'guj-ivory-shisha': {
-    model: '/collections/models/priya_gujarati_panetar.jpg',
-    detail: '/collections/gujarati/saree_03_detail.jpg',
-    primary: '/collections/gujarati/saree_03_primary.jpg',
-  },
-  'guj-raw-silk-panetar': {
-    model: '/collections/models/priya_gujarati_panetar.jpg',
-    detail: '/collections/gujarati/saree_03_detail.jpg',
-    primary: '/collections/gujarati/saree_03_primary.jpg',
-  },
-
-  // Rajasthani
-  'raj-dune-wave': {
-    model: '/collections/models/priya_rajasthani_leheriya.jpg',
-    detail: '/collections/rajasthani/saree_01_detail.jpg',
-    primary: '/collections/rajasthani/saree_01_primary.jpg',
-  },
-  'raj-sunset-ombre-leheriya': {
-    model: '/collections/models/priya_rajasthani_leheriya.jpg',
-    detail: '/collections/rajasthani/saree_01_detail.jpg',
-    primary: '/collections/rajasthani/saree_01_primary.jpg',
-  },
-  'raj-rani-gota': {
-    model: '/collections/rajasthani/saree_03_editorial.jpg',
-    detail: '/collections/rajasthani/saree_03_detail.jpg',
-    primary: '/collections/rajasthani/saree_03_primary.jpg',
-  },
-  'raj-kota-doria-gold-checks': {
-    model: '/collections/rajasthani/saree_02_editorial.jpg',
-    detail: '/collections/rajasthani/saree_02_detail.jpg',
-    primary: '/collections/rajasthani/saree_02_primary.jpg',
-  },
-  'raj-kota-amber': {
-    model: '/collections/rajasthani/saree_02_editorial.jpg',
-    detail: '/collections/rajasthani/saree_02_detail.jpg',
-    primary: '/collections/rajasthani/saree_02_primary.jpg',
-  },
-  'raj-marwar-lac-bandhani': {
-    model: '/collections/rajasthani/saree_07_editorial.jpg',
-    detail: '/collections/rajasthani/saree_07_detail.jpg',
-    primary: '/collections/rajasthani/saree_07_primary.jpg',
-  },
-
-  // Jodhpuri
-  'jod-indigo-saffron': {
-    model: '/collections/models/priya_jodhpuri_bandhani.jpg',
-    detail: '/collections/jodhpuri/saree_01_detail.jpg',
-    primary: '/collections/jodhpuri/saree_01_primary.jpg',
-  },
-  'jod-indigo-gold-shikargah': {
-    model: '/collections/jodhpuri/saree_05_editorial.jpg',
-    detail: '/collections/jodhpuri/saree_05_detail.jpg',
-    primary: '/collections/jodhpuri/saree_05_primary.jpg',
-  },
-  'jod-crimson-sandstone': {
-    model: '/collections/jodhpuri/saree_02_editorial.jpg',
-    detail: '/collections/jodhpuri/saree_02_detail.jpg',
-    primary: '/collections/jodhpuri/saree_02_primary.jpg',
-  },
-  'jod-rani-haldi-bandhej': {
-    model: '/collections/jodhpuri/saree_02_editorial.jpg',
-    detail: '/collections/jodhpuri/saree_02_detail.jpg',
-    primary: '/collections/jodhpuri/saree_02_primary.jpg',
-  },
-  'jod-twilight-mirror': {
-    model: '/collections/jodhpuri/saree_07_editorial.jpg',
-    detail: '/collections/jodhpuri/saree_07_detail.jpg',
-    primary: '/collections/jodhpuri/saree_07_primary.jpg',
-  },
-  'jod-gota-patti-pistachio': {
-    model: '/collections/jodhpuri/saree_06_editorial.jpg',
-    detail: '/collections/jodhpuri/saree_06_detail.jpg',
-    primary: '/collections/jodhpuri/saree_06_primary.jpg',
-  },
-
-  // Kanchipuram
-  'kan-peacock-copper': {
-    model: '/collections/models/priya_kanchipuram_purple.jpg',
-    detail: '/collections/kanchipuram/saree_01_detail.jpg',
-    primary: '/collections/kanchipuram/saree_01_primary.jpg',
-  },
-  'kan-aubergine-gopuram': {
-    model: '/collections/models/priya_kanchipuram_purple.jpg',
-    detail: '/collections/kanchipuram/saree_01_detail.jpg',
-    primary: '/collections/kanchipuram/saree_01_primary.jpg',
-  },
-  'kan-temple-red': {
-    model: '/collections/kanchipuram/saree_06_editorial.jpg',
-    detail: '/collections/kanchipuram/saree_06_detail.jpg',
-    primary: '/collections/kanchipuram/saree_06_primary.jpg',
-  },
-  'kan-peacock-emerald-ruby': {
-    model: '/collections/kanchipuram/saree_06_editorial.jpg',
-    detail: '/collections/kanchipuram/saree_06_detail.jpg',
-    primary: '/collections/kanchipuram/saree_06_primary.jpg',
-  },
-  'kan-viridian-amethyst': {
-    model: '/collections/kanchipuram/saree_02_editorial.jpg',
-    detail: '/collections/kanchipuram/saree_02_detail.jpg',
-    primary: '/collections/kanchipuram/saree_02_primary.jpg',
-  },
-  'kan-copper-rose-tissue': {
-    model: '/collections/kanchipuram/saree_03_editorial.jpg',
-    detail: '/collections/kanchipuram/saree_03_detail.jpg',
-    primary: '/collections/kanchipuram/saree_03_primary.jpg',
-  },
-
-  // Heritage States
-  'heritage-paithani-peacock': {
-    model: '/collections/models/priya_paithani_peacock.jpg',
-    detail: '/collections/heritage-states/saree_01_detail.jpg',
-    primary: '/collections/heritage-states/saree_01_primary.jpg',
-  },
-  'her-paithani-tissue-peacock': {
-    model: '/collections/models/priya_paithani_peacock.jpg',
-    detail: '/collections/heritage-states/saree_01_detail.jpg',
-    primary: '/collections/heritage-states/saree_01_primary.jpg',
-  },
-  'heritage-chanderi-silver': {
-    model: '/collections/heritage-states/saree_03_editorial.jpg',
-    detail: '/collections/heritage-states/saree_03_detail.jpg',
-    primary: '/collections/heritage-states/saree_03_primary.jpg',
-  },
-  'her-chanderi-black-gold': {
-    model: '/collections/heritage-states/saree_02_editorial.jpg',
-    detail: '/collections/heritage-states/saree_02_detail.jpg',
-    primary: '/collections/heritage-states/saree_02_primary.jpg',
-  },
-  'heritage-baluchari-narrative': {
-    model: '/collections/heritage-states/saree_08_editorial.jpg',
-    detail: '/collections/heritage-states/saree_08_detail.jpg',
-    primary: '/collections/heritage-states/saree_08_primary.jpg',
-  },
-  'her-sambalpuri-crimson-ikat': {
-    model: '/collections/heritage-states/saree_05_editorial.jpg',
-    detail: '/collections/heritage-states/saree_05_detail.jpg',
-    primary: '/collections/heritage-states/saree_05_primary.jpg',
-  },
-};
-
 export default function TrendAtelier() {
   const { setActiveStateFilter } = useStore();
   const [region, setRegion] = useState<StateSlug>('banarasi');
   const [activeIndex, setActiveIndex] = useState(0);
   const [customMotif, setCustomMotif] = useState<TextileMotif | null>(null);
   const [activeTab, setActiveTab] = useState<'weave' | 'architecture'>('weave');
-  const [clothView, setClothView] = useState<'model' | 'detail' | 'primary'>('model');
+  const [clothView, setClothView] = useState<'model' | 'alternate'>('model');
 
   const concepts = TREND_EDIT[region] || [];
   const active: TrendConcept = concepts[Math.min(activeIndex, concepts.length - 1)] || concepts[0];
   const meta = ALL_STATE_METAS.find((item) => item.slug === region) || ALL_STATE_METAS[0];
 
-  // Real Saree photography corresponding to region and active index
+  // Use three different local portraits per region so each look has a clear visual identity.
   const regionalSarees = useMemo(() => ALL_SAREES.filter((s) => s.region === region), [region]);
-  const activeSaree = regionalSarees[activeIndex % regionalSarees.length] || regionalSarees[0];
+  const portraitSarees = useMemo(() => {
+    const finalLooks = regionalSarees.slice(-3);
+    return finalLooks.length ? finalLooks : regionalSarees;
+  }, [regionalSarees]);
+  const activeSaree = portraitSarees[activeIndex % Math.max(portraitSarees.length, 1)] || regionalSarees[0];
+  const alternateSaree = portraitSarees[(activeIndex + 1) % Math.max(portraitSarees.length, 1)] || activeSaree;
   const activeClothImage = useMemo(() => {
-    const lookAsset = TREND_LOOK_MODELS[active?.id];
-    if (clothView === 'model') {
-      return lookAsset?.model || PRIYA_EDITORIAL_MODEL.images[region] || activeSaree?.images?.primary;
-    }
-    if (clothView === 'detail') {
-      return lookAsset?.detail || activeSaree?.images?.detail || activeSaree?.images?.primary;
-    }
-    return lookAsset?.primary || activeSaree?.images?.primary || activeSaree?.images?.editorial;
-  }, [clothView, region, active, activeSaree]);
+    const selected = clothView === 'model' ? activeSaree : alternateSaree;
+    return selected ? getSareeModelImage(selected) : PRIYA_EDITORIAL_MODEL.images[region];
+  }, [clothView, region, activeSaree, alternateSaree]);
 
   // Selected motif (defaults to active concept's curated motif, or overridden by interactive user customizer)
   const effectiveMotif = customMotif || active?.motif || 'diamond';
@@ -244,6 +69,7 @@ export default function TrendAtelier() {
     setRegion(slug);
     setActiveIndex(0);
     setCustomMotif(null);
+    setClothView('model');
   };
 
   if (!active) return null;
@@ -268,6 +94,9 @@ export default function TrendAtelier() {
       />
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <p className="sr-only" aria-live="polite" aria-atomic="true">
+          {meta.name}, look {activeIndex + 1} of {concepts.length}: {active.title}. {effectiveMotif} motif. {clothView === 'model' ? 'Look portrait selected.' : 'Alternate portrait selected.'}
+        </p>
         {/* Header */}
         <header className="mb-10 flex flex-col gap-5 border-b border-white/10 pb-8 sm:mb-14 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-2xl">
@@ -299,7 +128,7 @@ export default function TrendAtelier() {
               type="button"
               onClick={() => chooseRegion(item.slug)}
               aria-pressed={region === item.slug}
-              className={`shrink-0 rounded-full border px-5 py-2.5 text-[11px] font-sans font-medium uppercase tracking-[.16em] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E6C98D] ${
+              className={`min-h-11 shrink-0 rounded-full border px-5 py-2.5 text-[11px] font-sans font-medium uppercase tracking-[.16em] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E6C98D] ${
                 region === item.slug
                   ? 'border-[#D2B273] bg-gradient-to-r from-[#D2B273] to-[#F3DFB0] text-[#211116] font-semibold shadow-lg shadow-[#D2B273]/20 scale-105'
                   : 'border-white/15 bg-white/[0.03] text-white/70 hover:border-[#D2B273]/60 hover:text-white'
@@ -321,10 +150,12 @@ export default function TrendAtelier() {
               <div className="relative aspect-[3/3.8] overflow-hidden rounded-[1.4rem] bg-[#1C0D12] border border-white/10 shadow-inner group">
                 <img
                   src={activeClothImage}
-                  alt={`${active.title} - ${meta.name} authentic handloom saree on model Priya`}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  alt={`Illustrative model reference for the ${active.title} ${meta.name} design study`}
+                  className="h-full w-full object-cover object-[center_14%] transition-transform duration-700 group-hover:scale-105"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = PRIYA_EDITORIAL_MODEL.images[region] || activeSaree?.images?.fallbackPrimary || '/collections/models/priya_banarasi_red.jpg';
+                    const image = e.currentTarget;
+                    image.onerror = null;
+                    image.src = '/collections/models/model_saffron_yellow.jpg';
                   }}
                 />
                 
@@ -333,7 +164,7 @@ export default function TrendAtelier() {
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[.25em] text-[#E6C98D] font-medium">
                     <span>{meta.name}</span>
                     <span>•</span>
-                    <span className="capitalize">{clothView === 'detail' ? 'Macro Weave Texture' : 'Full Drape Presentation'}</span>
+                    <span>Model portrait</span>
                     <span>•</span>
                     <span className="text-[#E6C98D] capitalize">Motif: {effectiveMotif}</span>
                   </div>
@@ -345,65 +176,33 @@ export default function TrendAtelier() {
                   </p>
                 </div>
 
-                {/* Perspective View Switcher */}
-                <div className="absolute top-4 left-4 flex items-center gap-2">
-                  <span className="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[9px] uppercase tracking-[.18em] text-[#E6C98D] backdrop-blur-md">
-                    Look 0{activeIndex + 1}
-                  </span>
-                  <div
-                    role="group"
-                    aria-label="Perspective view selection"
-                    className="flex items-center gap-1 p-0.5 rounded-full bg-black/75 border border-[#D4AF37]/40 backdrop-blur-md"
-                  >
-                    <button
-                      type="button"
-                      onClick={() => setClothView('model')}
-                      aria-pressed={clothView === 'model'}
-                      aria-label="View look on Model Priya"
-                      className={`rounded-full px-2.5 py-1 text-[9px] uppercase tracking-wider transition-all ${
-                        clothView === 'model'
-                          ? 'bg-[#D4AF37] text-[#1A1617] font-bold shadow-sm'
-                          : 'text-white/70 hover:text-white'
-                      }`}
-                    >
-                      👤 Model Priya
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setClothView('primary')}
-                      aria-pressed={clothView === 'primary'}
-                      aria-label="View full Saree Drape"
-                      className={`rounded-full px-2.5 py-1 text-[9px] uppercase tracking-wider transition-all ${
-                        clothView === 'primary'
-                          ? 'bg-[#D4AF37] text-[#1A1617] font-bold shadow-sm'
-                          : 'text-white/70 hover:text-white'
-                      }`}
-                    >
-                      👗 Saree Drape
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setClothView('detail')}
-                      aria-pressed={clothView === 'detail'}
-                      aria-label="Inspect Macro Weave texture"
-                      className={`rounded-full px-2.5 py-1 text-[9px] uppercase tracking-wider transition-all ${
-                        clothView === 'detail'
-                          ? 'bg-[#D4AF37] text-[#1A1617] font-bold shadow-sm'
-                          : 'text-white/70 hover:text-white'
-                      }`}
-                    >
-                      🔍 Macro Weave
-                    </button>
-                  </div>
-                </div>
-
                 <div className="absolute top-4 right-4 flex items-center gap-2">
-                  <span className="rounded-full border border-[#D4AF37]/50 bg-black/75 px-3 py-1 text-[9px] uppercase tracking-[.15em] text-[#E6C98D] backdrop-blur-md">
-                    Motif: {effectiveMotif}
+                  <span className="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[9px] uppercase tracking-[.15em] text-white/80 backdrop-blur-md">
+                    Look 0{activeIndex + 1} · 2026/27
                   </span>
-                  <span className="hidden sm:inline-block rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[9px] uppercase tracking-[.15em] text-white/80 backdrop-blur-md">
-                    2026/2027 Couture
-                  </span>
+                </div>
+              </div>
+
+              {/* Portrait choices stay below the image so controls never cover the model. */}
+              <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                <span className="text-[9px] uppercase tracking-[.18em] text-white/55">Choose a model portrait</span>
+                <div role="group" aria-label="Choose a model portrait" className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setClothView('model')}
+                    aria-pressed={clothView === 'model'}
+                    className={`min-h-11 rounded-full border px-4 py-2 text-[9px] uppercase tracking-wider transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E6C98D] ${clothView === 'model' ? 'border-[#D2B273] bg-[#D2B273] text-[#211116] font-semibold' : 'border-white/15 bg-white/[0.04] text-white/70 hover:text-white'}`}
+                  >
+                    Look portrait
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setClothView('alternate')}
+                    aria-pressed={clothView === 'alternate'}
+                    className={`min-h-11 rounded-full border px-4 py-2 text-[9px] uppercase tracking-wider transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E6C98D] ${clothView === 'alternate' ? 'border-[#D2B273] bg-[#D2B273] text-[#211116] font-semibold' : 'border-white/15 bg-white/[0.04] text-white/70 hover:text-white'}`}
+                  >
+                    Alternate portrait
+                  </button>
                 </div>
               </div>
 
@@ -413,7 +212,8 @@ export default function TrendAtelier() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('weave')}
-                    className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-wider transition-colors ${
+                    aria-pressed={activeTab === 'weave'}
+                    className={`min-h-11 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-[10px] uppercase tracking-wider transition-colors ${
                       activeTab === 'weave'
                         ? 'bg-[#D2B273] text-[#211116] font-semibold'
                         : 'bg-white/5 text-white/60 hover:text-white'
@@ -425,7 +225,8 @@ export default function TrendAtelier() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('architecture')}
-                    className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[10px] uppercase tracking-wider transition-colors ${
+                    aria-pressed={activeTab === 'architecture'}
+                    className={`min-h-11 inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-[10px] uppercase tracking-wider transition-colors ${
                       activeTab === 'architecture'
                         ? 'bg-[#D2B273] text-[#211116] font-semibold'
                         : 'bg-white/5 text-white/60 hover:text-white'
@@ -467,7 +268,7 @@ export default function TrendAtelier() {
                           onClick={() => setCustomMotif(motifOpt.id)}
                           aria-pressed={isSelected}
                           aria-label={`Select ${motifOpt.label} weave motif`}
-                          className={`px-2 py-2 rounded-lg border text-center transition-all ${
+                          className={`min-h-11 px-2 py-2 rounded-lg border text-center transition-all ${
                             isSelected
                               ? 'border-[#D2B273] bg-[#D2B273]/20 text-[#E6C98D] shadow-sm font-semibold'
                               : 'border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:text-white'
@@ -540,7 +341,7 @@ export default function TrendAtelier() {
                     setCustomMotif(null);
                   }}
                   aria-label="Previous design concept"
-                  className="rounded-full border border-white/20 p-2.5 text-white/80 hover:border-[#D2B273] hover:text-[#E6C98D] hover:bg-white/5 transition-all"
+                  className="min-h-11 min-w-11 rounded-full border border-white/20 p-2.5 text-white/80 hover:border-[#D2B273] hover:text-[#E6C98D] hover:bg-white/5 transition-all"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
@@ -551,7 +352,7 @@ export default function TrendAtelier() {
                     setCustomMotif(null);
                   }}
                   aria-label="Next design concept"
-                  className="rounded-full border border-white/20 p-2.5 text-white/80 hover:border-[#D2B273] hover:text-[#E6C98D] hover:bg-white/5 transition-all"
+                  className="min-h-11 min-w-11 rounded-full border border-white/20 p-2.5 text-white/80 hover:border-[#D2B273] hover:text-[#E6C98D] hover:bg-white/5 transition-all"
                 >
                   <ChevronRight className="h-4 w-4" />
                 </button>
@@ -559,7 +360,7 @@ export default function TrendAtelier() {
             </div>
 
             {/* List of 3 Regional Variants */}
-            <div className="space-y-3" role="list" aria-label="Curated variants for this region">
+            <div className="space-y-3">
               {concepts.map((concept, index) => {
                 const isCurrent = activeIndex === index;
                 return (
@@ -580,8 +381,8 @@ export default function TrendAtelier() {
                     {/* Real Model / Cloth Thumbnail Swatch */}
                     <span className="relative h-14 w-12 overflow-hidden rounded-xl border border-white/20 shadow-md flex-shrink-0 bg-black/40">
                       <img
-                        src={TREND_LOOK_MODELS[concept.id]?.model || regionalSarees[index % regionalSarees.length]?.images?.primary || PRIYA_EDITORIAL_MODEL.images[region] || '/collections/models/priya_banarasi_red.jpg'}
-                        alt={`${concept.title} worn by Priya`}
+                        src={portraitSarees[index % Math.max(portraitSarees.length, 1)] ? getSareeModelImage(portraitSarees[index % Math.max(portraitSarees.length, 1)]) : PRIYA_EDITORIAL_MODEL.images[region]}
+                        alt={`Illustrative model for the ${concept.title} design study`}
                         className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
                       />
                     </span>

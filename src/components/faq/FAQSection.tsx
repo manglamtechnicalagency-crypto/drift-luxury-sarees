@@ -1,13 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, HelpCircle, AlertCircle } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 interface FAQItem {
   id: string;
   question: string;
   answer: string;
-  confirmNote?: string;
 }
 
 const FAQ_DATA: FAQItem[] = [
@@ -15,39 +14,31 @@ const FAQ_DATA: FAQItem[] = [
     id: 'faq-1',
     question: 'What handloom weaving traditions are catalogued in the DRIFT archive?',
     answer:
-      'DRIFT documents six distinguished Indian handloom traditions: Patan Patola (double-ikat silk from Gujarat), Varanasi Katan (fine mulberry silk brocades from Uttar Pradesh), Kanchipuram Korvai (heavy mulberry silk with interlocking temple borders from Tamil Nadu), Heritage Paithani (tapestry-woven oblique borders and peacocks from Maharashtra), Jodhpuri Bandhej (fine tie-dye on pure georgette from Rajasthan), and Rajasthani Leheriya (diagonal wave-resist dyeing from Jaipur).',
+      'The archive presents design studies inspired by regional textile traditions, including Patola and Bandhani references from Gujarat, Banarasi brocade from Uttar Pradesh, Kanchipuram from Tamil Nadu, Paithani from Maharashtra, and Leheriya and Bandhej references from Rajasthan. A design study does not verify the pictured textile, maker, or production method.',
   },
   {
     id: 'faq-2',
     question: 'Are these sarees available for direct acquisition or bespoke weaving?',
     answer:
-      'Each piece in the archive is presented as an authentic regional design study. Submitting an order through our digital checkout registers a direct inquiry with our studio concierge, who coordinates stock availability and loom scheduling.',
-    confirmNote:
-      '[CONFIRM: Specify exact lead times for custom bespoke commissions (e.g., 4–8 weeks for Korvai/Patola) and whether a 50% studio deposit is required].',
+      'Archive listings are design studies, not verified inventory. You can submit a design enquiry; availability, pricing, and any possible commission details require confirmation from the studio before an order can be placed.',
   },
   {
     id: 'faq-3',
     question: 'How are authentic handloom materials and zari verified?',
     answer:
-      'All textiles featured in our studies utilize natural mulberry silk, organza, or georgette bases, woven with silver and gold electroplated zari threads.',
-    confirmNote:
-      '[CONFIRM: Clarify whether physical government Silk Mark tags or lab metallurgy test certificates are provided with every dispatched shipment].',
+      'Material and zari details have not been independently verified for the design studies. Ask the studio to confirm fibre content, technique, and any available documentation for a specific item.',
   },
   {
     id: 'faq-4',
     question: 'What blouse stitching and custom sizing options are available?',
     answer:
-      'Each saree is supplied with unstitched matching blouse fabric (0.8m to 1.0m) featuring coordinating border motifs. During checkout, clients may also specify bespoke stitched blouse sizing across standard dimensions (sizes 32 through 44).',
-    confirmNote:
-      '[CONFIRM: Provide exact measurement submission instructions or form link if custom neckline and sleeve tailoring is requested].',
+      'Blouse fabric and stitching options are not confirmed for the design studies. Please ask the studio about availability and measurements for a specific piece.',
   },
   {
     id: 'faq-5',
-    question: 'How does DRIFT handle insured shipping and delivery?',
+    question: 'How are delivery details arranged?',
     answer:
-      'All studio dispatches are fully insured during transit and require an authorized signature upon delivery. Orders are tracked via edge confirmation emails.',
-    confirmNote:
-      '[CONFIRM: Name primary domestic and international courier partners (e.g. Blue Dart / DHL Express) and standard delivery windows (e.g. 3–5 business days domestically)].',
+      'Delivery availability, cost, carrier, and timing have not been confirmed for the design studies. The studio must provide those details before any purchase is agreed.',
   },
 ];
 
@@ -108,12 +99,6 @@ export default function FAQSection() {
                     className="px-5 pb-6 sm:px-6 sm:pb-6 space-y-3 font-sans text-xs sm:text-sm text-[#1A1617]/80 leading-relaxed border-t border-[#E6DFD5]/60 pt-4"
                   >
                     <p className="text-xs sm:text-sm lg:text-base leading-relaxed text-[#1A1617]/85">{item.answer}</p>
-                    {item.confirmNote && (
-                      <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#D4AF37]/50 flex items-start gap-2.5 text-xs text-[#2B070E]">
-                        <AlertCircle className="w-4 h-4 text-[#D4AF37] flex-shrink-0 mt-0.5" />
-                        <span className="font-medium">{item.confirmNote}</span>
-                      </div>
-                    )}
                   </div>
                 )}
               </div>

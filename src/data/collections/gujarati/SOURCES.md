@@ -1,6 +1,6 @@
 # Gujarati collection research and image notes
 
-All eight entries in `sarees.ts` are DRIFT concept studies inspired by Gujarati craft references, not seller-verified products. They use Price on request, zero ratings/reviews/stock, and unavailable status. Materials, zari, dimensions, care, maker, production origin/provenance, and exact SKU details are explicitly pending confirmation. Craft references are design inspiration, not claims about the production of a purchasable item.
+All twelve entries in `sarees.ts` are DRIFT concept studies inspired by Gujarati craft references, not seller-verified products. They use Price on request, zero ratings/reviews/stock, and unavailable status. Materials, zari, dimensions, care, maker, production origin/provenance, and exact SKU details are explicitly pending confirmation. Craft references are design inspiration, not claims about the production of a purchasable item.
 
 Craft references checked (14 Nov 2026):
 
@@ -10,6 +10,15 @@ Craft references checked (14 Nov 2026):
 - Asia InCH, Gujarat Gharchola craft: https://asiainch.org/craft/gharchola-craft-of-gujarat/
 - Gaatha, Kutch Bandhani documentation: https://gaatha.org/Craft-of-India/research-kutch-bandhani-textile/
 - Indian Express reported Patan Patola saree prices from roughly ₹1.5 lakh to ₹6 lakh and described the time-intensive double-ikat process: https://indianexpress.com/article/explained/modi-gifts-italian-pm-a-patan-patola-scarf-what-is-the-ancient-gujarat-art-form-is-8272441/lite/
+
+Additional Gujarati design studies include Mashru, Kutch Ajrakh, a Tangaliya-inspired saree silhouette, and a Surendranagar single-ikat reference. These are editorial interpretations; the Tangaliya note explicitly distinguishes its documented shawl/textile tradition from the experimental saree format. Supporting references:
+
+- Kachchh District, Government of Gujarat, handicrafts including Mashroo and Ajrakh: https://kachchh.nic.in/handicraft/
+- Young INTACH Gujarat craft map, Tangaliya: https://www.youngintach.org/maps_craft_gujrat
+- Press Information Bureau, craft showcase including Surendranagar single ikat: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2242588&lang=2&reg=3
+- IGNCA, Mapping Indian Textiles, including Patola and Ashavali references: https://ignca.gov.in/PDF_data/Report_Mapping_Indian_Textiles.pdf
+
+The image maps use locally available illustrative model portraits and generic textile-detail images. They are not exact product photographs or verified representations of each specific weave. Model imagery is labeled as illustrative in the storefront; no new generated or third-party image assets were added in this update.
 
 ## Asset audit
 

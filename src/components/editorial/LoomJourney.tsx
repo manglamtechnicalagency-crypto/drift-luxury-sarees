@@ -102,14 +102,14 @@ export default function LoomJourney() {
               transition={{ duration: reduceMotion ? 0.01 : 0.48, ease: PREMIUM_EASE }}
             >
               <img
-                src={PRIYA_EDITORIAL_MODEL.images[item.state.slug] || item.saree.images.editorial}
-                alt={`${item.state.name} loom journey design study with muse Priya showcasing ${item.saree.craft}`}
+                src={PRIYA_EDITORIAL_MODEL.images[item.state.slug]}
+                alt={`Illustrative model styling for the ${item.state.name} ${item.saree.craft} design study`}
                 className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 onError={(event) => {
                   const image = event.currentTarget;
                   if (!image.dataset.fallbackUsed) {
                     image.dataset.fallbackUsed = 'true';
-                    image.src = item.saree.images.fallbackEditorial || item.saree.images.primary;
+                    image.src = PRIYA_EDITORIAL_MODEL.images[item.state.slug];
                   } else {
                     image.style.display = 'none';
                   }
@@ -117,7 +117,7 @@ export default function LoomJourney() {
               />
               <span className="loom-journey__image-note flex items-center gap-1.5">
                 <Sparkles size={11} className="text-[#E6B83A]" />
-                <span>Muse Priya · {item.state.name} Archival Study</span>
+                <span>Illustrative model · {item.state.name} design study</span>
               </span>
             </motion.div>
           </AnimatePresence>

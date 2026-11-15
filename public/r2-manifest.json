@@ -1,8 +1,8 @@
 {
   "bucket": "drift-media-assets",
-  "syncedAt": "2026-11-15T12:14:55.094Z",
-  "totalFiles": 209,
-  "totalBytes": 56224775,
+  "syncedAt": "2026-11-15T19:09:43.699Z",
+  "totalFiles": 226,
+  "totalBytes": 69752268,
   "files": [
     {
       "key": "collections/banarasi/editorial_banner.jpg",
@@ -226,12 +226,12 @@
     },
     {
       "key": "collections/gujarati/saree_03_detail.jpg",
-      "sizeBytes": 212747,
+      "sizeBytes": 1034512,
       "contentType": "image/jpeg"
     },
     {
       "key": "collections/gujarati/saree_03_editorial.jpg",
-      "sizeBytes": 330265,
+      "sizeBytes": 896448,
       "contentType": "image/jpeg"
     },
     {
@@ -241,7 +241,7 @@
     },
     {
       "key": "collections/gujarati/saree_03_primary.jpg",
-      "sizeBytes": 242123,
+      "sizeBytes": 896448,
       "contentType": "image/jpeg"
     },
     {
@@ -856,27 +856,112 @@
     },
     {
       "key": "collections/models/model_bengali_bridal.jpg",
-      "sizeBytes": 309587,
+      "sizeBytes": 756457,
       "contentType": "image/jpeg"
     },
     {
       "key": "collections/models/model_burgundy_zardozi.jpg",
-      "sizeBytes": 251325,
+      "sizeBytes": 948013,
       "contentType": "image/jpeg"
     },
     {
       "key": "collections/models/model_nath_paithani.jpg",
-      "sizeBytes": 361168,
+      "sizeBytes": 707871,
       "contentType": "image/jpeg"
     },
     {
       "key": "collections/models/model_royal_chandan.jpg",
-      "sizeBytes": 381593,
+      "sizeBytes": 886504,
       "contentType": "image/jpeg"
     },
     {
       "key": "collections/models/model_saffron_yellow.jpg",
-      "sizeBytes": 321425,
+      "sizeBytes": 801400,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/priya_banarasi_red.jpg",
+      "sizeBytes": 886504,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/priya_gujarati_panetar.jpg",
+      "sizeBytes": 896448,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/priya_gujarati_patola.jpg",
+      "sizeBytes": 801400,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/priya_jodhpuri_bandhani.jpg",
+      "sizeBytes": 948013,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/priya_kanchipuram_purple.jpg",
+      "sizeBytes": 756457,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/priya_paithani_peacock.jpg",
+      "sizeBytes": 707871,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/priya_rajasthani_leheriya.jpg",
+      "sizeBytes": 864600,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-01.jpg",
+      "sizeBytes": 353756,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-02.jpg",
+      "sizeBytes": 347683,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-03.jpg",
+      "sizeBytes": 360006,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-04.jpg",
+      "sizeBytes": 335558,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-05.jpg",
+      "sizeBytes": 253509,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-06.jpg",
+      "sizeBytes": 219163,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-07.jpg",
+      "sizeBytes": 348449,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-08.jpg",
+      "sizeBytes": 256197,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-09.jpg",
+      "sizeBytes": 309751,
+      "contentType": "image/jpeg"
+    },
+    {
+      "key": "collections/models/regional-model-10.jpg",
+      "sizeBytes": 364708,
       "contentType": "image/jpeg"
     },
     {

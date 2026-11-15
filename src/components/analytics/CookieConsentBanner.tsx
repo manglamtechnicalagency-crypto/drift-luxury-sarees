@@ -4,7 +4,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ShieldCheck, X } from 'lucide-react';
 
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ?? '';
+const hasMeasurementId = /^G-[A-Z0-9]+$/.test(GA_MEASUREMENT_ID);
 const CONSENT_STORAGE_KEY = 'drift_cookie_consent';
 
 export default function CookieConsentBanner() {
@@ -13,6 +14,7 @@ export default function CookieConsentBanner() {
 
   useEffect(() => {
     setMounted(true);
+    if (!hasMeasurementId) return;
     const saved = localStorage.getItem(CONSENT_STORAGE_KEY);
     if (saved === 'accepted') {
       setConsentStatus('accepted');
@@ -23,6 +25,7 @@ export default function CookieConsentBanner() {
   }, []);
 
   const loadGoogleAnalytics = () => {
+    if (!hasMeasurementId) return;
     if (typeof window === 'undefined') return;
     if (document.getElementById('drift-ga4-script')) return;
 
@@ -57,7 +60,7 @@ export default function CookieConsentBanner() {
     setConsentStatus('declined');
   };
 
-  if (!mounted || consentStatus !== 'pending') {
+  if (!mounted || !hasMeasurementId || consentStatus !== 'pending') {
     return null;
   }
 

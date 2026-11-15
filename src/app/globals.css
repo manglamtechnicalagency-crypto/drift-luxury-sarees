@@ -315,6 +315,11 @@ body {
   }
 }
 
+@keyframes modelPortraitDrift {
+  from { transform: scale(1.02) translateY(0); }
+  to { transform: scale(1.12) translateY(-1.5%); }
+}
+
 @keyframes paisleyGlow {
   0%, 100% {
     filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));

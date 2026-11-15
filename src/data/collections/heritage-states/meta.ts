@@ -7,9 +7,10 @@ export const heritagestatesMeta: StateCollection = {
   hindiName: 'महाराष्ट्र, मध्य व पूर्व भारत',
   tagline: 'Paithani, Chanderi, Sambalpuri Bandha & Assam Muga design studies',
   historicalEra: 'Regional handloom traditions across India',
-  craftOverview: 'This DRIFT concept edit takes design references from Maharashtra’s Paithani, Madhya Pradesh’s Chanderi and Maheshwari, Odisha’s Sambalpuri Bandha and Bomkai, Assam’s Muga silk, and West Bengal’s Baluchari. The collection is not sourced product inventory: makers, exact materials, production locations, and GI eligibility remain unverified.',
+  craftOverview: 'This DRIFT concept edit takes design references from Maharashtra’s Paithani and Narayan Peth, Madhya Pradesh’s Chanderi and Maheshwari, Odisha’s Sambalpuri Bandha and Bomkai, Assam’s Muga silk, and West Bengal’s Baluchari. Narayan Peth around Solapur is distinct from Telangana’s GI-registered Narayanpet saree. The collection is not sourced product inventory: makers, exact materials, production locations, and GI eligibility remain unverified.',
   keyWeaves: [
     'Paithani tapestry motifs',
+    'Narayan Peth border and butti references',
     'Chanderi silk-and-cotton cloth',
     'Maheshwari handloom references',
     'Sambalpuri Bandha ikat',
@@ -26,6 +27,6 @@ export const heritagestatesMeta: StateCollection = {
   stats: {
     artisanGuilds: 0,
     heritageCenturies: 0,
-    flagshipPieces: 8
+    flagshipPieces: 10
   }
 };

@@ -1,7 +1,6 @@
 import { create } from 'zustand';
-import { DrapeStyleId, SareeProduct, StateCollection, StateSlug, TextileMotif } from '@/data/collections/types';
+import { SareeProduct, StateCollection, StateSlug } from '@/data/collections/types';
 import { ALL_SAREES, ALL_STATE_METAS } from '@/data/collections/registry';
-import { inferMotifFromSaree } from '@/data/collections/colorways';
 
 export interface CartItem {
   product: SareeProduct;
@@ -20,7 +19,7 @@ export interface OrderConfirmation {
   createdAt: string;
 }
 
-export type ModalType = 'none' | 'search' | 'film' | 'quickshop' | 'fitting-room';
+export type ModalType = 'none' | 'search' | 'film' | 'quickshop';
 
 interface StoreState {
   // Collections Edge Hydration
@@ -67,19 +66,6 @@ interface StoreState {
   setActiveModal: (modal: ModalType) => void;
   selectedProductForModal: SareeProduct | null;
   setSelectedProductForModal: (product: SareeProduct | null) => void;
-
-  // Fitting Room
-  fittingRoomSaree: SareeProduct | null;
-  fittingRoomDrape: DrapeStyleId;
-  fittingRoomColorwayIndex: number;
-  fittingRoomMotif: TextileMotif;
-  fittingRoomLighting: 'chandelier' | 'daylight' | 'candlelight';
-  setFittingRoomSaree: (saree: SareeProduct) => void;
-  setFittingRoomDrape: (drape: DrapeStyleId) => void;
-  setFittingRoomColorway: (index: number) => void;
-  setFittingRoomMotif: (motif: TextileMotif) => void;
-  setFittingRoomLighting: (lighting: 'chandelier' | 'daylight' | 'candlelight') => void;
-  openFittingRoom: (saree?: SareeProduct, drape?: DrapeStyleId) => void;
 
   // Toast
   toastText: string | null;
@@ -332,41 +318,6 @@ export const useStore = create<StoreState>((set, get) => ({
   selectedProductForModal: null,
   setSelectedProductForModal: (product) => {
     set({ selectedProductForModal: product });
-  },
-
-  // Fitting Room
-  fittingRoomSaree: ALL_SAREES[0] || null,
-  fittingRoomDrape: 'nivi',
-  fittingRoomColorwayIndex: 0,
-  fittingRoomMotif: 'diamond',
-  fittingRoomLighting: 'chandelier',
-  setFittingRoomSaree: (saree) => {
-    const motif = inferMotifFromSaree(saree);
-    const drapes = saree.supportedDrapes && saree.supportedDrapes.length > 0 ? saree.supportedDrapes : ['nivi'];
-    set((state) => ({
-      fittingRoomSaree: saree,
-      fittingRoomColorwayIndex: 0,
-      fittingRoomMotif: motif,
-      fittingRoomDrape: drapes.includes(state.fittingRoomDrape) ? state.fittingRoomDrape : (drapes[0] as DrapeStyleId),
-    }));
-  },
-  setFittingRoomDrape: (drape) => set({ fittingRoomDrape: drape }),
-  setFittingRoomColorway: (index) => set({ fittingRoomColorwayIndex: index }),
-  setFittingRoomMotif: (motif) => set({ fittingRoomMotif: motif }),
-  setFittingRoomLighting: (lighting) => set({ fittingRoomLighting: lighting }),
-  openFittingRoom: (saree, drape) => {
-    set((state) => {
-      const targetSaree = saree || state.fittingRoomSaree || ALL_SAREES[0];
-      const targetDrape = drape || (targetSaree?.supportedDrapes?.[0] ?? state.fittingRoomDrape ?? 'nivi');
-      const motif = targetSaree ? inferMotifFromSaree(targetSaree) : state.fittingRoomMotif;
-      return {
-        fittingRoomSaree: targetSaree,
-        fittingRoomDrape: targetDrape,
-        fittingRoomColorwayIndex: 0,
-        fittingRoomMotif: motif,
-        activeModal: 'fitting-room',
-      };
-    });
   },
 
   // Toast

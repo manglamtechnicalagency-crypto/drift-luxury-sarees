@@ -117,6 +117,7 @@ export interface SareeProduct {
   isAvailable: boolean;
   stockCount: number;
   trendBridge?: TrendBridge;
+  culturalContext?: string;
 }
 
 export interface StateCollection {

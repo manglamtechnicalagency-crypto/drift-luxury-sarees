@@ -17,7 +17,7 @@ import {
   CheckCircle,
   Palette,
 } from 'lucide-react';
-import { getSareeColorways, SareeColorway, PRIYA_EDITORIAL_MODEL, RELATABLE_SAREE_MODELS } from '@/data/collections/colorways';
+import { getSareeColorways, getSareeModelImage, SareeColorway, PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
 import { TextilePattern } from '@/components/products/TextilePalette';
 
 export default function QuickShopModal() {
@@ -37,11 +37,11 @@ export default function QuickShopModal() {
   const [includeGiftTrunk, setIncludeGiftTrunk] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const colorways = useMemo(() => quickShopSaree ? getSareeColorways(quickShopSaree) : [], [quickShopSaree]);
   if (!quickShopSaree) return null;
 
   const saree = quickShopSaree;
   const inWish = isInWishlist(saree.id);
-  const colorways = useMemo(() => getSareeColorways(saree), [saree]);
   const activeColorway = colorways[selectedVariant] || colorways[0];
   const pairing = activeColorway.pairing || {
     body: activeColorway.palette[0],
@@ -51,10 +51,10 @@ export default function QuickShopModal() {
   };
 
   const galleryImages = [
-    { label: 'Model Drape (Priya)', url: RELATABLE_SAREE_MODELS[saree.id]?.model || PRIYA_EDITORIAL_MODEL.images[saree.region] || saree.images.primary, fallback: saree.images.primary },
-    { label: 'Primary Saree', url: saree.images.primary, fallback: saree.images.fallbackPrimary },
-    { label: 'Weave Detail', url: saree.images.detail, fallback: saree.images.fallbackDetail },
-    { label: 'Editorial Look', url: RELATABLE_SAREE_MODELS[saree.id]?.hover || saree.images.editorial, fallback: saree.images.fallbackEditorial },
+    { label: 'Model in saree', url: getSareeModelImage(saree), fallback: PRIYA_EDITORIAL_MODEL.images[saree.region] },
+    { label: 'Regional model look', url: PRIYA_EDITORIAL_MODEL.images[saree.region], fallback: PRIYA_EDITORIAL_MODEL.images[saree.region] },
+    { label: 'Editorial model portrait', url: '/collections/models/model_royal_chandan.jpg', fallback: '/collections/models/model_royal_chandan.jpg' },
+    { label: 'Saree model portrait', url: '/collections/models/model_saffron_yellow.jpg', fallback: '/collections/models/model_saffron_yellow.jpg' },
   ];
 
   const handleAddToCartWithConfetti = () => {

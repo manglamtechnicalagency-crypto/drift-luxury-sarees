@@ -128,7 +128,7 @@ export default function GlassNavbar() {
                         className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-[#F4EFE6] cursor-pointer transition-all border border-transparent hover:border-[#D4AF37]/40 group"
                       >
                         <img
-                          src={PRIYA_EDITORIAL_MODEL.images[state.slug] || state.heroImage}
+                          src={PRIYA_EDITORIAL_MODEL.images[state.slug]}
                           alt={`Editorial muse Priya in ${state.name} authentic handloom saree`}
                           className="w-12 h-14 object-cover object-top rounded-lg group-hover:scale-105 transition-transform"
                         />

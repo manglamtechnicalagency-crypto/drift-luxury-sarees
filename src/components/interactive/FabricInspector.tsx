@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ALL_SAREES } from '@/data/collections/registry';
 import { SareeProduct } from '@/data/collections/types';
 import { useShop } from '@/context/ShopContext';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import {
   Sun,
   Flame,
@@ -57,12 +58,7 @@ export default function FabricInspector() {
     }
   };
 
-  const currentImage =
-    zoomLevel === '1x'
-      ? selectedSaree.images.primary
-      : zoomLevel === '4x'
-      ? selectedSaree.images.detail
-      : selectedSaree.images.pallu;
+  const currentImage = getSareeModelImage(selectedSaree);
 
   return (
     <section id="fabric-inspector" className="py-20 bg-drift-charcoal/90 border-b border-drift-gold/20 relative">
@@ -92,7 +88,7 @@ export default function FabricInspector() {
                 alt={`Interactive fabric zoom and lighting study of ${selectedSaree.name}`}
                 className={`w-full h-full transition-all duration-700 ease-out select-none ${getLightingStyle()} ${getZoomStyle()}`}
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = selectedSaree.images.fallbackPrimary;
+                  (e.target as HTMLImageElement).src = '/collections/models/priya_banarasi_red.jpg';
                 }}
               />
 
@@ -197,9 +193,9 @@ export default function FabricInspector() {
                       }`}
                     >
                       <img
-                        src={s.images.primary}
-                        alt={`${s.name} textile preview`}
-                        className="w-full h-full object-cover"
+                        src={getSareeModelImage(s)}
+                        alt={`${s.name} model wearing a saree`}
+                        className="w-full h-full object-cover object-top"
                       />
                       <span className="absolute bottom-0 inset-x-0 bg-black/80 text-[8px] font-serif text-drift-sand p-0.5 text-center truncate">
                         {s.name.split(' ')[0]}

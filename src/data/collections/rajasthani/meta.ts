@@ -22,5 +22,5 @@ export const rajasthaniMeta: StateCollection = {
   accentColor: '#E65100',
   secondaryColor: '#D4AF37',
   glowColor: 'rgba(230, 81, 0, 0.4)',
-  stats: { artisanGuilds: 0, heritageCenturies: 0, flagshipPieces: 8 }
+  stats: { artisanGuilds: 0, heritageCenturies: 0, flagshipPieces: 10 }
 };

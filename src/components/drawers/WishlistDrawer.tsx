@@ -3,6 +3,7 @@
 import React from 'react';
 import { useShop } from '@/context/ShopContext';
 import { getSareeById } from '@/data/collections/registry';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import { X, Heart, ShoppingBag, Trash2 } from 'lucide-react';
 
 export default function WishlistDrawer() {
@@ -53,8 +54,8 @@ export default function WishlistDrawer() {
                     className="bg-drift-dark/80 rounded-xl p-3.5 border border-drift-border flex gap-3.5"
                   >
                     <img
-                      src={saree.images.primary}
-                      alt={`${saree.name} saved in wishlist`}
+                      src={getSareeModelImage(saree)}
+                      alt={`Illustrative model reference for ${saree.name}`}
                       onClick={() => {
                         setQuickShopSaree(saree);
                         setIsWishlistDrawerOpen(false);

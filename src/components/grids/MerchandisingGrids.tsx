@@ -5,7 +5,7 @@ import { ALL_SAREES, ALL_STATE_METAS } from '@/data/collections/registry';
 import { SareeProduct } from '@/data/collections/types';
 import { useStore } from '@/store/useStore';
 import { Heart, Eye, Sparkles, ArrowRight } from 'lucide-react';
-import { getSareeColorways, PRIYA_EDITORIAL_MODEL, RELATABLE_SAREE_MODELS } from '@/data/collections/colorways';
+import { getSareeColorways, getSareeModelImage, PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
 import { TextilePattern } from '@/components/products/TextilePalette';
 
 function ProductCard({ saree }: { saree: SareeProduct }) {
@@ -14,7 +14,6 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
   const inWish = isInWishlist(saree.id);
   const colorways = useMemo(() => getSareeColorways(saree), [saree]);
   const [selectedColorway, setSelectedColorway] = useState(0);
-  const [viewMode, setViewMode] = useState<'photo' | 'textile'>('photo');
 
   const activeColorway = colorways[selectedColorway] || colorways[0];
   const pairing = activeColorway.pairing || {
@@ -24,16 +23,8 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
     zari: activeColorway.palette[3],
   };
 
-  const primaryDisplayImage =
-    saree.images.editorial ||
-    saree.images.primary ||
-    RELATABLE_SAREE_MODELS[saree.id]?.model ||
-    PRIYA_EDITORIAL_MODEL.images[saree.region];
+  const primaryDisplayImage = getSareeModelImage(saree);
 
-  const hoverDisplayImage =
-    saree.images.detail ||
-    saree.images.pallu ||
-    saree.images.primary;
 
   const displayCraft = (saree.craft || 'Handloom Silk')
     .replace(/^Craft inspiration:\s*/i, '')
@@ -47,59 +38,33 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
       
       {/* Visual Display Container: Photo Drape or Woven Textile View */}
       <div
-        onClick={() => {
-          setSelectedProductForModal(saree);
-          setActiveModal('quickshop');
-        }}
-        className="relative aspect-[3/4.2] overflow-hidden bg-[#2B070E]/10 cursor-pointer"
+        className="relative aspect-[3/4.2] overflow-hidden bg-[#2B070E]/10"
       >
-        {viewMode === 'photo' ? (
-          <>
-            {/* Primary Model Image: Relatable model wearing this specific saree */}
+        <>
+            {/* Illustrative regional model image for this design study */}
             <img
               src={primaryDisplayImage}
               alt={`${cleanDisplayName} draped in ${displayCraft}`}
-              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 group-hover:brightness-[1.04]"
               onError={(e) => {
-                const fb = saree.images.primary || saree.images.fallbackPrimary || '/collections/models/priya_banarasi_red.jpg';
-                if (!e.currentTarget.src.endsWith(fb)) {
-                  e.currentTarget.src = fb;
-                }
+                const image = e.currentTarget;
+                if (image.dataset.fallbackUsed) { image.hidden = true; return; }
+                image.dataset.fallbackUsed = 'true';
+                image.src = PRIYA_EDITORIAL_MODEL.images[saree.region] || '/collections/models/priya_banarasi_red.jpg';
               }}
             />
-            {/* Secondary Editorial / Weave Drape on Hover with smooth cross-fade */}
-            <img
-              src={hoverDisplayImage}
-              alt={`${cleanDisplayName} authentic weave and border detail`}
-              className="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-              onError={(e) => {
-                if (!e.currentTarget.src.endsWith(primaryDisplayImage)) {
-                  e.currentTarget.src = primaryDisplayImage;
-                }
-              }}
-            />
+            <div className="pointer-events-none absolute right-3 top-14 rounded-full bg-black/60 px-2.5 py-1 text-[8px] font-medium uppercase tracking-[.14em] text-white/90 opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">Model in saree</div>
             {/* Subtle Ambient Vignette */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#2B070E]/80 via-transparent to-black/20 opacity-70 group-hover:opacity-50 transition-opacity" />
             
-            {/* Muse Priya Tag */}
+            {/* Editorial model reference tag */}
             <div className="absolute bottom-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-[#E6B83A]/30 text-[#E6B83A] text-[9px] font-sans uppercase tracking-widest font-semibold">
               <Sparkles className="w-2.5 h-2.5 text-[#E6B83A]" />
-              <span>Muse Priya</span>
+              <span>Model reference</span>
             </div>
-          </>
-        ) : (
-          <div className="absolute inset-0 w-full h-full bg-[#1C0D12] p-2 flex flex-col justify-between">
-            <TextilePattern colorway={activeColorway} className="w-full h-full object-cover rounded-xl" />
-            <div className="absolute bottom-3 inset-x-3 bg-black/85 backdrop-blur-md p-2 rounded-xl border border-[#D4AF37]/30 text-center">
-              <span className="text-[9px] uppercase tracking-widest text-[#E6C98D] block font-semibold truncate">
-                {activeColorway.name}
-              </span>
-              <span className="text-[8px] text-white/70 block capitalize">
-                {activeColorway.motif} Weave • 4-Tone Harmony
-              </span>
-            </div>
-          </div>
-        )}
+        </>
 
         {/* Top-Left Badge: Clean Editorial Study Label */}
         <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-[9px] font-sans font-semibold text-[#E6C98D] tracking-wider uppercase border border-white/10">
@@ -123,7 +88,7 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
         </button>
 
         {/* Quick View Button on Hover */}
-        <div className="absolute inset-x-4 bottom-3 opacity-0 group-hover:opacity-100 transition-opacity z-20">
+            <div className="absolute inset-x-4 bottom-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity z-20">
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -146,25 +111,20 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
             <span className="truncate min-w-0" title={saree.craft}>
               {displayCraft}
             </span>
-            <span className="text-[9px] font-semibold text-[#D4AF37] shrink-0 whitespace-nowrap bg-[#FAF7F2] border border-[#D4AF37]/40 px-2 py-0.5 rounded-full shadow-sm">
-              {colorways.length} Variants
+            <span className="text-[9px] font-semibold text-[#8E6F32] shrink-0 whitespace-nowrap bg-[#FAF7F2] border border-[#D4AF37]/40 px-2 py-0.5 rounded-full shadow-sm">
+              {colorways.length} palette ideas
             </span>
           </div>
 
           {/* Saree Title */}
-          <h3
-            onClick={() => {
-              setSelectedProductForModal(saree);
-              setActiveModal('quickshop');
-            }}
-            className="font-serif text-base text-[#1A1617] font-semibold line-clamp-1 hover:text-[#A80F24] transition-colors cursor-pointer mt-1"
-            title={cleanDisplayName}
-          >
-            {cleanDisplayName}
+          <h3 className="mt-1 line-clamp-2 font-serif text-base font-semibold text-[#1A1617]">
+            <button type="button" onClick={() => { setSelectedProductForModal(saree); setActiveModal('quickshop'); }} className="text-left transition-colors hover:text-[#A80F24] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#A80F24]" title={cleanDisplayName}>
+              {cleanDisplayName}
+            </button>
           </h3>
         </div>
 
-        {/* Price & 4-Tone Harmony Circles */}
+        {/* Indicative price and design palette */}
         <div className="pt-2.5 border-t border-[#E6DFD5] flex items-center justify-between">
           <span className="font-sans text-xs font-semibold text-[#1A1617]">
             {saree.priceDisplay}
@@ -195,7 +155,6 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
                 type="button"
                 onClick={() => {
                   setSelectedColorway(index);
-                  setViewMode('textile');
                 }}
                 aria-label={`Preview ${colorway.name}`}
                 aria-pressed={selectedColorway === index}
@@ -240,8 +199,13 @@ export default function MerchandisingGrids() {
     return sarees.filter((s) => s.region === activeStateFilter);
   }, [activeStateFilter, sarees]);
 
-  const newArrivals = filteredItems.slice(0, 5);
-  const bestSellers = filteredItems.slice(3, 8);
+  const regionalSplit = Math.ceil(filteredItems.length / 2);
+  const newArrivals = activeStateFilter === 'all'
+    ? states.map((state) => sarees.find((item) => item.region === state.slug)).filter((item): item is SareeProduct => Boolean(item))
+    : filteredItems.slice(0, regionalSplit);
+  const bestSellers = activeStateFilter === 'all'
+    ? states.flatMap((state) => sarees.filter((item) => item.region === state.slug).slice(1, 3))
+    : filteredItems.slice(regionalSplit);
 
   return (
     <section id="new-arrivals-grid" className="py-20 bg-[#FAF7F2] border-b border-[#E6DFD5]">
@@ -298,7 +262,7 @@ export default function MerchandisingGrids() {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {newArrivals.map((saree) => (
               <ProductCard key={`new-${saree.id}`} saree={saree} />
             ))}
@@ -324,7 +288,7 @@ export default function MerchandisingGrids() {
             </button>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {bestSellers.map((saree) => (
               <ProductCard key={`best-${saree.id}`} saree={saree} />
             ))}

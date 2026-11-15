@@ -50,13 +50,12 @@ export const DRAPE_STYLE_DEFINITIONS: Record<DrapeStyleId, DrapeStyleDefinition>
 };
 
 /**
- * Verified Single Editorial Couture Model ("Priya")
- * Consistently represents all 6 regional saree traditions and classical drape silhouettes.
+ * Illustrative editorial model references for regional design studies.
  */
 export const PRIYA_EDITORIAL_MODEL = {
   name: 'Priya',
   title: 'DRIFT Atelier Couture Muse',
-  bio: 'Exclusive handloom editorial model photographed in authentic regional drapes.',
+  bio: 'Illustrative model portraits used to present regional saree design studies.',
   images: {
     'banarasi': '/collections/models/priya_banarasi_red.jpg',
     'gujarati': '/collections/models/priya_gujarati_patola.jpg',
@@ -475,22 +474,25 @@ export function getSareeColorways(saree: SareeProduct): SareeColorway[] {
 }
 
 /**
- * Authentic Couture Editorial Model Photography ("Priya")
- * Mapped to each of the 48 catalog sarees across all 6 regions.
+ * Illustrative model image references mapped to regional design studies.
  */
 export const RELATABLE_SAREE_MODELS: Record<string, { model: string; hover: string }> = {
   // Gujarat Collection — Authentic Gujarati Couture Looks
   'guj-01': { model: '/collections/models/priya_gujarati_patola.jpg', hover: '/collections/gujarati/saree_01_detail.jpg' },
-  'guj-02': { model: '/collections/gujarati/saree_02_editorial.jpg', hover: '/collections/gujarati/saree_02_detail.jpg' },
+  'guj-02': { model: '/collections/models/priya_jodhpuri_bandhani.jpg', hover: '/collections/gujarati/saree_02_detail.jpg' },
   'guj-03': { model: '/collections/models/priya_gujarati_panetar.jpg', hover: '/collections/gujarati/saree_03_detail.jpg' },
-  'guj-04': { model: '/collections/gujarati/saree_04_editorial.jpg', hover: '/collections/gujarati/saree_04_detail.jpg' },
-  'guj-05': { model: '/collections/gujarati/saree_05_editorial.jpg', hover: '/collections/gujarati/saree_05_detail.jpg' },
-  'guj-06': { model: '/collections/gujarati/saree_06_editorial.jpg', hover: '/collections/gujarati/saree_06_detail.jpg' },
-  'guj-07': { model: '/collections/gujarati/saree_07_editorial.jpg', hover: '/collections/gujarati/saree_07_detail.jpg' },
-  'guj-08': { model: '/collections/gujarati/saree_08_editorial.jpg', hover: '/collections/gujarati/saree_08_detail.jpg' },
+  'guj-04': { model: '/collections/models/model_saffron_yellow.jpg', hover: '/collections/gujarati/saree_04_detail.jpg' },
+  'guj-05': { model: '/collections/models/model_nath_paithani.jpg', hover: '/collections/gujarati/saree_05_detail.jpg' },
+  'guj-06': { model: '/collections/models/priya_gujarati_patola.jpg', hover: '/collections/gujarati/saree_06_detail.jpg' },
+  'guj-07': { model: '/collections/models/priya_jodhpuri_bandhani.jpg', hover: '/collections/gujarati/saree_07_detail.jpg' },
+  'guj-08': { model: '/collections/models/priya_gujarati_panetar.jpg', hover: '/collections/gujarati/saree_08_detail.jpg' },
+  'guj-09': { model: '/collections/models/model_royal_chandan.jpg', hover: '/collections/gujarati/saree_05_detail.jpg' },
+  'guj-10': { model: '/collections/models/priya_jodhpuri_bandhani.jpg', hover: '/collections/gujarati/saree_02_detail.jpg' },
+  'guj-11': { model: '/collections/models/priya_kanchipuram_purple.jpg', hover: '/collections/gujarati/saree_06_detail.jpg' },
+  'guj-12': { model: '/collections/models/priya_gujarati_panetar.jpg', hover: '/collections/gujarati/saree_07_detail.jpg' },
 
   // Banarasi Collection — Distinctive Couture Looks
-  'ban-01': { model: '/collections/models/priya_banarasi_red.jpg', hover: '/collections/banarasi/saree_01_detail.jpg' },
+  'ban-01': { model: '/collections/models/model_royal_chandan.jpg', hover: '/collections/banarasi/saree_01_detail.jpg' },
   'ban-02': { model: '/collections/banarasi/saree_02_editorial.jpg', hover: '/collections/banarasi/saree_02_detail.jpg' },
   'ban-03': { model: '/collections/banarasi/saree_03_editorial.jpg', hover: '/collections/banarasi/saree_03_detail.jpg' },
   'ban-04': { model: '/collections/banarasi/saree_04_editorial.jpg', hover: '/collections/banarasi/saree_04_detail.jpg' },
@@ -500,7 +502,7 @@ export const RELATABLE_SAREE_MODELS: Record<string, { model: string; hover: stri
   'ban-08': { model: '/collections/banarasi/saree_08_editorial.jpg', hover: '/collections/banarasi/saree_08_detail.jpg' },
 
   // Kanchipuram Collection — Distinctive Couture Looks
-  'kan-01': { model: '/collections/models/priya_kanchipuram_purple.jpg', hover: '/collections/kanchipuram/saree_01_detail.jpg' },
+  'kan-01': { model: '/collections/models/model_bengali_bridal.jpg', hover: '/collections/kanchipuram/saree_01_detail.jpg' },
   'kan-02': { model: '/collections/kanchipuram/saree_02_editorial.jpg', hover: '/collections/kanchipuram/saree_02_detail.jpg' },
   'kan-03': { model: '/collections/kanchipuram/saree_03_editorial.jpg', hover: '/collections/kanchipuram/saree_03_detail.jpg' },
   'kan-04': { model: '/collections/kanchipuram/saree_04_editorial.jpg', hover: '/collections/kanchipuram/saree_04_detail.jpg' },
@@ -520,7 +522,7 @@ export const RELATABLE_SAREE_MODELS: Record<string, { model: string; hover: stri
   'raj-08': { model: '/collections/rajasthani/saree_08_editorial.jpg', hover: '/collections/rajasthani/saree_08_detail.jpg' },
 
   // Jodhpuri Collection — Distinctive Couture Looks
-  'jod-01': { model: '/collections/models/priya_jodhpuri_bandhani.jpg', hover: '/collections/jodhpuri/saree_01_detail.jpg' },
+  'jod-01': { model: '/collections/models/model_burgundy_zardozi.jpg', hover: '/collections/jodhpuri/saree_01_detail.jpg' },
   'jod-02': { model: '/collections/jodhpuri/saree_02_editorial.jpg', hover: '/collections/jodhpuri/saree_02_detail.jpg' },
   'jod-03': { model: '/collections/jodhpuri/saree_03_editorial.jpg', hover: '/collections/jodhpuri/saree_03_detail.jpg' },
   'jod-04': { model: '/collections/jodhpuri/saree_04_editorial.jpg', hover: '/collections/jodhpuri/saree_04_detail.jpg' },
@@ -530,7 +532,17 @@ export const RELATABLE_SAREE_MODELS: Record<string, { model: string; hover: stri
   'jod-08': { model: '/collections/jodhpuri/saree_08_editorial.jpg', hover: '/collections/jodhpuri/saree_08_detail.jpg' },
 
   // Heritage States — Distinctive Couture Looks
-  'her-01': { model: '/collections/models/priya_paithani_peacock.jpg', hover: '/collections/heritage-states/saree_01_detail.jpg' },
+  'her-01': { model: '/collections/models/model_nath_paithani.jpg', hover: '/collections/heritage-states/saree_01_detail.jpg' },
+  'raj-09': { model: '/collections/models/regional-model-01.jpg', hover: '/collections/models/regional-model-01.jpg' },
+  'raj-10': { model: '/collections/models/regional-model-02.jpg', hover: '/collections/models/regional-model-02.jpg' },
+  'jod-09': { model: '/collections/models/regional-model-03.jpg', hover: '/collections/models/regional-model-03.jpg' },
+  'jod-10': { model: '/collections/models/regional-model-04.jpg', hover: '/collections/models/regional-model-04.jpg' },
+  'ban-09': { model: '/collections/models/regional-model-05.jpg', hover: '/collections/models/regional-model-05.jpg' },
+  'ban-10': { model: '/collections/models/regional-model-06.jpg', hover: '/collections/models/regional-model-06.jpg' },
+  'kan-09': { model: '/collections/models/regional-model-07.jpg', hover: '/collections/models/regional-model-07.jpg' },
+  'kan-10': { model: '/collections/models/regional-model-08.jpg', hover: '/collections/models/regional-model-08.jpg' },
+  'her-09': { model: '/collections/models/regional-model-09.jpg', hover: '/collections/models/regional-model-09.jpg' },
+  'her-10': { model: '/collections/models/regional-model-10.jpg', hover: '/collections/models/regional-model-10.jpg' },
   'her-02': { model: '/collections/heritage-states/saree_02_editorial.jpg', hover: '/collections/heritage-states/saree_02_detail.jpg' },
   'her-03': { model: '/collections/heritage-states/saree_03_editorial.jpg', hover: '/collections/heritage-states/saree_03_detail.jpg' },
   'her-04': { model: '/collections/heritage-states/saree_04_editorial.jpg', hover: '/collections/heritage-states/saree_04_detail.jpg' },
@@ -539,3 +551,16 @@ export const RELATABLE_SAREE_MODELS: Record<string, { model: string; hover: stri
   'her-07': { model: '/collections/heritage-states/saree_07_editorial.jpg', hover: '/collections/heritage-states/saree_07_detail.jpg' },
   'her-08': { model: '/collections/heritage-states/saree_08_editorial.jpg', hover: '/collections/heritage-states/saree_08_detail.jpg' },
 };
+
+export function getSareeModelImage(saree: SareeProduct): string {
+  const mappedModel = RELATABLE_SAREE_MODELS[saree.id]?.model;
+  // Some legacy editorial files are textile-only. Keep every photographic
+  // presentation anchored to a known local portrait of a woman in a saree.
+  return mappedModel?.startsWith('/collections/models/')
+    ? mappedModel
+    : PRIYA_EDITORIAL_MODEL.images[saree.region];
+}
+
+export function getRegionalModelImage(region: StateSlug): string {
+  return PRIYA_EDITORIAL_MODEL.images[region];
+}

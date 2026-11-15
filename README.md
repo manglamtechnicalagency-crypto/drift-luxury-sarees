@@ -35,8 +35,8 @@ npm install
 # Run local development server
 npm run dev
 
-# Run verification suite (90/90 tests)
-node scripts/verify-fitting-room.mjs
+# Run TypeScript checks
+npx tsc --noEmit
 
 # Build OpenNext Cloudflare bundle
 npm run pages:build

@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { LOOKBOOK_PRESETS, getSareeById } from '@/data/collections/registry';
 import { useShop } from '@/context/ShopContext';
 import { SareeProduct } from '@/data/collections/types';
-import { PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import { Sparkles, ArrowRight, BookOpen, ShoppingBag } from 'lucide-react';
 
 export default function LookbookSection() {
@@ -112,7 +112,7 @@ export default function LookbookSection() {
                     className="relative aspect-[3/4] rounded-lg overflow-hidden bg-black/50 cursor-pointer mb-3"
                   >
                     <img
-                      src={PRIYA_EDITORIAL_MODEL.images[saree.region] || saree.images.primary}
+                      src={getSareeModelImage(saree)}
                       alt={`${saree.name} editorial lookbook drape on model Priya`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />

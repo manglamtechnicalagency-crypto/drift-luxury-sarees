@@ -25,6 +25,6 @@ export const banarasiMeta: StateCollection = {
   "stats": {
     "artisanGuilds": 0,
     "heritageCenturies": 0,
-    "flagshipPieces": 8
+    "flagshipPieces": 10
   }
 };

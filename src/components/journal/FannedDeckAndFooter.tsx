@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { ALL_SAREES, ALL_STATE_METAS } from '@/data/collections/registry';
-import { PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
+import { getSareeModelImage, PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
 import { useStore } from '@/store/useStore';
 import { ArrowRight, Sparkles, Instagram, Facebook, Twitter, ShieldCheck } from 'lucide-react';
 
@@ -63,7 +63,7 @@ export default function FannedDeckAndFooter() {
         {/* ============================================================ */}
         {/* 1. LATEST TRENDS (3-Column Layout with 3D Fanned Card Deck)  */}
         {/* ============================================================ */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-[#E6DFD5] pb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-[#E6DFD5] pb-12">
           
           {/* Left Column (4 Cols) */}
           <div className="lg:col-span-4 space-y-4 text-left">
@@ -120,11 +120,11 @@ export default function FannedDeckAndFooter() {
                   }}
                 >
                   <img
-                    src={PRIYA_EDITORIAL_MODEL.images[saree.region] || saree.images.primary}
-                    alt={`${saree.name} draped on editorial muse Priya`}
+                    src={getSareeModelImage(saree)}
+                    alt={`Illustrative model reference for ${saree.name}`}
                     className="w-full h-full object-cover object-top"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = saree.images.fallbackPrimary || saree.images.primary;
+                      (e.target as HTMLImageElement).src = getSareeModelImage(saree);
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#2B070E] via-[#2B070E]/20 to-transparent" />
@@ -132,7 +132,7 @@ export default function FannedDeckAndFooter() {
                   {/* Model Tag */}
                   <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/60 backdrop-blur-md border border-[#E6B83A]/30 text-[#E6B83A] text-[8px] font-sans uppercase tracking-widest font-semibold">
                     <Sparkles className="w-2.5 h-2.5 text-[#E6B83A]" />
-                    <span>Muse Priya</span>
+                    <span>Illustrative model reference</span>
                   </div>
 
                   <div className="absolute bottom-3 left-3 right-3 text-left">
@@ -160,14 +160,14 @@ export default function FannedDeckAndFooter() {
               Explore All States
             </h3>
             <p className="font-sans text-xs text-[#1A1617]/70 leading-relaxed font-light">
-              From the salt flats of Mandvi to the silk temples of Kanchipuram, discover 48 flagship weaves certified by geographical indication.
+              From the craft clusters of Kutch to the weaving traditions of Kanchipuram, explore regional design studies with distinct color stories and textile references.
             </p>
             <div className="pt-2">
               <a
                 href="#curated-curved-arc"
                 className="text-xs font-sans font-bold text-[#A80F24] hover:underline flex items-center gap-1.5"
               >
-                <span>View All 48 Pieces</span>
+                <span>View All Regional Studies</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -178,30 +178,38 @@ export default function FannedDeckAndFooter() {
       </div>
 
       {/* ============================================================ */}
-      {/* 2. FULL-WIDTH PANORAMIC GROUP BANNER (5 Models in Sarees)    */}
+      {/* 2. EDITORIAL MODEL PORTRAIT BANNER                          */}
       {/* ============================================================ */}
-      <div className="group relative w-full h-64 sm:h-80 lg:h-96 overflow-hidden bg-[#2B070E]">
+      <div className="group relative isolate w-full min-h-[40rem] sm:min-h-[34rem] lg:min-h-[32rem] overflow-hidden bg-drift-dark">
         <img
           src={PRIYA_EDITORIAL_MODEL.images['banarasi']}
-          alt="Editorial muse Priya in sovereign handloom saree"
-          className="w-full h-full object-cover object-top filter brightness-95 transition-transform duration-1000 ease-out group-hover:scale-105"
+          alt="Illustrative model portrait in a heritage-inspired saree design study"
+          className="absolute inset-0 h-full w-full object-cover object-[center_30%] transition-transform duration-1000 ease-out motion-safe:group-hover:scale-[1.02] sm:left-auto sm:right-0 sm:w-[min(42%,560px)] sm:object-contain sm:object-bottom"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2B070E] via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#2B070E]/80 via-transparent to-[#2B070E]/80" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-drift-dark via-drift-dark/25 to-drift-dark/10 sm:bg-gradient-to-r sm:from-drift-dark sm:via-drift-dark/90 sm:to-transparent" />
+        <div className="absolute inset-y-0 right-0 z-0 hidden w-[min(44%,580px)] bg-gradient-to-l from-drift-dark/10 to-transparent sm:block" />
         
-        {/* Top Muse Priya Badge */}
-        <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#E6B83A]/40 text-[#E6B83A] text-[9px] uppercase tracking-widest font-semibold">
-          <Sparkles size={10} className="text-[#E6B83A]" />
-          <span>Muse Priya · The 2026 Sovereign Drape</span>
+        {/* Illustrative model reference badge */}
+        <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-drift-gold/40 text-drift-gold-light text-[9px] uppercase tracking-widest font-semibold">
+          <Sparkles size={10} className="text-drift-gold" />
+          <span>Illustrative model · DRIFT editorial study</span>
         </div>
 
-        <div className="absolute bottom-8 inset-x-4 text-center">
-          <p className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#FAF7F2] font-semibold italic">
-            &ldquo;Threads of Sovereign Hindustan&rdquo;
-          </p>
-          <span className="text-[10px] font-sans uppercase tracking-[0.4em] text-[#E6B83A] mt-1 block">
-            THE 2026 ROYAL ENSEMBLE
-          </span>
+        <div className="relative z-10 mx-auto flex min-h-[40rem] max-w-7xl items-end px-5 pb-12 sm:min-h-[34rem] sm:items-center sm:px-8 sm:pb-0 lg:min-h-[32rem] lg:px-12">
+          <div className="max-w-2xl text-center sm:text-left">
+            <p className="font-serif text-4xl font-semibold italic leading-tight text-drift-sand drop-shadow-lg sm:text-5xl lg:text-6xl">
+              Threads of <span className="text-drift-gold">Sovereign Hindustan</span>
+            </p>
+            <span className="mt-3 block text-[10px] font-sans uppercase tracking-[0.32em] text-drift-gold-light sm:text-xs">
+              A portrait-led study of India’s regional saree traditions
+            </span>
+            <a
+              href="#curated-curved-arc"
+              className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-drift-gold/60 bg-drift-dark/55 px-5 text-[10px] font-sans font-semibold uppercase tracking-[0.18em] text-drift-sand backdrop-blur-sm transition-colors hover:bg-drift-crimson focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-drift-gold"
+            >
+              Explore the regional edits <ArrowRight className="h-3.5 w-3.5" />
+            </a>
+          </div>
         </div>
       </div>
 

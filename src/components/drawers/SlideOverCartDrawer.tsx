@@ -2,15 +2,13 @@
 
 import React, { useState } from 'react';
 import { useStore } from '@/store/useStore';
-import { PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import {
   X,
   Trash2,
   ShoppingBag,
   ArrowRight,
   ArrowLeft,
-  CheckCircle2,
-  Sparkles,
   ShieldCheck,
   PackageCheck,
   Copy,
@@ -70,8 +68,6 @@ export default function SlideOverCartDrawer() {
   if (!isCartOpen) return null;
 
   const total = cartTotal();
-  const freeShippingThreshold = 50000;
-  const progressPercent = Math.min(100, (total / freeShippingThreshold) * 100);
 
   const handleInputChange = (field: keyof CheckoutForm, value: string) => {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -138,6 +134,9 @@ export default function SlideOverCartDrawer() {
       if (!res.ok) {
         throw new Error(data.error || 'Failed to place order.');
       }
+      if (!data.orderNumber || data.status !== 'REQUEST_RECEIVED') {
+        throw new Error('The studio could not confirm receipt of this request. Please try again.');
+      }
 
       // Celebrate success
       try {
@@ -152,7 +151,7 @@ export default function SlideOverCartDrawer() {
       }
 
       setConfirmedReceipt({
-        orderNumber: data.orderNumber || `DRIFT-2026-${Math.floor(1000 + Math.random() * 9000)}`,
+        orderNumber: data.orderNumber,
         customerName: form.name.trim(),
         customerEmail: form.email.trim(),
         subtotal: total,
@@ -167,7 +166,7 @@ export default function SlideOverCartDrawer() {
 
       clearCart();
       setDrawerMode('receipt');
-      triggerToast(`Order ${data.orderNumber} placed successfully`);
+      triggerToast(`Request ${data.orderNumber} received`);
     } catch (err: any) {
       setErrorMessage(err.message || 'Unable to seal order right now. Please try again.');
     } finally {
@@ -202,9 +201,9 @@ export default function SlideOverCartDrawer() {
               )}
               <h3 className="font-serif text-xl font-bold text-[#1A1617] tracking-wide">
                 {drawerMode === 'checkout'
-                  ? 'Atelier Checkout'
+                  ? 'Design Enquiry'
                   : drawerMode === 'receipt'
-                  ? 'Order Receipt'
+                  ? 'Request Receipt'
                   : `Royal Trunk (${cart.length})`}
               </h3>
             </div>
@@ -220,24 +219,6 @@ export default function SlideOverCartDrawer() {
           {/* Mode 1: Cart View */}
           {drawerMode === 'cart' && (
             <>
-              {/* Shipping Progress Bar */}
-              <div className="px-6 py-3 bg-[#FAF7F2] border-b border-[#E6DFD5] text-xs font-sans">
-                <div className="flex items-center justify-between text-[#1A1617] mb-1.5">
-                  <span className="font-medium">
-                    {total >= freeShippingThreshold
-                      ? 'Complimentary Insured Delivery Unlocked'
-                      : `Add ₹${(freeShippingThreshold - total).toLocaleString('en-IN')} for Free Insured Transit`}
-                  </span>
-                  <span className="font-bold text-[#A80F24]">{Math.round(progressPercent)}%</span>
-                </div>
-                <div className="w-full h-1.5 bg-[#E6DFD5] rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-[#A80F24] transition-all duration-300"
-                    style={{ width: `${progressPercent}%` }}
-                  />
-                </div>
-              </div>
-
               {/* Items List */}
               <div className="flex-1 overflow-y-auto p-6 space-y-4">
                 {cart.length > 0 ? (
@@ -247,8 +228,8 @@ export default function SlideOverCartDrawer() {
                       className="bg-white rounded-2xl p-4 border border-[#E6DFD5] flex gap-4 shadow-sm"
                     >
                       <img
-                        src={PRIYA_EDITORIAL_MODEL.images[item.product.region] || item.product.images.primary}
-                        alt={`Muse Priya draped in ${item.product.name} in ${item.selectedColor}`}
+                        src={getSareeModelImage(item.product)}
+                        alt={`Illustrative model reference for ${item.product.name} in ${item.selectedColor}`}
                         className="w-20 h-24 object-cover object-top rounded-xl flex-shrink-0"
                         onError={(e) => {
                           (e.target as HTMLImageElement).src = item.product.images.fallbackPrimary;
@@ -267,7 +248,7 @@ export default function SlideOverCartDrawer() {
                             Size: <span className="font-semibold text-[#1A1617]">{item.selectedBlouseSize}</span> • Color: {item.selectedColor.split(' ')[0]}
                           </p>
                           <p className="text-xs font-sans font-bold text-[#1A1617] mt-1">
-                            ₹{item.product.price.toLocaleString('en-IN')}
+                            {item.product.price > 0 ? `₹${item.product.price.toLocaleString('en-IN')}` : 'Price on request'}
                           </p>
                         </div>
 
@@ -320,13 +301,13 @@ export default function SlideOverCartDrawer() {
               {cart.length > 0 && (
                 <div className="p-6 border-t border-[#E6DFD5] bg-[#F4EFE6] space-y-4">
                   <div className="flex items-center justify-between text-base font-serif font-bold text-[#1A1617]">
-                    <span>Trunk Subtotal:</span>
+                    <span>Request subtotal:</span>
                     <span className="text-lg font-sans font-extrabold text-[#A80F24]">
-                      ₹{total.toLocaleString('en-IN')}
+                      {total > 0 ? `₹${total.toLocaleString('en-IN')}` : 'Price on request'}
                     </span>
                   </div>
                   <p className="text-[10px] text-[#1A1617]/60 font-sans text-left">
-                    Includes insured delivery, authenticity provenance documentation, and bespoke blouse sizing coordination.
+                    Price, availability, delivery and product details are confirmed after the studio reviews your request.
                   </p>
 
                   <button
@@ -347,10 +328,10 @@ export default function SlideOverCartDrawer() {
               <div className="p-6 space-y-4 text-left">
                 <div className="border-b border-[#E6DFD5] pb-3">
                   <span className="text-[10px] font-sans uppercase tracking-[0.25em] text-[#A80F24] font-bold block">
-                    1-STEP ATELIER RESERVATION
+                    DESIGN ENQUIRY
                   </span>
                   <p className="font-serif text-sm text-[#1A1617]/75 mt-0.5">
-                    Order confirmation &amp; concierge dispatch details.
+                    Send a design enquiry. This form does not take payment or confirm an order.
                   </p>
                 </div>
 
@@ -405,7 +386,7 @@ export default function SlideOverCartDrawer() {
                 {/* Phone */}
                 <div>
                   <label className="block text-[11px] font-sans font-semibold uppercase tracking-wider text-[#1A1617]/80 mb-1">
-                    Phone (for Insured Delivery Concierge)
+                    Phone (optional)
                   </label>
                   <input
                     type="tel"
@@ -464,15 +445,15 @@ export default function SlideOverCartDrawer() {
                 {/* Trust badge */}
                 <div className="pt-2 flex items-center gap-2 text-[11px] text-[#1A1617]/60 font-sans">
                   <ShieldCheck className="w-4 h-4 text-[#A80F24]" />
-                  <span>Insured edge dispatch backed by Cloudflare D1 atomic order logs.</span>
+                  <span>Your request is recorded for studio review; no payment is taken here.</span>
                 </div>
               </div>
 
               {/* Bottom Submit Row */}
               <div className="p-6 border-t border-[#E6DFD5] bg-[#F4EFE6] space-y-3">
                 <div className="flex items-center justify-between text-xs font-sans text-[#1A1617]">
-                  <span>Total Amount Payable:</span>
-                  <span className="font-bold text-sm text-[#A80F24]">₹{total.toLocaleString('en-IN')}</span>
+                  <span>Request subtotal:</span>
+                  <span className="font-bold text-sm text-[#A80F24]">{total > 0 ? `₹${total.toLocaleString('en-IN')}` : 'Price on request'}</span>
                 </div>
 
                 <button
@@ -481,10 +462,10 @@ export default function SlideOverCartDrawer() {
                   className="w-full py-3.5 rounded-full bg-[#A80F24] hover:bg-[#7A0A19] text-[#FAF7F2] font-sans font-bold text-xs uppercase tracking-[0.2em] shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50 active:scale-95"
                 >
                   {isSubmitting ? (
-                    <span>Sealing Order on Edge...</span>
+                    <span>Sending request…</span>
                   ) : (
                     <>
-                      <span>Authorize Order (₹{total.toLocaleString('en-IN')})</span>
+                      <span>Submit design request</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}
@@ -493,7 +474,7 @@ export default function SlideOverCartDrawer() {
             </form>
           )}
 
-          {/* Mode 3: Editorial DRIFT Order Receipt Card */}
+          {/* Mode 3: Request receipt */}
           {drawerMode === 'receipt' && confirmedReceipt && (
             <div className="flex-1 flex flex-col justify-between overflow-y-auto p-6 space-y-6">
               
@@ -503,13 +484,13 @@ export default function SlideOverCartDrawer() {
                 
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] font-sans uppercase tracking-[0.3em] text-[#E6B83A] font-bold">
-                    DRIFT OFFICIAL RECEIPT
+                    DRIFT REQUEST RECEIVED
                   </span>
                   <PackageCheck className="w-5 h-5 text-[#E6B83A]" />
                 </div>
 
                 <div>
-                  <p className="text-[11px] text-[#FAF7F2]/60 font-sans">Order Identifier</p>
+                  <p className="text-[11px] text-[#FAF7F2]/60 font-sans">Request ID</p>
                   <div className="flex items-center gap-2 mt-0.5">
                     <span className="font-serif text-2xl font-bold tracking-tight text-[#FAF7F2]">
                       {confirmedReceipt.orderNumber}
@@ -517,7 +498,7 @@ export default function SlideOverCartDrawer() {
                     <button
                       onClick={() => handleCopyOrderNumber(confirmedReceipt.orderNumber)}
                       className="p-1 rounded-md bg-white/10 hover:bg-white/20 text-[#E6B83A] transition-colors"
-                      title="Copy order number"
+                      title="Copy request ID"
                     >
                       {copiedOrder ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
@@ -527,7 +508,7 @@ export default function SlideOverCartDrawer() {
                 <div className="grid grid-cols-2 gap-3 pt-3 border-t border-white/15 text-xs font-sans">
                   <div>
                     <span className="text-[10px] text-[#FAF7F2]/60 block">Status</span>
-                    <span className="font-semibold text-green-400">CONFIRMED (D1)</span>
+                    <span className="font-semibold text-green-400">REQUEST RECEIVED</span>
                   </div>
                   <div>
                     <span className="text-[10px] text-[#FAF7F2]/60 block">Date</span>
@@ -539,7 +520,7 @@ export default function SlideOverCartDrawer() {
               {/* Order Manifest Summary */}
               <div className="bg-white rounded-2xl p-5 border border-[#E6DFD5] space-y-3 text-left">
                 <h4 className="font-serif text-sm font-bold text-[#1A1617] border-b border-[#E6DFD5] pb-2">
-                  Delivery Destination
+                  Contact details
                 </h4>
                 <div className="text-xs font-sans text-[#1A1617]/80 space-y-1">
                   <p className="font-semibold text-[#1A1617]">{confirmedReceipt.customerName}</p>
@@ -552,9 +533,9 @@ export default function SlideOverCartDrawer() {
                 </div>
 
                 <div className="pt-3 border-t border-[#E6DFD5] flex items-center justify-between text-xs font-sans">
-                  <span className="text-[#1A1617]/70">Total Handloom Allocation:</span>
+                  <span className="text-[#1A1617]/70">Request value:</span>
                   <span className="font-bold text-[#A80F24] text-sm">
-                    ₹{confirmedReceipt.subtotal.toLocaleString('en-IN')}
+                    {confirmedReceipt.subtotal > 0 ? `₹${confirmedReceipt.subtotal.toLocaleString('en-IN')}` : 'Price on request'}
                   </span>
                 </div>
               </div>

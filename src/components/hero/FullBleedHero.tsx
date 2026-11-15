@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ShieldCheck, Truck, RotateCcw, ArrowRight, Play, Pause, Sparkles } from 'lucide-react';
 import { useStore } from '@/store/useStore';
@@ -19,13 +19,11 @@ const HERO_MUSE_EDITS: { slug: StateSlug; label: string; sareeTitle: string; cra
 export default function FullBleedHero() {
   const { setActiveModal } = useStore();
   const [scrollY, setScrollY] = useState(0);
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const [videoIntent, setVideoIntent] = useState<'auto' | 'paused' | 'playing'>('auto');
+  const [portraitMotion, setPortraitMotion] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [selectedMuseIndex, setSelectedMuseIndex] = useState(0);
   const reducedMotionPreference = useReducedMotion();
   const reduceMotion = mounted ? reducedMotionPreference === true : false;
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -51,26 +49,6 @@ export default function FullBleedHero() {
     };
   }, [reduceMotion]);
 
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (videoIntent === 'paused' || (videoIntent === 'auto' && reduceMotion)) {
-      video.pause();
-      return;
-    }
-    void video.play().catch(() => setVideoPlaying(false));
-  }, [reduceMotion, videoIntent]);
-
-  const toggleVideo = () => {
-    if (videoPlaying) {
-      setVideoIntent('paused');
-      videoRef.current?.pause();
-    } else {
-      setVideoIntent('playing');
-      void videoRef.current?.play().catch(() => setVideoPlaying(false));
-    }
-  };
-
   const scrollToCurvedArc = () => {
     document.getElementById('curated-curved-arc')?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
   };
@@ -85,45 +63,36 @@ export default function FullBleedHero() {
   return (
     <section className="relative w-full min-h-[100dvh] flex items-center justify-between overflow-hidden bg-[#2B070E] select-none py-16 sm:py-24">
       
-      {/* 1. Full-Bleed Video Background with Poster Fallback */}
+      {/* 1. Full-Bleed Saree Model Portrait */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
-          loop
-          muted
-          playsInline
-          onPlay={() => setVideoPlaying(true)}
-          onPause={() => setVideoPlaying(false)}
-          poster="/collections/models/priya_banarasi_red.jpg"
-          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out"
+        <img
+          src={activeImage}
+          alt=""
+          aria-hidden="true"
+          className={`h-full w-full object-cover object-top transition-transform duration-1000 ease-out ${portraitMotion && !reduceMotion ? 'motion-safe:animate-[modelPortraitDrift_18s_ease-in-out_infinite_alternate]' : ''}`}
           style={{
             transform:
               mounted && !reduceMotion && scrollY !== 0
-                ? `scale(${1.05 + scrollY * 0.0003}) translateY(${scrollY * 0.15}px)`
-                : 'scale(1.05)',
+                ? `scale(${(portraitMotion ? 1.05 : 1) + scrollY * 0.0003}) translateY(${scrollY * 0.15}px)`
+                : undefined,
           }}
-        >
-          <source
-            src="https://assets.mixkit.co/videos/preview/mixkit-red-silk-fabric-waving-in-the-wind-41914-large.mp4"
-            type="video/mp4"
-          />
-        </video>
+        />
 
         {/* Dual Gradient Vignette (Editorial Shadow) */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#2B070E]/95 via-[#2B070E]/75 to-[#2B070E]/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#2B070E] via-transparent to-[#2B070E]/70" />
       </div>
 
-      {/* Accessible Video Control */}
+      {/* Accessible portrait motion control */}
       <button
         type="button"
-        onClick={toggleVideo}
-        aria-label={videoPlaying ? 'Pause background video' : 'Play background video'}
-        aria-pressed={videoPlaying}
+        onClick={() => setPortraitMotion((active) => !active)}
+        aria-label={portraitMotion ? 'Pause model portrait motion' : 'Play model portrait motion'}
+        aria-pressed={portraitMotion}
         className="absolute right-5 top-20 z-30 inline-flex items-center gap-2 rounded-full border border-[#FAF7F2]/35 bg-[#2B070E]/65 px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#FAF7F2] backdrop-blur-md transition-colors hover:border-[#D4AF37] hover:text-[#E6B83A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E6B83A] sm:right-8"
       >
-        {videoPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
-        <span>{videoPlaying ? 'Pause' : 'Play ambient'}</span>
+        {portraitMotion ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
+        <span>{portraitMotion ? 'Pause' : 'Animate portrait'}</span>
       </button>
 
       {/* Main Editorial Dual-Stage Layout */}
@@ -148,7 +117,7 @@ export default function FullBleedHero() {
 
             {/* Subtitle */}
             <p className="text-sm sm:text-base lg:text-xl xl:text-2xl text-[#FAF7F2]/90 font-light leading-relaxed lg:leading-relaxed xl:leading-relaxed max-w-2xl font-sans">
-              Six documented regional weaving traditions worn by editorial muse Priya: from pure Banarasi gold zari katan to master-loom Patola and temple-border Kanchipuram silks.
+              Six regional textile archives, brought to life through illustrative model portraits and richly varied color studies.
             </p>
 
             {/* Action Pills */}
@@ -176,7 +145,7 @@ export default function FullBleedHero() {
               <div className="flex items-center gap-2 mb-2.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#E6B83A]" />
                 <span className="text-[10px] uppercase font-sans tracking-[0.2em] text-[#E6B83A] font-semibold">
-                  Muse Priya in Regional Sarees:
+                  Illustrative Model Looks · Regional Design Studies:
                 </span>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -217,7 +186,7 @@ export default function FullBleedHero() {
                   <motion.img
                     key={activeMuse.slug}
                     src={activeImage}
-                    alt={`Editorial muse Priya draped in ${activeMuse.sareeTitle}`}
+                    alt={`Illustrative model portrait for the ${activeMuse.label} saree design study`}
                     initial={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
@@ -229,7 +198,7 @@ export default function FullBleedHero() {
                 {/* Ambient Bottom Gradient Vignette */}
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#1A060A] via-[#1A060A]/60 to-transparent p-5 text-left">
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E6B83A]/20 border border-[#E6B83A]/40 text-[#E6B83A] text-[9px] uppercase tracking-[0.2em] font-semibold mb-1">
-                    <span>Muse: Priya</span>
+                    <span>Editorial model reference</span>
                     <span>•</span>
                     <span>{activeMuse.label}</span>
                   </div>

@@ -76,7 +76,7 @@ export default function OccasionsAndAccordion() {
               >
                 <img
                   src={occ.image}
-                  alt={`Muse Priya styled in authentic handloom saree for ${occ.title}`}
+                  alt={`Illustrative model image for the ${occ.title} design study`}
                   className="absolute inset-0 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2B070E] via-[#2B070E]/35 to-transparent opacity-90 group-hover:opacity-75 transition-opacity" />
@@ -84,7 +84,7 @@ export default function OccasionsAndAccordion() {
                 {/* Ambient Muse Pill */}
                 <div className="absolute top-3.5 left-3.5 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#E6B83A]/30 text-[#E6B83A] text-[9px] uppercase tracking-widest font-semibold">
                   <Sparkles size={10} className="text-[#E6B83A]" />
-                  <span>Muse Priya</span>
+                  <span>Illustrative model</span>
                 </div>
 
                 <div className="relative z-10 space-y-2 text-left">
@@ -133,11 +133,11 @@ export default function OccasionsAndAccordion() {
                 >
                   {/* Background Saree/Editorial Image featuring Priya */}
                   <img
-                    src={PRIYA_EDITORIAL_MODEL.images[state.slug] || state.heroImage}
-                    alt={`Editorial muse Priya in ${state.name} authentic handloom saree`}
+                    src={PRIYA_EDITORIAL_MODEL.images[state.slug]}
+                    alt={`Illustrative model reference for ${state.name} design studies`}
                     className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = state.fallbackHero || state.heroImage;
+                      (e.target as HTMLImageElement).src = PRIYA_EDITORIAL_MODEL.images[state.slug];
                     }}
                   />
 

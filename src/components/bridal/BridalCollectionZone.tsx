@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ALL_SAREES } from '@/data/collections/registry';
 import { useStore } from '@/store/useStore';
 import { SareeProduct } from '@/data/collections/types';
-import { PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import { ArrowRight, Sparkles, Heart } from 'lucide-react';
 
 export default function BridalCollectionZone() {
@@ -45,8 +45,8 @@ export default function BridalCollectionZone() {
           {/* Left Spotlight Card (4 Cols) */}
           <div className="lg:col-span-4 relative rounded-3xl overflow-hidden border border-[#D4AF37]/50 shadow-2xl bg-[#4A0E17] group min-h-[520px] flex flex-col justify-end p-6 sm:p-8">
             <img
-              src={PRIYA_EDITORIAL_MODEL.images[spotlightSaree.region] || spotlightSaree.images.editorial}
-              alt="Spotlight bridal drape study in crimson red silk with hand-embroidered gold zari on model Priya"
+              src={getSareeModelImage(spotlightSaree)}
+              alt={`Illustrative model image for ${spotlightSaree.name} bridal design study`}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = spotlightSaree.images.fallbackEditorial;
@@ -63,7 +63,7 @@ export default function BridalCollectionZone() {
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#E6B83A]/30 text-[#E6B83A] text-[9px] font-sans uppercase tracking-widest font-semibold">
                   <Sparkles size={10} className="text-[#E6B83A]" />
-                  Muse Priya
+                  Model reference · illustrative
                 </span>
               </div>
               <p className="font-serif italic text-sm text-[#FAF7F2]/80">
@@ -123,7 +123,7 @@ export default function BridalCollectionZone() {
                       className="relative aspect-[3/3.8] rounded-xl overflow-hidden bg-black/10 cursor-pointer mb-3"
                     >
                       <img
-                        src={PRIYA_EDITORIAL_MODEL.images[saree.region] || saree.images.primary}
+                        src={getSareeModelImage(saree)}
                         alt={`${saree.originState} ${saree.craft} bridal saree on model Priya`}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         onError={(e) => {

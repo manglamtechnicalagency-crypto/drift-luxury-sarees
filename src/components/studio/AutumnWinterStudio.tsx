@@ -4,15 +4,23 @@ import React from 'react';
 import { ALL_SAREES } from '@/data/collections/registry';
 import { useStore } from '@/store/useStore';
 import { SareeProduct } from '@/data/collections/types';
-import { PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
-import { Sparkles } from 'lucide-react';
+import { getSareeModelImage } from '@/data/collections/colorways';
+import type { StateSlug } from '@/data/collections/types';
+
+const STUDIO_REGION_LABELS: Record<StateSlug, string> = {
+  gujarati: 'Gujarat',
+  rajasthani: 'Rajasthan',
+  jodhpuri: 'Marwar',
+  banarasi: 'Varanasi',
+  kanchipuram: 'Tamil Nadu',
+  'heritage-states': 'Maharashtra & beyond',
+};
 
 export default function AutumnWinterStudio() {
   const {
     sarees,
     activeLookIndex,
     setActiveLookIndex,
-    setFittingRoomSaree,
   } = useStore();
 
   // Curated 4 Studio Looks across distinct state cultures
@@ -71,31 +79,25 @@ export default function AutumnWinterStudio() {
                   }}
                   onClick={() => {
                     setActiveLookIndex(lookIndex);
-                    setFittingRoomSaree(saree);
                   }}
                   aria-label={`Switch studio to ${saree.name}`}
                   aria-pressed={isSelected}
                 >
                   <img
-                    src={PRIYA_EDITORIAL_MODEL.images[saree.region] || saree.images.editorial}
-                    alt={`Autumn-Winter lookbook drape: ${saree.name} on model Priya`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    src={getSareeModelImage(saree)}
+                    alt={`Illustrative model look for the ${saree.name} design study`}
+                    className="w-full h-full object-cover object-[center_24%] group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = saree.images.fallbackEditorial;
+                      const image = e.currentTarget;
+                      image.onerror = null;
+                      image.src = '/collections/models/model_saffron_yellow.jpg';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#2B070E] via-transparent to-transparent opacity-75" />
                   
-                  {/* Top Muse Priya Tag */}
-                  <div className="absolute top-4 inset-x-0 flex justify-center z-10 pointer-events-none">
-                    <span className="inline-flex items-center gap-1 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full text-[8px] font-sans uppercase tracking-widest text-[#E6B83A] border border-[#E6B83A]/30">
-                      <Sparkles size={8} className="text-[#E6B83A]" /> Priya
-                    </span>
-                  </div>
-
                   <div className="absolute bottom-4 inset-x-2 text-center">
                     <span className="text-[10px] font-sans uppercase tracking-wider text-[#E6B83A] font-semibold block">
-                      {saree.originState.split(' ')[0]}
+                      {STUDIO_REGION_LABELS[saree.region]}
                     </span>
                     <p className="font-serif text-xs sm:text-sm text-[#FAF7F2] font-medium truncate">
                       {saree.name.split(' ')[0]}

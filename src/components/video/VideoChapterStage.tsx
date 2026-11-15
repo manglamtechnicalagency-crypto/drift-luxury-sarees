@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useReducedMotion } from 'framer-motion';
 import { useStore } from '@/store/useStore';
 import { PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
-import { Play, Pause, ArrowRight, Volume2, VolumeX, Sparkles } from 'lucide-react';
+import { Play, Pause, ArrowRight, Sparkles } from 'lucide-react';
 
 interface Chapter {
   id: string;
@@ -12,34 +12,19 @@ interface Chapter {
   timecode: string;
   location: string;
   image: string;
-  videoSrc: string;
+  imagePosition: string;
 }
 
 export default function VideoChapterStage() {
   const { setActiveModal } = useStore();
   const [activeChapterIndex, setActiveChapterIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [isMuted, setIsMuted] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const reducedMotionPreference = useReducedMotion();
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (reducedMotionPreference) {
-      setIsPlaying(false);
-      videoRef.current?.pause();
-    }
+    if (reducedMotionPreference !== null) setIsPlaying(!reducedMotionPreference);
   }, [reducedMotionPreference]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (isPlaying) {
-      void video.play().catch(() => setIsPlaying(false));
-    } else {
-      video.pause();
-    }
-  }, [isPlaying, activeChapterIndex]);
 
   const chapters: Chapter[] = [
     {
@@ -47,32 +32,32 @@ export default function VideoChapterStage() {
       title: 'First Light',
       timecode: '0:00',
       location: 'Patan Double-Ikat Loom',
-      image: PRIYA_EDITORIAL_MODEL.images['gujarati'],
-      videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-red-silk-fabric-waving-in-the-wind-41914-large.mp4',
+      image: '/collections/models/regional-model-02.jpg',
+      imagePosition: 'center 24%',
     },
     {
       id: 'courtyard-air',
       title: 'Courtyard Air',
       timecode: '0:48',
       location: 'Mehrangarh Fort Courtyard',
-      image: PRIYA_EDITORIAL_MODEL.images['jodhpuri'],
-      videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-red-silk-fabric-waving-in-the-wind-41914-large.mp4',
+      image: '/collections/models/regional-model-03.jpg',
+      imagePosition: 'center 28%',
     },
     {
       id: 'wedding-circle',
       title: 'Wedding Circle',
       timecode: '1:32',
       location: 'Varanasi Ghats Mandap',
-      image: PRIYA_EDITORIAL_MODEL.images['banarasi'],
-      videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-red-silk-fabric-waving-in-the-wind-41914-large.mp4',
+      image: '/collections/models/regional-model-07.jpg',
+      imagePosition: 'center 20%',
     },
     {
       id: 'temple-steps',
       title: 'Temple Steps',
       timecode: '2:15',
       location: 'Kanchipuram Gopuram Sanctum',
-      image: PRIYA_EDITORIAL_MODEL.images['kanchipuram'],
-      videoSrc: 'https://assets.mixkit.co/videos/preview/mixkit-red-silk-fabric-waving-in-the-wind-41914-large.mp4',
+      image: '/collections/models/regional-model-09.jpg',
+      imagePosition: 'center 24%',
     },
   ];
 
@@ -97,20 +82,22 @@ export default function VideoChapterStage() {
   return (
     <section id="video-chapter-stage" className="relative w-full h-[85vh] min-h-[560px] bg-[#2B070E] overflow-hidden select-none flex flex-col justify-between p-6 sm:p-12">
       
-      {/* Background Video Stream Layer with Poster */}
+      {/* Animated model portrait */}
       <div className="absolute inset-0 z-0">
-        <video
-          ref={videoRef}
+        <img
           key={currentChapter.id}
-          loop
-          muted={isMuted}
-          playsInline
-          poster={currentChapter.image}
-          className="w-full h-full object-cover scale-105 transition-all duration-1000 ease-out"
-        >
-          <source src={currentChapter.videoSrc} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-[#2B070E]/70 backdrop-blur-[2px]" />
+          src={currentChapter.image}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full scale-105 object-cover transition-opacity duration-700"
+          style={{ objectPosition: currentChapter.imagePosition }}
+          onError={(e) => {
+            const image = e.currentTarget;
+            image.onerror = null;
+            image.src = '/collections/models/model_saffron_yellow.jpg';
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#210C12]/70 via-[#2B070E]/30 to-[#210C12]/75" />
       </div>
 
       {/* Top Header Row */}
@@ -144,17 +131,6 @@ export default function VideoChapterStage() {
             {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 fill-current" />}
           </button>
 
-          {/* Mute/Unmute Toggle */}
-          <button
-            type="button"
-            onClick={() => setIsMuted(!isMuted)}
-            aria-label={isMuted ? 'Unmute video audio' : 'Mute video audio'}
-            aria-pressed={!isMuted}
-            className="p-2.5 rounded-full bg-[#FAF7F2]/20 hover:bg-[#FAF7F2] text-[#FAF7F2] hover:text-[#2B070E] backdrop-blur-md border border-[#FAF7F2]/30 font-sans transition-all active:scale-95 shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
-          >
-            {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
-          </button>
-
           {/* Watch Full Film Modal Trigger */}
           <button
             type="button"
@@ -162,7 +138,7 @@ export default function VideoChapterStage() {
             className="px-5 py-2.5 rounded-full bg-[#FAF7F2]/20 hover:bg-[#FAF7F2] text-[#FAF7F2] hover:text-[#2B070E] backdrop-blur-md border border-[#FAF7F2]/30 font-sans text-xs uppercase tracking-widest font-semibold transition-all flex items-center gap-2 active:scale-95 shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37]"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
-            <span>WATCH FILM</span>
+            <span>MODEL PORTRAIT</span>
           </button>
         </div>
       </div>
@@ -194,24 +170,16 @@ export default function VideoChapterStage() {
             const isActive = activeChapterIndex === idx;
 
             return (
-              <div
+              <button
                 key={ch.id}
-                role="button"
-                tabIndex={0}
+                type="button"
                 aria-label={`Select chapter ${ch.title} (${ch.location})`}
                 aria-pressed={isActive}
                 onClick={() => {
                   setActiveChapterIndex(idx);
                   setProgress(0);
                 }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setActiveChapterIndex(idx);
-                    setProgress(0);
-                  }
-                }}
-                className={`p-2.5 rounded-xl backdrop-blur-md cursor-pointer transition-all border flex items-center gap-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37] ${
+                className={`min-h-11 p-2.5 rounded-xl backdrop-blur-md cursor-pointer transition-all border flex items-center gap-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#D4AF37] ${
                   isActive
                     ? 'bg-[#FAF7F2]/25 border-[#D4AF37] shadow-lg'
                     : 'bg-black/30 border-[#FAF7F2]/15 hover:bg-black/40'
@@ -219,8 +187,13 @@ export default function VideoChapterStage() {
               >
                 <img
                   src={ch.image}
-                  alt={`Muse Priya in artisan video chapter: ${ch.title}`}
+                  alt={`Illustrative model reference for ${ch.title}`}
                   className="w-10 h-10 object-cover object-top rounded-lg flex-shrink-0"
+                  onError={(e) => {
+                    const image = e.currentTarget;
+                    image.onerror = null;
+                    image.src = '/collections/models/model_saffron_yellow.jpg';
+                  }}
                 />
                 <div className="min-w-0 text-left">
                   <span className="text-[9px] font-sans font-bold text-[#E6B83A] block">
@@ -230,7 +203,7 @@ export default function VideoChapterStage() {
                     {ch.title}
                   </p>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>

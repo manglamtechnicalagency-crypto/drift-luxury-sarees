@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { ALL_SAREES, ALL_STATE_METAS } from '@/data/collections/registry';
 import { SareeProduct, StateSlug } from '@/data/collections/types';
-import { PRIYA_EDITORIAL_MODEL, RELATABLE_SAREE_MODELS } from '@/data/collections/colorways';
+import { getSareeModelImage, PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
 import { useStore } from '@/store/useStore';
 import { ChevronLeft, ChevronRight, Eye, Sparkles } from 'lucide-react';
 
@@ -184,20 +184,29 @@ export default function CurvedArcCarousel() {
 
                 <img
                   src={
-                    saree.images.editorial ||
-                    saree.images.primary ||
-                    RELATABLE_SAREE_MODELS[saree.id]?.model ||
-                    PRIYA_EDITORIAL_MODEL.images[saree.region]
+                    getSareeModelImage(saree)
                   }
-                  alt={`${saree.originState} ${saree.craft} saree`}
-                  className="w-full h-full object-cover select-none group-hover:scale-105 transition-transform duration-700 ease-out"
+                  alt={`Illustrative model image for ${saree.name} design study`}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full select-none object-cover object-top transition-all duration-700 ease-out group-hover:scale-[1.035] group-hover:opacity-0"
                   onError={(e) => {
-                    const fallback = saree.images.primary || saree.images.fallbackPrimary || '/collections/models/priya_banarasi_red.jpg';
-                    if (!e.currentTarget.src.endsWith(fallback)) {
-                      e.currentTarget.src = fallback;
-                    }
+                    const image = e.currentTarget;
+                    if (image.dataset.fallbackUsed) { image.hidden = true; return; }
+                    image.dataset.fallbackUsed = 'true';
+                    image.src = PRIYA_EDITORIAL_MODEL.images[saree.region] || '/collections/models/priya_banarasi_red.jpg';
                   }}
                 />
+
+                <img
+                  src={getSareeModelImage(saree)}
+                  alt={`${saree.name} model wearing a saree`}
+                  loading="lazy"
+                  decoding="async"
+                  className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center opacity-0 transition-all duration-500 group-hover:scale-[1.04] group-hover:opacity-100"
+                  onError={(event) => { event.currentTarget.style.display = 'none'; }}
+                />
+                <span className="pointer-events-none absolute right-3 top-3 z-10 rounded-full bg-black/60 px-2.5 py-1 text-[8px] font-sans uppercase tracking-widest text-white/90 opacity-0 transition-opacity group-hover:opacity-100">Model in saree</span>
 
                 {/* Dark bottom gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2B070E] via-[#2B070E]/30 to-transparent" />
@@ -209,7 +218,7 @@ export default function CurvedArcCarousel() {
                       {(saree.craft || '').replace(/^Craft inspiration:\s*/i, '').split('·')[0].trim()}
                     </span>
                     <span className="text-[8px] uppercase tracking-wider text-[#FAF7F2]/60 shrink-0">
-                      GI Heritage
+                      Model reference
                     </span>
                   </div>
                   <h3 className="font-serif text-lg sm:text-xl text-[#FAF7F2] font-semibold line-clamp-1 group-hover:text-[#E6B83A] transition-colors">
@@ -225,16 +234,16 @@ export default function CurvedArcCarousel() {
                   </div>
                 </div>
 
-                {/* Center Badge with Muse Priya */}
+                {/* Illustrative model reference badge */}
                 {isCenter ? (
                   <div className="absolute top-3 left-3 bg-[#FAF7F2]/90 backdrop-blur-md px-2.5 py-1 rounded-full text-[9px] font-sans font-bold text-[#2B070E] tracking-wider border border-[#D4AF37]/40 shadow-sm flex items-center gap-1.5">
                     <Sparkles size={10} className="text-[#A80F24]" />
-                    <span>Muse Priya · Illustrative reference</span>
+                    <span>Model image · illustrative reference</span>
                   </div>
                 ) : (
                   <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 backdrop-blur-md px-2 py-0.5 rounded-full text-[8px] font-sans uppercase tracking-widest text-[#E6B83A] border border-[#E6B83A]/30 flex items-center gap-1">
                     <Sparkles size={8} className="text-[#E6B83A]" />
-                    <span>Muse Priya</span>
+                    <span>Model image</span>
                   </div>
                 )}
               </div>

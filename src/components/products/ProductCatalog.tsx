@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { ALL_SAREES, ALL_STATE_METAS } from '@/data/collections/registry';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import { SareeProduct, StateSlug } from '@/data/collections/types';
 import { useShop } from '@/context/ShopContext';
 import {
@@ -197,17 +198,15 @@ export default function ProductCatalog() {
                 <div className="relative aspect-[3/4] overflow-hidden bg-black/40 cursor-pointer">
                   {/* Primary Image */}
                   <img
-                    src={saree.images.primary}
-                    alt={`${saree.name} full drape study`}
+                    src={getSareeModelImage(saree)}
+                    alt={`Illustrative model image for ${saree.name} design study`}
                     className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out group-hover:opacity-0"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = saree.images.fallbackPrimary;
-                    }}
+                    onError={(e) => { e.currentTarget.hidden = true; }}
                   />
                   {/* Detail Zoom Image on Hover */}
                   <img
-                    src={saree.images.detail}
-                    alt={`Weave structure and motif detail of ${saree.name}`}
+                    src={getSareeModelImage(saree)}
+                    alt={`Model wearing a saree inspired by ${saree.name}`}
                     className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-in-out"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = saree.images.fallbackDetail;

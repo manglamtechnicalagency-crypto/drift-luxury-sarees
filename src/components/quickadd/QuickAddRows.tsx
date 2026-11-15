@@ -3,13 +3,12 @@
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { ALL_SAREES } from '@/data/collections/registry';
-import { PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import { useStore } from '@/store/useStore';
 import type { SareeProduct } from '@/data/collections/types';
 
 interface CuratedStudyConfig {
   sareeId: string;
-  image: string;
   regionLabel: string;
   craftLabel: string;
 }
@@ -17,19 +16,16 @@ interface CuratedStudyConfig {
 const FEATURED_STUDIES_CONFIG: CuratedStudyConfig[] = [
   {
     sareeId: 'guj-01',
-    image: PRIYA_EDITORIAL_MODEL.images['gujarati'],
     regionLabel: 'Gujarat (Patan)',
     craftLabel: 'Double Ikat Silk',
   },
   {
     sareeId: 'raj-01',
-    image: PRIYA_EDITORIAL_MODEL.images['rajasthani'],
     regionLabel: 'Rajasthan (Jaipur)',
     craftLabel: 'Diagonal Wave Resist',
   },
   {
     sareeId: 'ban-01',
-    image: PRIYA_EDITORIAL_MODEL.images['banarasi'],
     regionLabel: 'Uttar Pradesh (Varanasi)',
     craftLabel: 'Kadwa Brocade Weave',
   },
@@ -38,19 +34,16 @@ const FEATURED_STUDIES_CONFIG: CuratedStudyConfig[] = [
 const REGIONAL_STUDIES_CONFIG: CuratedStudyConfig[] = [
   {
     sareeId: 'kan-01',
-    image: PRIYA_EDITORIAL_MODEL.images['kanchipuram'],
     regionLabel: 'Tamil Nadu (Kanchipuram)',
     craftLabel: 'Three-Shuttle Interlocking',
   },
   {
     sareeId: 'her-01',
-    image: PRIYA_EDITORIAL_MODEL.images['heritage-states'],
     regionLabel: 'Maharashtra (Paithan)',
     craftLabel: 'Asavali Tapestry Brocade',
   },
   {
     sareeId: 'jod-01',
-    image: PRIYA_EDITORIAL_MODEL.images['jodhpuri'],
     regionLabel: 'Rajasthan (Jodhpur)',
     craftLabel: 'Royal Bandhej Tie-Dye',
   },
@@ -75,15 +68,17 @@ function StudyCard({
     <article className="group relative flex flex-col rounded-3xl border border-[#E6DFD5] bg-[#FAF7F2] overflow-hidden shadow-sm transition-all duration-500 hover:border-[#D4AF37] hover:shadow-[0_20px_50px_rgba(212,175,55,0.22)] hover:-translate-y-1.5">
       {/* Visual Header with Curated Image & Floating Glass Badges */}
       <div
-        className="relative aspect-[16/11] sm:aspect-[4/3] w-full overflow-hidden bg-[#2B070E]/5 cursor-pointer"
+        className="relative aspect-[4/5] w-full overflow-hidden bg-[#2B070E] cursor-pointer"
         onClick={open}
       >
         <img
-          src={config.image || saree.images.primary}
-          alt={`${saree.name} - ${saree.originState} design study on model Priya`}
-          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          src={getSareeModelImage(saree)}
+          alt={`Illustrative model reference for ${saree.name} design study`}
+          className="h-full w-full object-cover object-[center_12%] transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           onError={(e) => {
-            (e.target as HTMLImageElement).src = saree.images.fallbackPrimary;
+            const image = e.currentTarget;
+            image.onerror = null;
+            image.src = '/collections/models/model_saffron_yellow.jpg';
           }}
         />
 

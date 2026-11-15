@@ -149,11 +149,11 @@ export default function InfiniteMarqueeAndStates() {
                 {/* Portrait Aspect Container */}
                 <div className="relative aspect-[3/4.6] overflow-hidden">
                   <img
-                    src={PRIYA_EDITORIAL_MODEL.images[state.slug] || state.heroImage}
-                    alt={`Editorial muse Priya draped in authentic ${state.name} handloom saree`}
+                    src={PRIYA_EDITORIAL_MODEL.images[state.slug]}
+                    alt={`Illustrative model reference for the ${state.name} textile design study`}
                     className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700 ease-out"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = state.fallbackHero || state.heroImage;
+                      (e.target as HTMLImageElement).src = PRIYA_EDITORIAL_MODEL.images[state.slug];
                     }}
                   />
 
@@ -186,7 +186,7 @@ export default function InfiniteMarqueeAndStates() {
                       {state.name.split(' ')[0]}
                     </h3>
                     <p className="text-[9px] text-[#FAF7F2]/70 font-sans line-clamp-1 font-light">
-                      Muse Priya · {state.keyWeaves?.[0] || 'Archival Study'}
+                      Model study · {state.keyWeaves?.[0] || 'Textile archive'}
                     </p>
                   </div>
                 </div>

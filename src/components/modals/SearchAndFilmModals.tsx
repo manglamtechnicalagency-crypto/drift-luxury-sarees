@@ -4,9 +4,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useStore } from '@/store/useStore';
 import { ALL_SAREES } from '@/data/collections/registry';
 import { X, Search, Play, ShieldCheck, ArrowRight, Sparkles, Maximize2 } from 'lucide-react';
-import { getSareeColorways, PRIYA_EDITORIAL_MODEL, RELATABLE_SAREE_MODELS } from '@/data/collections/colorways';
+import { getSareeColorways, getSareeModelImage, PRIYA_EDITORIAL_MODEL } from '@/data/collections/colorways';
 import { TextilePattern } from '@/components/products/TextilePalette';
-import VirtualFittingRoom from '@/components/fitting-room/VirtualFittingRoom';
+import { GUJARATI_CRAFT_NOTES } from '@/data/collections/gujarati/context';
 
 export default function SearchAndFilmModals() {
   const {
@@ -15,12 +15,10 @@ export default function SearchAndFilmModals() {
     selectedProductForModal,
     setSelectedProductForModal,
     setActiveStateFilter,
-    openFittingRoom,
   } = useStore();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedColorway, setSelectedColorway] = useState(0);
-  const [quickShopTab, setQuickShopTab] = useState<'overview' | 'fitting'>('overview');
   const [activeGalleryImage, setActiveGalleryImage] = useState<string | null>(null);
   const activeColorways = useMemo(
     () => selectedProductForModal ? getSareeColorways(selectedProductForModal) : [],
@@ -29,9 +27,8 @@ export default function SearchAndFilmModals() {
 
   useEffect(() => {
     setSelectedColorway(0);
-    setQuickShopTab('overview');
     if (selectedProductForModal) {
-      setActiveGalleryImage(RELATABLE_SAREE_MODELS[selectedProductForModal.id]?.model || PRIYA_EDITORIAL_MODEL.images[selectedProductForModal.region] || selectedProductForModal.images.primary);
+      setActiveGalleryImage(getSareeModelImage(selectedProductForModal));
     }
   }, [selectedProductForModal?.id, selectedProductForModal]);
 
@@ -104,11 +101,11 @@ export default function SearchAndFilmModals() {
                     className="w-full flex items-center gap-3.5 p-2.5 rounded-xl hover:bg-[#F4EFE6] cursor-pointer transition-colors border border-transparent hover:border-[#D4AF37]/30 text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#A80F24]"
                   >
                     <img
-                      src={RELATABLE_SAREE_MODELS[saree.id]?.model || saree.images.primary || PRIYA_EDITORIAL_MODEL.images[saree.region]}
-                      alt={`${saree.name} luxury silk saree on muse Priya`}
+                      src={getSareeModelImage(saree)}
+                      alt={`Illustrative model reference for ${saree.name}`}
                       className="w-12 h-14 object-cover object-top rounded-lg flex-shrink-0"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = saree.images.fallbackPrimary || saree.images.primary;
+                        (e.target as HTMLImageElement).src = PRIYA_EDITORIAL_MODEL.images[saree.region];
                       }}
                     />
                     <div className="flex-1 min-w-0">
@@ -155,18 +152,13 @@ export default function SearchAndFilmModals() {
             >
               <X className="w-6 h-6" />
             </button>
-            <video
-              autoPlay
-              controls
-              playsInline
-              className="w-full h-full object-cover"
-              poster="/collections/banarasi/editorial_banner.jpg"
-            >
-              <source
-                src="https://assets.mixkit.co/videos/preview/mixkit-red-silk-fabric-waving-in-the-wind-41914-large.mp4"
-                type="video/mp4"
-              />
-            </video>
+            <img
+              src={PRIYA_EDITORIAL_MODEL.images.banarasi}
+              alt="Female model wearing a Banarasi-inspired saree"
+              className="h-full w-full object-cover object-top motion-safe:animate-[modelPortraitDrift_18s_ease-in-out_infinite_alternate]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2B070E]/70 via-transparent to-black/20" />
+            <p className="absolute bottom-6 left-6 rounded-full border border-[#D4AF37]/40 bg-black/50 px-4 py-2 text-[10px] uppercase tracking-[.2em] text-[#F6E5B5]">DRIFT model portrait · illustrative reference</p>
           </div>
         </div>
       )}
@@ -183,112 +175,72 @@ export default function SearchAndFilmModals() {
               <X className="w-5 h-5" />
             </button>
 
-            {/* Quick Shop Header & Mode Tabs */}
-            <div className="flex items-center gap-2 mb-6 border-b border-[#E6DFD5] pb-3 pr-12">
-              <button
-                type="button"
-                onClick={() => setQuickShopTab('overview')}
-                className={`px-4 py-1.5 rounded-full text-xs font-sans font-bold uppercase tracking-wider transition-all ${
-                  quickShopTab === 'overview'
-                    ? 'bg-[#A80F24] text-white shadow-sm'
-                    : 'bg-[#F4EFE6] text-[#1A1617]/70 hover:bg-[#E6DFD5]'
-                }`}
-                aria-pressed={quickShopTab === 'overview'}
-              >
-                Overview &amp; Specs
-              </button>
-              <button
-                type="button"
-                onClick={() => setQuickShopTab('fitting')}
-                className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-sans font-bold uppercase tracking-wider transition-all ${
-                  quickShopTab === 'fitting'
-                    ? 'bg-[#A80F24] text-white shadow-sm'
-                    : 'bg-[#F4EFE6] text-[#A80F24] hover:bg-[#E6DFD5]'
-                }`}
-                aria-pressed={quickShopTab === 'fitting'}
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Try on Model · Virtual Drape</span>
-              </button>
-            </div>
-
-            {quickShopTab === 'fitting' ? (
-              <div className="space-y-4">
-                <VirtualFittingRoom />
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
                 {/* Product Gallery (5 Cols) */}
                 <div className="md:col-span-5 space-y-3">
                   <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#2B070E] border border-[#E6DFD5] shadow-lg group">
                     <img
-                      src={activeGalleryImage || RELATABLE_SAREE_MODELS[selectedProductForModal.id]?.model || PRIYA_EDITORIAL_MODEL.images[selectedProductForModal.region] || selectedProductForModal.images.primary}
-                      alt={`${selectedProductForModal.name} presentation with muse Priya`}
+                      src={activeGalleryImage || getSareeModelImage(selectedProductForModal)}
+                      alt={`Illustrative model styling reference for ${selectedProductForModal.name}`}
                       className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = selectedProductForModal.images.fallbackPrimary;
+                        (e.target as HTMLImageElement).src = PRIYA_EDITORIAL_MODEL.images[selectedProductForModal.region];
                       }}
                     />
                     <div className="absolute top-2.5 left-2.5 z-10 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md border border-[#E6B83A]/30 text-[#E6B83A] text-[9px] font-sans uppercase tracking-widest font-semibold">
                       <Sparkles className="w-3 h-3 text-[#E6B83A]" />
-                      <span>Muse Priya Drape</span>
+                      <span>Model image · illustrative reference</span>
                     </div>
                   </div>
                   <div className="grid grid-cols-4 gap-2">
                     <button
                       type="button"
-                      onClick={() => setActiveGalleryImage(RELATABLE_SAREE_MODELS[selectedProductForModal.id]?.model || PRIYA_EDITORIAL_MODEL.images[selectedProductForModal.region])}
+                      onClick={() => setActiveGalleryImage(getSareeModelImage(selectedProductForModal))}
                       className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                        activeGalleryImage === (RELATABLE_SAREE_MODELS[selectedProductForModal.id]?.model || PRIYA_EDITORIAL_MODEL.images[selectedProductForModal.region]) ? 'border-[#A80F24] ring-2 ring-[#A80F24]/30' : 'border-[#E6DFD5] opacity-75 hover:opacity-100'
+                        activeGalleryImage === getSareeModelImage(selectedProductForModal) ? 'border-[#A80F24] ring-2 ring-[#A80F24]/30' : 'border-[#E6DFD5] opacity-75 hover:opacity-100'
                       }`}
-                      title="Muse Priya Drape View"
+                      title="Illustrative model reference"
                     >
                       <img
-                        src={RELATABLE_SAREE_MODELS[selectedProductForModal.id]?.model || PRIYA_EDITORIAL_MODEL.images[selectedProductForModal.region]}
-                        alt="Muse Priya drape"
+                        src={activeGalleryImage || getSareeModelImage(selectedProductForModal)}
+                        alt="Illustrative model reference"
                         className="w-full h-full object-cover object-top"
                       />
                     </button>
                     <button
                       type="button"
-                      onClick={() => setActiveGalleryImage(selectedProductForModal.images.primary)}
-                      className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                        activeGalleryImage === selectedProductForModal.images.primary ? 'border-[#A80F24] ring-2 ring-[#A80F24]/30' : 'border-[#E6DFD5] opacity-75 hover:opacity-100'
-                      }`}
-                      title="Full Saree Drape"
+                      onClick={() => setActiveGalleryImage(PRIYA_EDITORIAL_MODEL.images[selectedProductForModal.region])}
+                      className="relative aspect-square rounded-lg overflow-hidden border-2 border-[#E6DFD5] opacity-75 hover:opacity-100 transition-all"
+                      title="Regional model reference"
                     >
                       <img
-                        src={selectedProductForModal.images.primary}
-                        alt="Primary drape"
-                        className="w-full h-full object-cover"
+                        src={PRIYA_EDITORIAL_MODEL.images[selectedProductForModal.region]}
+                        alt="Model wearing a saree"
+                        className="w-full h-full object-cover object-top"
                       />
                     </button>
                     <button
                       type="button"
-                      onClick={() => setActiveGalleryImage(selectedProductForModal.images.detail)}
-                      className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                        activeGalleryImage === selectedProductForModal.images.detail ? 'border-[#A80F24] ring-2 ring-[#A80F24]/30' : 'border-[#E6DFD5] opacity-75 hover:opacity-100'
-                      }`}
-                      title="Weave Detail"
+                      onClick={() => setActiveGalleryImage('/collections/models/model_royal_chandan.jpg')}
+                      className="relative aspect-square rounded-lg overflow-hidden border-2 border-[#E6DFD5] opacity-75 hover:opacity-100 transition-all"
+                      title="Saree model portrait"
                     >
                       <img
-                        src={selectedProductForModal.images.detail}
-                        alt="Textile detail"
-                        className="w-full h-full object-cover"
+                        src="/collections/models/model_royal_chandan.jpg"
+                        alt="Female model wearing a saree"
+                        className="w-full h-full object-cover object-top"
                       />
                     </button>
                     <button
                       type="button"
-                      onClick={() => setActiveGalleryImage(selectedProductForModal.images.pallu)}
-                      className={`relative aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                        activeGalleryImage === selectedProductForModal.images.pallu ? 'border-[#A80F24] ring-2 ring-[#A80F24]/30' : 'border-[#E6DFD5] opacity-75 hover:opacity-100'
-                      }`}
-                      title="Pallu Motifs"
+                      onClick={() => setActiveGalleryImage('/collections/models/model_saffron_yellow.jpg')}
+                      className="relative aspect-square rounded-lg overflow-hidden border-2 border-[#E6DFD5] opacity-75 hover:opacity-100 transition-all"
+                      title="Saree model portrait"
                     >
                       <img
-                        src={selectedProductForModal.images.pallu}
-                        alt="Handcrafted pallu"
-                        className="w-full h-full object-cover"
+                        src="/collections/models/model_saffron_yellow.jpg"
+                        alt="Female model wearing a saree"
+                        className="w-full h-full object-cover object-top"
                       />
                     </button>
                   </div>
@@ -354,21 +306,25 @@ export default function SearchAndFilmModals() {
                     {selectedProductForModal.description}
                   </p>
 
+                  {(GUJARATI_CRAFT_NOTES[selectedProductForModal.id] || selectedProductForModal.culturalContext) && (
+                    <section className="rounded-2xl border border-[#D4AF37]/35 bg-[#F4EFE6] p-4" aria-labelledby="cultural-context-heading">
+                      <p className="text-[9px] font-bold uppercase tracking-[.2em] text-[#A80F24]">Regional textile notes</p>
+                      <h4 id="cultural-context-heading" className="mt-1 font-serif text-lg text-[#1A1617]">{GUJARATI_CRAFT_NOTES[selectedProductForModal.id]?.title || selectedProductForModal.craft}</h4>
+                      <p className="mt-1.5 text-xs leading-relaxed text-[#1A1617]/70">{selectedProductForModal.culturalContext || GUJARATI_CRAFT_NOTES[selectedProductForModal.id]?.body}</p>
+                      {GUJARATI_CRAFT_NOTES[selectedProductForModal.id]?.source && (
+                        <a href={GUJARATI_CRAFT_NOTES[selectedProductForModal.id].source.url} target="_blank" rel="noreferrer" className="mt-2 inline-flex text-[10px] font-semibold uppercase tracking-[.12em] text-[#8E1B31] underline decoration-[#8E1B31]/35 underline-offset-4 hover:decoration-[#8E1B31]">
+                          Read craft reference · {GUJARATI_CRAFT_NOTES[selectedProductForModal.id].source.label}
+                        </a>
+                      )}
+                    </section>
+                  )}
+
                   <p className="rounded-xl border border-[#D4AF37]/40 bg-[#F4EFE6] px-4 py-3 text-xs leading-relaxed text-[#1A1617]/75">
                     Editorial design study only. This is not a verified seller listing; product imagery, materials, price and availability need confirmation.
                   </p>
 
-                  {/* Actions: Try on Model button & Browse regional edit */}
+                  {/* Browse regional edit */}
                   <div className="pt-1 space-y-2">
-                    <button
-                      type="button"
-                      onClick={() => openFittingRoom(selectedProductForModal)}
-                      className="w-full py-3.5 rounded-full bg-[#1A1617] hover:bg-[#2B070E] text-[#FAF7F2] font-sans font-bold text-xs uppercase tracking-[0.2em] shadow-lg transition-all flex items-center justify-center gap-2 border border-[#D4AF37]/40 active:scale-95"
-                    >
-                      <Sparkles className="w-4 h-4 text-[#E6B83A]" />
-                      <span>Launch Full Fitting Room Atelier</span>
-                    </button>
-
                     <button
                       onClick={() => {
                         setActiveStateFilter(selectedProductForModal.region);
@@ -387,24 +343,10 @@ export default function SearchAndFilmModals() {
                 </div>
 
               </div>
-            )}
           </div>
         </div>
       )}
 
-      {/* 4. DEDICATED VIRTUAL FITTING ROOM MODAL */}
-      {activeModal === 'fitting-room' && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="DRIFT Virtual Model Fitting Room Atelier"
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-2 sm:p-6 overflow-y-auto animate-in fade-in"
-        >
-          <div className="relative w-full max-w-7xl max-h-[96vh] overflow-y-auto my-auto">
-            <VirtualFittingRoom isModal onClose={() => setActiveModal('none')} />
-          </div>
-        </div>
-      )}
     </>
   );
 }

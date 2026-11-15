@@ -418,5 +418,109 @@ export const rajasthaniSarees: SareeProduct[] = [
     "reviewsCount": 0,
     "isAvailable": false,
     "stockCount": 0
+  },
+  {
+    "id": "raj-09",
+    "name": "Jaipur Panchranga Mothda Wave Study",
+    "title": "DRIFT design concept — Jaipur Panchranga Mothda Wave Study",
+    "slug": "raj-09-jaipur-panchranga-mothda-wave-study",
+    "region": "rajasthani",
+    "craft": "Mothda Leheriya-inspired double-tie color study",
+    "originState": "Design reference: Jaipur, Rajasthan; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Mothda Leheriya-inspired double-tie color study. A visual study of Rajasthan’s wave and knot-resist vocabulary. Mothda pairs intersecting wave directions; this concept translates that rhythm into a vivid festive palette. The image is an editorial model reference, and the exact weave, fibre and making location are unverified.",
+    "story": "A visual study of Rajasthan’s wave and knot-resist vocabulary. Mothda pairs intersecting wave directions; this concept translates that rhythm into a vivid festive palette. The image is an editorial model reference, and the exact weave, fibre and making location are unverified.",
+    "color": "Saffron, indigo and ivory",
+    "colorHex": "#9A1538",
+    "palette": [
+      "#9A1538",
+      "#137C72",
+      "#D6AA40",
+      "#EEE3CC"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-01.jpg",
+      "detail": "/collections/models/regional-model-01.jpg",
+      "editorial": "/collections/models/regional-model-01.jpg",
+      "pallu": "/collections/models/regional-model-01.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-01.jpg",
+      "fallbackDetail": "/collections/models/regional-model-01.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-01.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Mothda-inspired paired resist-dye pattern with a stepped zari-color border",
+      "palluDetails": "Mothda-inspired paired resist-dye pattern with a stepped zari-color border",
+      "motifs": [
+        "Mothda-inspired paired resist-dye pattern with a stepped zari-color border",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "A visual study of Rajasthan’s wave and knot-resist vocabulary. Mothda pairs intersecting wave directions; this concept translates that rhythm into a vivid festive palette. The image is an editorial model reference, and the exact weave, fibre and making location are unverified."
+  },
+  {
+    "id": "raj-10",
+    "name": "Kota Khat Gossamer Grid Study",
+    "title": "DRIFT design concept — Kota Khat Gossamer Grid Study",
+    "slug": "raj-10-kota-khat-gossamer-grid-study",
+    "region": "rajasthani",
+    "craft": "Kota Doria-inspired square-check study",
+    "originState": "Design reference: Kaithoon, Kota, Rajasthan; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Kota Doria-inspired square-check study. Kota Doria is associated with fine square khat checks and weaving around Kaithoon. This design study interprets that airy grid in a contemporary teal palette; the pictured garment is illustrative and is not authenticated Kota Doria.",
+    "story": "Kota Doria is associated with fine square khat checks and weaving around Kaithoon. This design study interprets that airy grid in a contemporary teal palette; the pictured garment is illustrative and is not authenticated Kota Doria.",
+    "color": "Peacock teal and rosewood",
+    "colorHex": "#273E73",
+    "palette": [
+      "#273E73",
+      "#B13A55",
+      "#C4A05D",
+      "#F2E8D8"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-02.jpg",
+      "detail": "/collections/models/regional-model-02.jpg",
+      "editorial": "/collections/models/regional-model-02.jpg",
+      "pallu": "/collections/models/regional-model-02.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-02.jpg",
+      "fallbackDetail": "/collections/models/regional-model-02.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-02.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Khat-inspired fine checks and a light-toned contrast edge",
+      "palluDetails": "Khat-inspired fine checks and a light-toned contrast edge",
+      "motifs": [
+        "Khat-inspired fine checks and a light-toned contrast edge",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "Kota Doria is associated with fine square khat checks and weaving around Kaithoon. This design study interprets that airy grid in a contemporary teal palette; the pictured garment is illustrative and is not authenticated Kota Doria."
   }
 ];

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import { useShop } from '@/context/ShopContext';
 import confetti from 'canvas-confetti';
 import {
@@ -87,11 +88,11 @@ export default function CartDrawer() {
                   className="bg-drift-dark/80 rounded-xl p-3.5 border border-drift-border/70 flex gap-3.5 relative"
                 >
                   <img
-                    src={item.saree.images.primary}
-                    alt={`${item.saree.name} in cart`}
+                    src={getSareeModelImage(item.saree)}
+                    alt={`Illustrative model reference for ${item.saree.name}`}
                     className="w-20 h-24 object-cover rounded-lg flex-shrink-0"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = item.saree.images.fallbackPrimary;
+                      (e.target as HTMLImageElement).src = getSareeModelImage(item.saree);
                     }}
                   />
                   <div className="flex-1 flex flex-col justify-between">

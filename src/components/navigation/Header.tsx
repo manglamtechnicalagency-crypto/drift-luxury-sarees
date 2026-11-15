@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useShop, Currency } from '@/context/ShopContext';
 import { StateSlug } from '@/data/collections/types';
 import { ALL_STATE_METAS, ALL_SAREES } from '@/data/collections/registry';
+import { getSareeModelImage } from '@/data/collections/colorways';
 import {
   ShoppingBag,
   Heart,
@@ -340,7 +341,7 @@ export default function Header() {
                     className="flex items-center gap-3 p-2 rounded hover:bg-white/5 cursor-pointer transition-colors border border-transparent hover:border-drift-gold/30"
                   >
                     <img
-                      src={saree.images.primary}
+                      src={getSareeModelImage(saree)}
                       alt={`${saree.name} saree preview`}
                       className="w-12 h-14 object-cover rounded"
                     />

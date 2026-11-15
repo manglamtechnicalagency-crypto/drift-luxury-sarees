@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ALL_STATE_METAS } from '@/data/collections/registry';
 import { StateCollection, StateSlug } from '@/data/collections/types';
 import { useShop } from '@/context/ShopContext';
+import { getRegionalModelImage } from '@/data/collections/colorways';
 import { ArrowRight, Sparkles, Award, Clock } from 'lucide-react';
 
 export default function RegionalExplorer() {
@@ -79,12 +80,11 @@ export default function RegionalExplorer() {
           {/* Left Column: Visual Editorial Imagery */}
           <div className="lg:col-span-5 relative min-h-[360px] lg:min-h-[460px] overflow-hidden group">
             <img
-              src={activeMeta.heroImage}
-              alt={`Handloom textile heritage and artisanal culture of ${activeMeta.name}`}
+              src={getRegionalModelImage(activeMeta.slug)}
+              alt={`Female model wearing a saree inspired by ${activeMeta.name}`}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               onError={(e) => {
-                // Fallback to verified remote CDN
-                (e.target as HTMLImageElement).src = activeMeta.fallbackHero;
+                (e.target as HTMLImageElement).src = '/collections/models/priya_gujarati_patola.jpg';
               }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-drift-dark via-drift-dark/40 to-transparent" />

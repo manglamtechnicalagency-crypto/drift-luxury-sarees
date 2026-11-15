@@ -400,5 +400,109 @@ export const kanchipuramSarees: SareeProduct[] = [
     "reviewsCount": 0,
     "isAvailable": false,
     "stockCount": 0
+  },
+  {
+    "id": "kan-09",
+    "name": "Kanchi Korvai Temple Border Study",
+    "title": "DRIFT design concept — Kanchi Korvai Temple Border Study",
+    "slug": "kan-09-kanchi-korvai-temple-border-study",
+    "region": "kanchipuram",
+    "craft": "Kanchipuram Korvai-inspired contrast-border concept",
+    "originState": "Design reference: Kanchipuram, Tamil Nadu; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Kanchipuram Korvai-inspired contrast-border concept. Kanchipuram silk is known for its distinctive contrast borders and interlocked Korvai vocabulary. This is a color and styling study only; silk quality, Korvai construction and origin are not authenticated.",
+    "story": "Kanchipuram silk is known for its distinctive contrast borders and interlocked Korvai vocabulary. This is a color and styling study only; silk quality, Korvai construction and origin are not authenticated.",
+    "color": "Peacock blue, vermilion and gold",
+    "colorHex": "#9A1538",
+    "palette": [
+      "#9A1538",
+      "#137C72",
+      "#D6AA40",
+      "#EEE3CC"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-07.jpg",
+      "detail": "/collections/models/regional-model-07.jpg",
+      "editorial": "/collections/models/regional-model-07.jpg",
+      "pallu": "/collections/models/regional-model-07.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-07.jpg",
+      "fallbackDetail": "/collections/models/regional-model-07.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-07.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Korvai-inspired sharply contrasted border and temple-step motif",
+      "palluDetails": "Korvai-inspired sharply contrasted border and temple-step motif",
+      "motifs": [
+        "Korvai-inspired sharply contrasted border and temple-step motif",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "Kanchipuram silk is known for its distinctive contrast borders and interlocked Korvai vocabulary. This is a color and styling study only; silk quality, Korvai construction and origin are not authenticated."
+  },
+  {
+    "id": "kan-10",
+    "name": "Madurai Sungudi Dot Drape Study",
+    "title": "DRIFT design concept — Madurai Sungudi Dot Drape Study",
+    "slug": "kan-10-madurai-sungudi-dot-drape-study",
+    "region": "kanchipuram",
+    "craft": "Sungudi-inspired resist-dot styling concept",
+    "originState": "Design reference: Madurai, Tamil Nadu; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Sungudi-inspired resist-dot styling concept. Madurai Sungudi is associated with resist-dyed dotted patterns. This concept brings that dotted rhythm into a saree styling direction; the pictured textile is illustrative and is not verified Sungudi.",
+    "story": "Madurai Sungudi is associated with resist-dyed dotted patterns. This concept brings that dotted rhythm into a saree styling direction; the pictured textile is illustrative and is not verified Sungudi.",
+    "color": "Turmeric yellow, maroon and ivory",
+    "colorHex": "#273E73",
+    "palette": [
+      "#273E73",
+      "#B13A55",
+      "#C4A05D",
+      "#F2E8D8"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-08.jpg",
+      "detail": "/collections/models/regional-model-08.jpg",
+      "editorial": "/collections/models/regional-model-08.jpg",
+      "pallu": "/collections/models/regional-model-08.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-08.jpg",
+      "fallbackDetail": "/collections/models/regional-model-08.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-08.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Sungudi-inspired dotted field with a clean contrast border",
+      "palluDetails": "Sungudi-inspired dotted field with a clean contrast border",
+      "motifs": [
+        "Sungudi-inspired dotted field with a clean contrast border",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "Madurai Sungudi is associated with resist-dyed dotted patterns. This concept brings that dotted rhythm into a saree styling direction; the pictured textile is illustrative and is not verified Sungudi."
   }
 ];

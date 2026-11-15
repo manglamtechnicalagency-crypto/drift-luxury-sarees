@@ -408,5 +408,109 @@ export const jodhpuriSarees: SareeProduct[] = [
     "reviewsCount": 0,
     "isAvailable": false,
     "stockCount": 0
+  },
+  {
+    "id": "jod-09",
+    "name": "Marwar Barik Bandhej Jewel Study",
+    "title": "DRIFT design concept — Marwar Barik Bandhej Jewel Study",
+    "slug": "jod-09-marwar-barik-bandhej-jewel-study",
+    "region": "jodhpuri",
+    "craft": "Jodhpur Bandhej-inspired micro-knot palette study",
+    "originState": "Design reference: Jodhpur, Rajasthan; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Jodhpur Bandhej-inspired micro-knot palette study. A Marwar-focused interpretation of bandhej’s resist-dyed dot vocabulary, styled with a deep jewel palette. The model photograph is illustrative; knotting, origin and materials are not verified.",
+    "story": "A Marwar-focused interpretation of bandhej’s resist-dyed dot vocabulary, styled with a deep jewel palette. The model photograph is illustrative; knotting, origin and materials are not verified.",
+    "color": "Lac red, emerald and antique gold",
+    "colorHex": "#9A1538",
+    "palette": [
+      "#9A1538",
+      "#137C72",
+      "#D6AA40",
+      "#EEE3CC"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-03.jpg",
+      "detail": "/collections/models/regional-model-03.jpg",
+      "editorial": "/collections/models/regional-model-03.jpg",
+      "pallu": "/collections/models/regional-model-03.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-03.jpg",
+      "fallbackDetail": "/collections/models/regional-model-03.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-03.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Bandhej-inspired dotted field with a contrasting pallu concept",
+      "palluDetails": "Bandhej-inspired dotted field with a contrasting pallu concept",
+      "motifs": [
+        "Bandhej-inspired dotted field with a contrasting pallu concept",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "A Marwar-focused interpretation of bandhej’s resist-dyed dot vocabulary, styled with a deep jewel palette. The model photograph is illustrative; knotting, origin and materials are not verified."
+  },
+  {
+    "id": "jod-10",
+    "name": "Rajwadi Poshak Zardozi Study",
+    "title": "DRIFT design concept — Rajwadi Poshak Zardozi Study",
+    "slug": "jod-10-rajwadi-poshak-zardozi-study",
+    "region": "jodhpuri",
+    "craft": "Marwar ceremonial zardozi-inspired drape study",
+    "originState": "Design reference: Marwar, Rajasthan; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Marwar ceremonial zardozi-inspired drape study. A ceremonial styling reference drawing on Marwar poshak silhouettes and the visual language of metal-thread embroidery. It does not claim hand zardozi, a specific workshop, or a verified regional garment.",
+    "story": "A ceremonial styling reference drawing on Marwar poshak silhouettes and the visual language of metal-thread embroidery. It does not claim hand zardozi, a specific workshop, or a verified regional garment.",
+    "color": "Midnight plum and old rose",
+    "colorHex": "#273E73",
+    "palette": [
+      "#273E73",
+      "#B13A55",
+      "#C4A05D",
+      "#F2E8D8"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-04.jpg",
+      "detail": "/collections/models/regional-model-04.jpg",
+      "editorial": "/collections/models/regional-model-04.jpg",
+      "pallu": "/collections/models/regional-model-04.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-04.jpg",
+      "fallbackDetail": "/collections/models/regional-model-04.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-04.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Poshak-inspired layered border with a dabka-style line motif",
+      "palluDetails": "Poshak-inspired layered border with a dabka-style line motif",
+      "motifs": [
+        "Poshak-inspired layered border with a dabka-style line motif",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "A ceremonial styling reference drawing on Marwar poshak silhouettes and the visual language of metal-thread embroidery. It does not claim hand zardozi, a specific workshop, or a verified regional garment."
   }
 ];

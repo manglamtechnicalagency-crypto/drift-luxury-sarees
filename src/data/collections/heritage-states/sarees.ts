@@ -411,5 +411,109 @@ export const heritagestatesSarees: SareeProduct[] = [
     "reviewsCount": 0,
     "isAvailable": false,
     "stockCount": 0
+  },
+  {
+    "id": "her-09",
+    "name": "Paithan Peacock Pallu Study",
+    "title": "DRIFT design concept — Paithan Peacock Pallu Study",
+    "slug": "her-09-paithan-peacock-pallu-study",
+    "region": "heritage-states",
+    "craft": "Paithani-inspired peacock pallu color study",
+    "originState": "Design reference: Paithan, Maharashtra; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Paithani-inspired peacock pallu color study. Paithani’s historic vocabulary includes richly figured borders and peacock motifs. This concept references that visual language; it is not a verified Paithani weave or a claim of Paithan production.",
+    "story": "Paithani’s historic vocabulary includes richly figured borders and peacock motifs. This concept references that visual language; it is not a verified Paithani weave or a claim of Paithan production.",
+    "color": "Peacock teal, magenta and gold",
+    "colorHex": "#9A1538",
+    "palette": [
+      "#9A1538",
+      "#137C72",
+      "#D6AA40",
+      "#EEE3CC"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-09.jpg",
+      "detail": "/collections/models/regional-model-09.jpg",
+      "editorial": "/collections/models/regional-model-09.jpg",
+      "pallu": "/collections/models/regional-model-09.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-09.jpg",
+      "fallbackDetail": "/collections/models/regional-model-09.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-09.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Paithani-inspired peacock pallu and figured border composition",
+      "palluDetails": "Paithani-inspired peacock pallu and figured border composition",
+      "motifs": [
+        "Paithani-inspired peacock pallu and figured border composition",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "Paithani’s historic vocabulary includes richly figured borders and peacock motifs. This concept references that visual language; it is not a verified Paithani weave or a claim of Paithan production."
+  },
+  {
+    "id": "her-10",
+    "name": "Narayan Peth Border & Butti Study",
+    "title": "DRIFT design concept — Narayan Peth Border & Butti Study",
+    "slug": "her-10-narayan-peth-border-butti-study",
+    "region": "heritage-states",
+    "craft": "Narayan Peth-inspired traditional border concept",
+    "originState": "Design reference: Solapur district, Maharashtra; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Narayan Peth-inspired traditional border concept. A Maharashtra textile design reference inspired by the contrast borders and butti vocabulary associated with Narayan Peth sarees around Solapur. This local design reference is distinct from Narayanpet Handloom Sarees, the separately registered Telangana GI. The image is a styling concept; weave, fibre and local provenance remain unverified.",
+    "story": "A Maharashtra textile design reference inspired by the contrast borders and butti vocabulary associated with Narayan Peth sarees around Solapur. This local design reference is distinct from Narayanpet Handloom Sarees, the separately registered Telangana GI. The image is a styling concept; weave, fibre and local provenance remain unverified.",
+    "color": "Ruby, parrot green and gold",
+    "colorHex": "#273E73",
+    "palette": [
+      "#273E73",
+      "#B13A55",
+      "#C4A05D",
+      "#F2E8D8"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-10.jpg",
+      "detail": "/collections/models/regional-model-10.jpg",
+      "editorial": "/collections/models/regional-model-10.jpg",
+      "pallu": "/collections/models/regional-model-10.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-10.jpg",
+      "fallbackDetail": "/collections/models/regional-model-10.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-10.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Narayan Peth-inspired contrast border and small butti field",
+      "palluDetails": "Narayan Peth-inspired contrast border and small butti field",
+      "motifs": [
+        "Narayan Peth-inspired contrast border and small butti field",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "A Maharashtra textile design reference inspired by the contrast borders and butti vocabulary associated with Narayan Peth sarees around Solapur. This local design reference is distinct from Narayanpet Handloom Sarees, the separately registered Telangana GI. The image is a styling concept; weave, fibre and local provenance remain unverified."
   }
 ];

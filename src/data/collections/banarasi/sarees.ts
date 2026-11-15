@@ -417,5 +417,109 @@ export const banarasiSarees: SareeProduct[] = [
     "reviewsCount": 0,
     "isAvailable": false,
     "stockCount": 0
+  },
+  {
+    "id": "ban-09",
+    "name": "Kashi Jangla Vine Brocade Study",
+    "title": "DRIFT design concept — Kashi Jangla Vine Brocade Study",
+    "slug": "ban-09-kashi-jangla-vine-brocade-study",
+    "region": "banarasi",
+    "craft": "Jangla-inspired all-over vine composition",
+    "originState": "Design reference: Varanasi, Uttar Pradesh; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Jangla-inspired all-over vine composition. Jangla is a recognized Banaras brocade design vocabulary associated with scrolling vegetation. This concept reimagines the vine composition for an editorial model look; actual brocade technique and zari are unverified.",
+    "story": "Jangla is a recognized Banaras brocade design vocabulary associated with scrolling vegetation. This concept reimagines the vine composition for an editorial model look; actual brocade technique and zari are unverified.",
+    "color": "Kashi red, leaf green and gold",
+    "colorHex": "#9A1538",
+    "palette": [
+      "#9A1538",
+      "#137C72",
+      "#D6AA40",
+      "#EEE3CC"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-05.jpg",
+      "detail": "/collections/models/regional-model-05.jpg",
+      "editorial": "/collections/models/regional-model-05.jpg",
+      "pallu": "/collections/models/regional-model-05.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-05.jpg",
+      "fallbackDetail": "/collections/models/regional-model-05.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-05.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Jangla-inspired scrolling floral jaal with a dense pallu concept",
+      "palluDetails": "Jangla-inspired scrolling floral jaal with a dense pallu concept",
+      "motifs": [
+        "Jangla-inspired scrolling floral jaal with a dense pallu concept",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "Jangla is a recognized Banaras brocade design vocabulary associated with scrolling vegetation. This concept reimagines the vine composition for an editorial model look; actual brocade technique and zari are unverified."
+  },
+  {
+    "id": "ban-10",
+    "name": "Kashi Tanchoi Jewel Satin Study",
+    "title": "DRIFT design concept — Kashi Tanchoi Jewel Satin Study",
+    "slug": "ban-10-kashi-tanchoi-jewel-satin-study",
+    "region": "banarasi",
+    "craft": "Tanchoi-inspired figured silk concept",
+    "originState": "Design reference: Varanasi, Uttar Pradesh; maker and production origin unverified",
+    "price": 0,
+    "priceDisplay": "Price on request",
+    "fabric": "Fibre content and sourcing to be confirmed",
+    "zariType": "Zari or metallic content unverified",
+    "weaveTime": "Production method and lead time to be confirmed",
+    "provenance": "Cultural reference only; no maker, workshop, GI status or production origin verified for this concept.",
+    "trendingBadge": "Illustrative design study",
+    "description": "Tanchoi-inspired figured silk concept. A Varanasi design reference for the richly figured surface associated with Tanchoi. The catalog image is an illustrative model styling reference; weave structure, silk content and production origin need supplier verification.",
+    "story": "A Varanasi design reference for the richly figured surface associated with Tanchoi. The catalog image is an illustrative model styling reference; weave structure, silk content and production origin need supplier verification.",
+    "color": "Indigo, magenta and muted gold",
+    "colorHex": "#273E73",
+    "palette": [
+      "#273E73",
+      "#B13A55",
+      "#C4A05D",
+      "#F2E8D8"
+    ],
+    "drapeStyle": "Illustrative styling concept; drape construction not verified",
+    "images": {
+      "primary": "/collections/models/regional-model-06.jpg",
+      "detail": "/collections/models/regional-model-06.jpg",
+      "editorial": "/collections/models/regional-model-06.jpg",
+      "pallu": "/collections/models/regional-model-06.jpg",
+      "fallbackPrimary": "/collections/models/regional-model-06.jpg",
+      "fallbackDetail": "/collections/models/regional-model-06.jpg",
+      "fallbackEditorial": "/collections/models/regional-model-06.jpg"
+    },
+    "specs": {
+      "length": "To be confirmed",
+      "weight": "Not verified",
+      "care": "Request confirmed fibre and embellishment care instructions from supplier.",
+      "borderDetails": "Tanchoi-inspired compact figured motifs over a jewel-tone ground",
+      "palluDetails": "Tanchoi-inspired compact figured motifs over a jewel-tone ground",
+      "motifs": [
+        "Tanchoi-inspired compact figured motifs over a jewel-tone ground",
+        "Regional motif reference; execution unverified"
+      ]
+    },
+    "rating": 0,
+    "reviewsCount": 0,
+    "isAvailable": false,
+    "stockCount": 0,
+    "culturalContext": "A Varanasi design reference for the richly figured surface associated with Tanchoi. The catalog image is an illustrative model styling reference; weave structure, silk content and production origin need supplier verification."
   }
 ];

@@ -1,20 +1,13 @@
 # South India collection notes
 
-These eight entries are DRIFT design concepts for a storefront prototype. The named designs do not correspond to verified seller SKUs. The numeric amounts are indicative sample merchandising values, not current seller quotes; no discounts, reviews, inventory, or sellable stock are asserted. Exact product materials, zari composition, weave time, weights, makers, production locations, care directions, and trend status require seller or brand confirmation.
+Checked 16 November 2026. These ten entries are DRIFT design concepts, not verified seller SKUs. Prices, stock, ratings, materials, zari composition, makers, production locations, care details, and production methods require supplier confirmation.
 
-## Craft and price references checked (15 Nov 2026)
+## Craft references
 
-- Intellectual Property India, Kancheepuram Silk GI record (registered; Tamil Nadu): https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/15
-- Intellectual Property India, Mysore Silk GI record (registered; Karnataka): https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/11
-- Karnataka Tourism, weaving traditions and KSIC Mysore Silk: https://karnatakatourism.org/en/experiences/weaving-traditions-of-karnataka/
-- KSIC, Mysore Silk authenticity marks: https://www.ksicsilk.com/Home/About
-- Kerala Tourism, Balaramapuram handloom Kasavu reference listing (₹1,800): https://www.keralatourism.org/responsible-tourism/networking/ProductDetail/678
-- Kerala Tourism, Kasavu with 5-inch border (₹1,900): https://www.keralatourism.org/responsible-tourism/networking/ProductDetail/636
-- Kanchi Varamahalakshmi Silks, contemporary Kancheepuram listings and broad price context: https://kanchivml.com/weave/kanchipuram-sarees and https://kanchivml.com/occasion/wedding-sarees
-- Kerala Tourism, Balaramapuram handloom background: https://www.keralatourism.org/kerala-article/2024/balaramapuram-tradition-of-handloom-sarees-and-cotton-fabrics/1456
+- [Intellectual Property India — Kancheepuram Silk GI record](https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/15).
+- [Intellectual Property India — Kanchipuram Cotton Saree record](https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/1506).
+- [Intellectual Property India — Mysore Silk GI record](https://search.ipindia.gov.in/GIRPublicSearch/Application/Details/11): Mysore Silk is a separate Karnataka tradition.
+- [Karnataka Tourism — weaving traditions](https://karnatakatourism.org/en/experiences/weaving-traditions-of-karnataka/) and [KSIC — Mysore Silk authenticity](https://www.ksicsilk.com/Home/About).
+- [Development Commissioner (Handlooms) publications](https://handlooms.nic.in/publications.php): official handloom craft documentation.
 
-The published Kerala Tourism and KanchiVML amounts are examples for those sellers' listings, not prices for the concepts in this catalog. Mysore Silk should not be described as handloom by default; confirm construction and GI eligibility with KSIC or the seller.
-
-## Local image audit
-
-All image paths currently resolve to files under `public/collections/kanchipuram/`, but the JPEGs repeat a small set of generic saree photographs across product views. They do not verify any named weave or concept. No seller images were downloaded or rehosted because commercial reuse permission was not established. The remote Unsplash fallback URLs are generic editorial fallbacks, not product verification. Replace these with DRIFT-owned or expressly licensed SKU photography before presenting the catalog as purchasable goods.
+Kanchipuram, Madurai Sungudi, Mysore, and Kerala textile traditions have distinct regional identities. Do not infer one region’s provenance from another. The local model portraits are illustrative references, credited in `../image-credits.md`; they do not authenticate a specific textile.
