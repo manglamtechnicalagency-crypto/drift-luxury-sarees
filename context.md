@@ -144,6 +144,7 @@
   - Eliminated identical thumbnail repetitions in the right-hand variant list. Selecting any look ("Liquid tissue gold & jamun", "Moon ivory & champagne jaal", "Vermilion katan") updates both list thumbnail and primary stage to the corresponding couture saree.
 
 - **Edge Deployment & Verification**:
+  - GitHub Repository: [https://github.com/manglamtechnicalagency-crypto/drift-luxury-sarees](https://github.com/manglamtechnicalagency-crypto/drift-luxury-sarees).
   - Cloudflare Workers Current Version ID: `4ba729fc-a915-4426-a7d5-3f4ce1621ace`.
   - Live Edge URL: `https://drift-luxury-sarees.manglamtechnicalagency.workers.dev` (Verified HTTP 200).
   - Verification Suite: **89/89 assertions passed (0 failures)** via `scripts/verify-fitting-room.mjs`.
