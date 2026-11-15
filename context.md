@@ -23,6 +23,8 @@
 
 ### Cloudflare Free-Tier Edge Ecosystem
 - **Live Production URL**: `https://drift-luxury-sarees.manglamtechnicalagency.workers.dev`
+- **Latest Version ID**: `b8c3bd56-f05e-4d75-a709-684a7f5e2893`
+- **GitHub Repository**: `https://github.com/manglamtechnicalagency-crypto/drift-luxury-sarees`
 - **Hosting**: Cloudflare Pages / Workers via `@opennextjs/cloudflare` with static asset binding (`env.ASSETS`)
 - **Edge API Framework**: Hono 4.13.18 mounted at `/api/[[...route]]` (`src/server/api.ts`)
 - **Relational Database**: Cloudflare D1 (`drift-commerce-db`, ID: `1a3ca3d6-47f5-4da4-a049-b6306af7f878`) with 6 states and 48 sarees seeded

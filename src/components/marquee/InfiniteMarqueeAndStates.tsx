@@ -186,7 +186,7 @@ export default function InfiniteMarqueeAndStates() {
                       {state.name.split(' ')[0]}
                     </h3>
                     <p className="text-[9px] text-[#FAF7F2]/70 font-sans line-clamp-1 font-light">
-                      Muse Priya · {state.keyWeaves[0]}
+                      Muse Priya · {state.keyWeaves?.[0] || 'Archival Study'}
                     </p>
                   </div>
                 </div>

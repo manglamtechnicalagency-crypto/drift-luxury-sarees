@@ -99,9 +99,38 @@ export const useStore = create<StoreState>((set, get) => ({
       if (res.ok) {
         const data: any = await res.json();
         if (Array.isArray(data.states) && Array.isArray(data.sarees) && data.sarees.length > 0) {
+          const mergedStates = data.states.map((st: any) => {
+            const staticMeta = ALL_STATE_METAS.find((m) => m.slug === st.slug);
+            return {
+              ...staticMeta,
+              ...st,
+              keyWeaves: st.keyWeaves?.length ? st.keyWeaves : (staticMeta?.keyWeaves || []),
+              hindiName: st.hindiName || staticMeta?.hindiName || '',
+              glowColor: st.glowColor || staticMeta?.glowColor || st.accentColor,
+            };
+          });
+
+          const mergedSarees = data.sarees.map((s: any) => {
+            const staticSaree = ALL_SAREES.find((item) => item.id === s.id || item.slug === s.slug);
+            return {
+              ...staticSaree,
+              ...s,
+              specs: {
+                ...staticSaree?.specs,
+                ...s.specs,
+                motifs: s.specs?.motifs || staticSaree?.specs?.motifs || ['Geometrical Diamond', 'Paisley Kalka'],
+                patternSet: s.specs?.patternSet || staticSaree?.specs?.patternSet,
+              },
+              images: {
+                ...staticSaree?.images,
+                ...s.images,
+              },
+            };
+          });
+
           set({
-            states: data.states,
-            sarees: data.sarees,
+            states: mergedStates,
+            sarees: mergedSarees,
             hasHydratedEdge: true,
           });
         }

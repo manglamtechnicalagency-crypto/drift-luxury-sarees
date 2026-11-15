@@ -215,22 +215,22 @@ export default function VirtualFittingRoom({
 
   // Realism image resolution: seamlessly switch between model fitting drape, full saree photo, or weave detail
   const activeDisplayImage = useMemo(() => {
-    const sareeAsset = RELATABLE_SAREE_MODELS[activeSaree?.id];
     if (viewMode === 'saree') {
-      return activeSaree?.images?.editorial || activeSaree?.images?.primary || sareeAsset?.hover || activeDrapeModel.image;
+      return activeSaree?.images?.primary || activeSaree?.images?.editorial || activeDrapeModel.image;
     }
     if (viewMode === 'detail') {
       return activeSaree?.images?.detail || activeSaree?.images?.primary || activeDrapeModel.image;
     }
     // viewMode === 'model'
     if (lastUserAction === 'drape') {
-      return activeDrapeModel.image || sareeAsset?.model || activeSaree?.images?.primary;
+      return activeDrapeModel.image || activeSaree?.images?.editorial || activeSaree?.images?.primary;
     }
     return (
-      sareeAsset?.model ||
+      activeSaree?.images?.editorial ||
+      activeSaree?.images?.primary ||
       activeDrapeModel.image ||
       (activeSaree?.region ? PRIYA_EDITORIAL_MODEL.images[activeSaree.region] : null) ||
-      activeSaree?.images?.primary
+      '/collections/models/priya_banarasi_red.jpg'
     );
   }, [viewMode, activeSaree, activeDrapeModel, lastUserAction]);
 
@@ -357,8 +357,8 @@ export default function VirtualFittingRoom({
                   }
                   className="w-full h-full object-cover transition-opacity duration-500 ease-out"
                   onError={(e) => {
-                    const fallback = activeDrapeModel.fallbackImage || activeSaree?.images?.fallbackPrimary || '/collections/models/priya_banarasi_red.jpg';
-                    if (e.currentTarget.src !== fallback) {
+                    const fallback = activeSaree?.images?.editorial || activeSaree?.images?.primary || activeDrapeModel.fallbackImage || '/collections/models/priya_banarasi_red.jpg';
+                    if (!e.currentTarget.src.endsWith(fallback)) {
                       e.currentTarget.src = fallback;
                     }
                   }}
@@ -490,7 +490,7 @@ export default function VirtualFittingRoom({
             <div className="w-full mt-3 flex items-center justify-between text-[11px] text-[#1A1617]/65 px-1 font-serif italic">
               <span>Photo-silhouette &amp; micro-sheen composite</span>
               <span className="font-sans not-italic text-[10px] font-semibold uppercase text-[#A80F24]">
-                GI Reg: {activeSaree.specs.patternSet?.primaryTechnique || 'Handloom Authentic'}
+                GI Reg: {activeSaree.specs?.patternSet?.primaryTechnique || 'Handloom Authentic'}
               </span>
             </div>
 
@@ -575,11 +575,19 @@ export default function VirtualFittingRoom({
                     >
                       <div className="aspect-[3/3.8] w-full overflow-hidden bg-black/5">
                         <img
-                          src={RELATABLE_SAREE_MODELS[saree.id]?.model || saree.images.primary || PRIYA_EDITORIAL_MODEL.images[saree.region]}
-                          alt={`${saree.name} on model Priya`}
+                          src={
+                            saree.images.editorial ||
+                            saree.images.primary ||
+                            RELATABLE_SAREE_MODELS[saree.id]?.model ||
+                            PRIYA_EDITORIAL_MODEL.images[saree.region]
+                          }
+                          alt={`${saree.name}`}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           onError={(e) => {
-                            (e.target as HTMLImageElement).src = saree.images.primary || saree.images.fallbackPrimary;
+                            const fallback = saree.images.primary || saree.images.fallbackPrimary || '/collections/models/priya_banarasi_red.jpg';
+                            if (!e.currentTarget.src.endsWith(fallback)) {
+                              e.currentTarget.src = fallback;
+                            }
                           }}
                         />
                       </div>

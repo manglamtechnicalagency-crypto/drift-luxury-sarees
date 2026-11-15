@@ -129,7 +129,7 @@ export default function RegionalExplorer() {
                   Signature Weave Techniques:
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {activeMeta.keyWeaves.map((weave, idx) => (
+                  {(activeMeta?.keyWeaves || []).map((weave, idx) => (
                     <span
                       key={idx}
                       className="px-3 py-1 rounded-md text-xs bg-drift-dark/80 border border-drift-gold/20 text-drift-sand/90 font-serif"

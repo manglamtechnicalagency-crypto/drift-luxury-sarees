@@ -24,10 +24,21 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
     zari: activeColorway.palette[3],
   };
 
-  const modelAsset = RELATABLE_SAREE_MODELS[saree.id] || {
-    model: PRIYA_EDITORIAL_MODEL.images[saree.region] || saree.images.primary,
-    hover: saree.images.editorial || saree.images.primary,
-  };
+  const primaryDisplayImage =
+    saree.images.editorial ||
+    saree.images.primary ||
+    RELATABLE_SAREE_MODELS[saree.id]?.model ||
+    PRIYA_EDITORIAL_MODEL.images[saree.region];
+
+  const hoverDisplayImage =
+    saree.images.detail ||
+    saree.images.pallu ||
+    saree.images.primary;
+
+  const displayCraft = (saree.craft || 'Handloom Silk')
+    .replace(/^Craft inspiration:\s*/i, '')
+    .split('·')[0]
+    .trim();
 
   const cleanDisplayName = saree.name.replace(/^DRIFT Study\s*[-—]\s*/i, '');
 
@@ -46,20 +57,25 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
           <>
             {/* Primary Model Image: Relatable model wearing this specific saree */}
             <img
-              src={modelAsset.model}
-              alt={`${cleanDisplayName} draped on model Priya in ${saree.craft}`}
+              src={primaryDisplayImage}
+              alt={`${cleanDisplayName} draped in ${displayCraft}`}
               className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = saree.images.primary || PRIYA_EDITORIAL_MODEL.images[saree.region];
+                const fb = saree.images.primary || saree.images.fallbackPrimary || '/collections/models/priya_banarasi_red.jpg';
+                if (!e.currentTarget.src.endsWith(fb)) {
+                  e.currentTarget.src = fb;
+                }
               }}
             />
-            {/* Secondary Editorial Drape on Hover with smooth cross-fade */}
+            {/* Secondary Editorial / Weave Drape on Hover with smooth cross-fade */}
             <img
-              src={modelAsset.hover}
-              alt={`${cleanDisplayName} alternate editorial angle`}
+              src={hoverDisplayImage}
+              alt={`${cleanDisplayName} authentic weave and border detail`}
               className="absolute inset-0 w-full h-full object-cover object-top opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = modelAsset.model;
+                if (!e.currentTarget.src.endsWith(primaryDisplayImage)) {
+                  e.currentTarget.src = primaryDisplayImage;
+                }
               }}
             />
             {/* Subtle Ambient Vignette */}
@@ -125,11 +141,13 @@ function ProductCard({ saree }: { saree: SareeProduct }) {
       {/* Info Body */}
       <div className="p-4 space-y-3 flex-1 flex flex-col justify-between">
         <div>
-          {/* Craft Origin Line */}
-          <div className="flex items-center justify-between text-[10px] font-sans uppercase tracking-widest text-[#A80F24] font-bold">
-            <span className="truncate pr-2">{saree.craft}</span>
-            <span className="text-[9px] font-semibold text-[#D4AF37] shrink-0">
-              3 Variants
+          {/* Craft Origin Line & Variants Pill */}
+          <div className="flex items-center justify-between gap-2 text-[10px] font-sans uppercase tracking-widest text-[#A80F24] font-bold">
+            <span className="truncate min-w-0" title={saree.craft}>
+              {displayCraft}
+            </span>
+            <span className="text-[9px] font-semibold text-[#D4AF37] shrink-0 whitespace-nowrap bg-[#FAF7F2] border border-[#D4AF37]/40 px-2 py-0.5 rounded-full shadow-sm">
+              {colorways.length} Variants
             </span>
           </div>
 

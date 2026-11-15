@@ -183,11 +183,19 @@ export default function CurvedArcCarousel() {
                 )}
 
                 <img
-                  src={RELATABLE_SAREE_MODELS[saree.id]?.model || saree.images.primary || PRIYA_EDITORIAL_MODEL.images[saree.region]}
-                  alt={`${saree.originState} ${saree.craft} saree on model Priya`}
+                  src={
+                    saree.images.editorial ||
+                    saree.images.primary ||
+                    RELATABLE_SAREE_MODELS[saree.id]?.model ||
+                    PRIYA_EDITORIAL_MODEL.images[saree.region]
+                  }
+                  alt={`${saree.originState} ${saree.craft} saree`}
                   className="w-full h-full object-cover select-none group-hover:scale-105 transition-transform duration-700 ease-out"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = saree.images.primary || saree.images.fallbackPrimary;
+                    const fallback = saree.images.primary || saree.images.fallbackPrimary || '/collections/models/priya_banarasi_red.jpg';
+                    if (!e.currentTarget.src.endsWith(fallback)) {
+                      e.currentTarget.src = fallback;
+                    }
                   }}
                 />
 
@@ -198,7 +206,7 @@ export default function CurvedArcCarousel() {
                 <div className="absolute bottom-4 left-4 right-4 text-left space-y-1">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] uppercase font-sans tracking-widest text-[#E6B83A] font-semibold truncate pr-2">
-                      {saree.craft}
+                      {(saree.craft || '').replace(/^Craft inspiration:\s*/i, '').split('·')[0].trim()}
                     </span>
                     <span className="text-[8px] uppercase tracking-wider text-[#FAF7F2]/60 shrink-0">
                       GI Heritage

@@ -20,12 +20,12 @@ const MOTIF_OPTIONS: { id: TextileMotif; label: string }[] = [
 const TREND_LOOK_MODELS: Record<string, { model: string; detail: string; primary: string }> = {
   // Banarasi
   'ban-tissue-jamun': {
-    model: '/collections/models/model_burgundy_zardozi.jpg',
+    model: '/collections/banarasi/saree_03_editorial.jpg',
     detail: '/collections/banarasi/saree_03_detail.jpg',
     primary: '/collections/banarasi/saree_03_primary.jpg',
   },
   'ban-ivory-champagne-jaal': {
-    model: '/collections/models/priya_gujarati_panetar.jpg',
+    model: '/collections/banarasi/saree_04_editorial.jpg',
     detail: '/collections/banarasi/saree_04_detail.jpg',
     primary: '/collections/banarasi/saree_04_primary.jpg',
   },
@@ -41,10 +41,20 @@ const TREND_LOOK_MODELS: Record<string, { model: string; detail: string; primary
     detail: '/collections/gujarati/saree_01_detail.jpg',
     primary: '/collections/gujarati/saree_01_primary.jpg',
   },
+  'guj-ashavali-rosegold': {
+    model: '/collections/gujarati/saree_05_editorial.jpg',
+    detail: '/collections/gujarati/saree_05_detail.jpg',
+    primary: '/collections/gujarati/saree_05_primary.jpg',
+  },
   'guj-sindoori-bandhej': {
-    model: '/collections/models/priya_jodhpuri_bandhani.jpg',
+    model: '/collections/gujarati/saree_02_editorial.jpg',
     detail: '/collections/gujarati/saree_02_detail.jpg',
     primary: '/collections/gujarati/saree_02_primary.jpg',
+  },
+  'guj-ivory-shisha': {
+    model: '/collections/models/priya_gujarati_panetar.jpg',
+    detail: '/collections/gujarati/saree_03_detail.jpg',
+    primary: '/collections/gujarati/saree_03_primary.jpg',
   },
   'guj-raw-silk-panetar': {
     model: '/collections/models/priya_gujarati_panetar.jpg',
@@ -52,72 +62,132 @@ const TREND_LOOK_MODELS: Record<string, { model: string; detail: string; primary
     primary: '/collections/gujarati/saree_03_primary.jpg',
   },
 
-  // Kanchipuram
-  'kan-aubergine-gopuram': {
-    model: '/collections/models/priya_kanchipuram_purple.jpg',
-    detail: '/collections/kanchipuram/saree_01_detail.jpg',
-    primary: '/collections/kanchipuram/saree_01_primary.jpg',
-  },
-  'kan-peacock-emerald-ruby': {
-    model: '/collections/models/priya_paithani_peacock.jpg',
-    detail: '/collections/kanchipuram/saree_02_detail.jpg',
-    primary: '/collections/kanchipuram/saree_02_primary.jpg',
-  },
-  'kan-copper-rose-tissue': {
-    model: '/collections/models/model_royal_chandan.jpg',
-    detail: '/collections/kanchipuram/saree_03_detail.jpg',
-    primary: '/collections/kanchipuram/saree_03_primary.jpg',
-  },
-
   // Rajasthani
+  'raj-dune-wave': {
+    model: '/collections/models/priya_rajasthani_leheriya.jpg',
+    detail: '/collections/rajasthani/saree_01_detail.jpg',
+    primary: '/collections/rajasthani/saree_01_primary.jpg',
+  },
   'raj-sunset-ombre-leheriya': {
     model: '/collections/models/priya_rajasthani_leheriya.jpg',
     detail: '/collections/rajasthani/saree_01_detail.jpg',
     primary: '/collections/rajasthani/saree_01_primary.jpg',
   },
+  'raj-rani-gota': {
+    model: '/collections/rajasthani/saree_03_editorial.jpg',
+    detail: '/collections/rajasthani/saree_03_detail.jpg',
+    primary: '/collections/rajasthani/saree_03_primary.jpg',
+  },
   'raj-kota-doria-gold-checks': {
-    model: '/collections/models/model_saffron_yellow.jpg',
+    model: '/collections/rajasthani/saree_02_editorial.jpg',
+    detail: '/collections/rajasthani/saree_02_detail.jpg',
+    primary: '/collections/rajasthani/saree_02_primary.jpg',
+  },
+  'raj-kota-amber': {
+    model: '/collections/rajasthani/saree_02_editorial.jpg',
     detail: '/collections/rajasthani/saree_02_detail.jpg',
     primary: '/collections/rajasthani/saree_02_primary.jpg',
   },
   'raj-marwar-lac-bandhani': {
-    model: '/collections/models/priya_jodhpuri_bandhani.jpg',
-    detail: '/collections/rajasthani/saree_03_detail.jpg',
-    primary: '/collections/rajasthani/saree_03_primary.jpg',
+    model: '/collections/rajasthani/saree_07_editorial.jpg',
+    detail: '/collections/rajasthani/saree_07_detail.jpg',
+    primary: '/collections/rajasthani/saree_07_primary.jpg',
   },
 
   // Jodhpuri
-  'jod-indigo-gold-shikargah': {
-    model: '/collections/models/priya_kanchipuram_purple.jpg',
+  'jod-indigo-saffron': {
+    model: '/collections/models/priya_jodhpuri_bandhani.jpg',
     detail: '/collections/jodhpuri/saree_01_detail.jpg',
     primary: '/collections/jodhpuri/saree_01_primary.jpg',
   },
-  'jod-rani-haldi-bandhej': {
-    model: '/collections/models/priya_jodhpuri_bandhani.jpg',
+  'jod-indigo-gold-shikargah': {
+    model: '/collections/jodhpuri/saree_05_editorial.jpg',
+    detail: '/collections/jodhpuri/saree_05_detail.jpg',
+    primary: '/collections/jodhpuri/saree_05_primary.jpg',
+  },
+  'jod-crimson-sandstone': {
+    model: '/collections/jodhpuri/saree_02_editorial.jpg',
     detail: '/collections/jodhpuri/saree_02_detail.jpg',
     primary: '/collections/jodhpuri/saree_02_primary.jpg',
   },
+  'jod-rani-haldi-bandhej': {
+    model: '/collections/jodhpuri/saree_02_editorial.jpg',
+    detail: '/collections/jodhpuri/saree_02_detail.jpg',
+    primary: '/collections/jodhpuri/saree_02_primary.jpg',
+  },
+  'jod-twilight-mirror': {
+    model: '/collections/jodhpuri/saree_07_editorial.jpg',
+    detail: '/collections/jodhpuri/saree_07_detail.jpg',
+    primary: '/collections/jodhpuri/saree_07_primary.jpg',
+  },
   'jod-gota-patti-pistachio': {
-    model: '/collections/models/priya_paithani_peacock.jpg',
-    detail: '/collections/jodhpuri/saree_03_detail.jpg',
-    primary: '/collections/jodhpuri/saree_03_primary.jpg',
+    model: '/collections/jodhpuri/saree_06_editorial.jpg',
+    detail: '/collections/jodhpuri/saree_06_detail.jpg',
+    primary: '/collections/jodhpuri/saree_06_primary.jpg',
+  },
+
+  // Kanchipuram
+  'kan-peacock-copper': {
+    model: '/collections/models/priya_kanchipuram_purple.jpg',
+    detail: '/collections/kanchipuram/saree_01_detail.jpg',
+    primary: '/collections/kanchipuram/saree_01_primary.jpg',
+  },
+  'kan-aubergine-gopuram': {
+    model: '/collections/models/priya_kanchipuram_purple.jpg',
+    detail: '/collections/kanchipuram/saree_01_detail.jpg',
+    primary: '/collections/kanchipuram/saree_01_primary.jpg',
+  },
+  'kan-temple-red': {
+    model: '/collections/kanchipuram/saree_06_editorial.jpg',
+    detail: '/collections/kanchipuram/saree_06_detail.jpg',
+    primary: '/collections/kanchipuram/saree_06_primary.jpg',
+  },
+  'kan-peacock-emerald-ruby': {
+    model: '/collections/kanchipuram/saree_06_editorial.jpg',
+    detail: '/collections/kanchipuram/saree_06_detail.jpg',
+    primary: '/collections/kanchipuram/saree_06_primary.jpg',
+  },
+  'kan-viridian-amethyst': {
+    model: '/collections/kanchipuram/saree_02_editorial.jpg',
+    detail: '/collections/kanchipuram/saree_02_detail.jpg',
+    primary: '/collections/kanchipuram/saree_02_primary.jpg',
+  },
+  'kan-copper-rose-tissue': {
+    model: '/collections/kanchipuram/saree_03_editorial.jpg',
+    detail: '/collections/kanchipuram/saree_03_detail.jpg',
+    primary: '/collections/kanchipuram/saree_03_primary.jpg',
   },
 
   // Heritage States
+  'heritage-paithani-peacock': {
+    model: '/collections/models/priya_paithani_peacock.jpg',
+    detail: '/collections/heritage-states/saree_01_detail.jpg',
+    primary: '/collections/heritage-states/saree_01_primary.jpg',
+  },
   'her-paithani-tissue-peacock': {
     model: '/collections/models/priya_paithani_peacock.jpg',
     detail: '/collections/heritage-states/saree_01_detail.jpg',
     primary: '/collections/heritage-states/saree_01_primary.jpg',
   },
+  'heritage-chanderi-silver': {
+    model: '/collections/heritage-states/saree_03_editorial.jpg',
+    detail: '/collections/heritage-states/saree_03_detail.jpg',
+    primary: '/collections/heritage-states/saree_03_primary.jpg',
+  },
   'her-chanderi-black-gold': {
-    model: '/collections/models/model_burgundy_zardozi.jpg',
+    model: '/collections/heritage-states/saree_02_editorial.jpg',
     detail: '/collections/heritage-states/saree_02_detail.jpg',
     primary: '/collections/heritage-states/saree_02_primary.jpg',
   },
+  'heritage-baluchari-narrative': {
+    model: '/collections/heritage-states/saree_08_editorial.jpg',
+    detail: '/collections/heritage-states/saree_08_detail.jpg',
+    primary: '/collections/heritage-states/saree_08_primary.jpg',
+  },
   'her-sambalpuri-crimson-ikat': {
-    model: '/collections/models/model_bengali_bridal.jpg',
-    detail: '/collections/heritage-states/saree_03_detail.jpg',
-    primary: '/collections/heritage-states/saree_03_primary.jpg',
+    model: '/collections/heritage-states/saree_05_editorial.jpg',
+    detail: '/collections/heritage-states/saree_05_detail.jpg',
+    primary: '/collections/heritage-states/saree_05_primary.jpg',
   },
 };
 

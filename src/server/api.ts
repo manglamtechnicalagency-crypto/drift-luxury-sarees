@@ -76,7 +76,7 @@ api.get('/health', async (c) => {
 // 2. Collections Listing (Cached 300s in KV)
 api.get('/collections', async (c) => {
   const env = await resolveBindings(c);
-  const cacheKey = 'drift:collections:v2';
+  const cacheKey = 'drift:collections:v3';
 
   // Check KV cache
   if (env.EDGE_CACHE) {
@@ -101,49 +101,66 @@ api.get('/collections', async (c) => {
       const sareesResult = await env.DB.prepare('SELECT * FROM sarees ORDER BY created_at DESC').all();
 
       if (statesResult.results?.length) {
-        states = statesResult.results.map((st: any) => ({
-          id: st.slug,
-          slug: st.slug,
-          name: st.name,
-          tagline: st.tagline,
-          craftOverview: st.craft_history,
-          heroImage: st.hero_image,
-          accentColor: st.accent_hex,
-          stats: { artisanGuilds: 14, heritageCenturies: 5, flagshipPieces: 8 },
-        }));
+        states = statesResult.results.map((st: any) => {
+          const staticMeta = ALL_STATE_METAS.find((m) => m.slug === st.slug);
+          return {
+            id: st.slug,
+            slug: st.slug,
+            name: st.name,
+            tagline: st.tagline,
+            craftOverview: st.craft_history,
+            heroImage: st.hero_image,
+            accentColor: st.accent_hex,
+            stats: { artisanGuilds: 14, heritageCenturies: 5, flagshipPieces: 8 },
+            keyWeaves: staticMeta?.keyWeaves || [],
+            hindiName: staticMeta?.hindiName || '',
+            glowColor: staticMeta?.glowColor || st.accent_hex,
+          };
+        });
       }
 
       if (sareesResult.results?.length) {
-        sarees = sareesResult.results.map((s: any) => ({
-          id: s.id,
-          sku: s.sku,
-          title: s.title,
-          name: s.title,
-          slug: s.sku.toLowerCase(),
-          region: s.state_slug,
-          craft: s.weave_type,
-          fabric: s.fabric,
-          price: s.price_inr,
-          priceDisplay: `₹${s.price_inr.toLocaleString('en-IN')}`,
-          originalPrice: s.original_price_inr,
-          trendingBadge: s.badge,
-          colorHex: JSON.parse(s.colors_json || '[]')[0] || '#A80F24',
-          palette: JSON.parse(s.colors_json || '[]'),
-          blouseSizes: JSON.parse(s.blouse_sizes_json || '[]'),
-          story: s.cultural_story,
-          images: {
-            primary: s.primary_image,
-            detail: s.hover_image,
-            editorial: s.primary_image,
-            pallu: s.hover_image,
-            fallbackPrimary: s.primary_image,
-            fallbackDetail: s.hover_image,
-            fallbackEditorial: s.primary_image,
-          },
-          isBridal: Boolean(s.is_bridal),
-          isFeaturedArc: Boolean(s.is_featured_arc),
-          stockCount: s.stock_count,
-        }));
+        sarees = sareesResult.results.map((s: any) => {
+          const staticSaree = ALL_SAREES.find((item) => item.id === s.id || item.slug === s.sku.toLowerCase());
+          return {
+            ...staticSaree,
+            id: s.id,
+            sku: s.sku,
+            title: s.title,
+            name: s.title,
+            slug: s.sku.toLowerCase(),
+            region: s.state_slug,
+            craft: s.weave_type,
+            fabric: s.fabric,
+            price: s.price_inr,
+            priceDisplay: `₹${s.price_inr.toLocaleString('en-IN')}`,
+            originalPrice: s.original_price_inr,
+            trendingBadge: s.badge,
+            colorHex: JSON.parse(s.colors_json || '[]')[0] || '#A80F24',
+            palette: JSON.parse(s.colors_json || '[]'),
+            blouseSizes: JSON.parse(s.blouse_sizes_json || '[]'),
+            story: s.cultural_story,
+            images: {
+              ...staticSaree?.images,
+              primary: s.primary_image,
+              detail: s.hover_image,
+              editorial: s.primary_image,
+              pallu: s.hover_image,
+              fallbackPrimary: s.primary_image,
+              fallbackDetail: s.hover_image,
+              fallbackEditorial: s.primary_image,
+            },
+            specs: staticSaree?.specs || {
+              length: '5.5 meters',
+              width: '1.14 meters',
+              motifs: ['Geometrical Diamond', 'Paisley Kalka'],
+              zari: 'Gold-washed zari',
+            },
+            isBridal: Boolean(s.is_bridal),
+            isFeaturedArc: Boolean(s.is_featured_arc),
+            stockCount: s.stock_count,
+          };
+        });
       }
     } catch {
       // Fallback to static registry on D1 error

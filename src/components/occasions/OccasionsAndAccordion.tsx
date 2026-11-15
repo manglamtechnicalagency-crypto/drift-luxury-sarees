@@ -178,7 +178,7 @@ export default function OccasionsAndAccordion() {
                         }}
                         className="inline-flex items-center gap-2 text-xs font-sans font-bold uppercase tracking-[0.2em] text-[#E6B83A] hover:text-[#FAF7F2] transition-colors pt-2"
                       >
-                        <span>Explore Collection ({state.keyWeaves[0]})</span>
+                        <span>Explore Collection ({state.keyWeaves?.[0] || 'Handloom Study'})</span>
                         <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>

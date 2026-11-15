@@ -15,7 +15,7 @@ import { getSareeColorways, getSareePatternSet, getSareeSupportedDrapes } from '
 
 function enrichSaree(saree: SareeProduct): SareeProduct {
   const colorways = saree.colorways && saree.colorways.length > 0 ? saree.colorways : getSareeColorways(saree);
-  const patternSet = saree.specs.patternSet || getSareePatternSet(saree);
+  const patternSet = saree.specs?.patternSet || getSareePatternSet(saree);
   const supportedDrapes = saree.supportedDrapes && saree.supportedDrapes.length > 0 ? saree.supportedDrapes : getSareeSupportedDrapes(saree);
 
   const titleLower = (saree.title || '').toLowerCase();
